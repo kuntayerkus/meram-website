@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Privacy — Meram</title>
+<meta name="description" content="Exactly what Meram sends, what it stores on your machine, and what this website itself sees. Including the parts that are not private.">
+<meta name="theme-color" content="#0A0A0B">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://meram.app/privacy/">
+<link rel="alternate" hreflang="en" href="https://meram.app/privacy/">
+<link rel="alternate" hreflang="tr" href="https://meram.app/tr/gizlilik/">
+<link rel="alternate" hreflang="x-default" href="https://meram.app/privacy/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://meram.app/privacy/">
+<meta property="og:site_name" content="Meram">
+<meta property="og:title" content="Privacy — Meram">
+<meta property="og:description" content="Exactly what Meram sends, what it stores, and what this website sees — including the parts that are not private.">
+<meta property="og:image" content="https://meram.app/assets/img/og-image.png">
+<link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/archivo-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__brand" href="/" aria-label="Meram home">
+      <svg class="nav__mark" viewBox="0 0 100 100" aria-hidden="true"><g fill="currentColor"><rect x="25" y="40.5" width="8" height="19" rx="4"/><rect x="39" y="24" width="8" height="52" rx="4"/><rect x="53" y="33" width="8" height="34" rx="4"/><rect x="67" y="40.5" width="8" height="19" rx="4"/></g></svg>
+      <span class="nav__word">Meram</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/#flow">How it works</a>
+      <a href="/#refine">Refinement</a>
+      <a href="/#trust">Privacy</a>
+      <a href="/#pricing">Pricing</a>
+    </nav>
+    <div class="langs" role="group" aria-label="Language">
+      <a href="/privacy/" aria-current="true" hreflang="en">EN</a>
+      <a href="/tr/gizlilik/" hreflang="tr">TR</a>
+    </div>
+    <a class="btn btn--sm btn--primary nav__cta js-latest" href="/download/"><span>Download</span></a>
+  </div>
+</header>
+
+<main id="main" class="page">
+  <div class="wrap">
+    <a class="page__crumb" href="/">← Meram</a>
+
+    <header class="page__head">
+      <p class="kicker">Privacy</p>
+      <h1 class="h2">What leaves, and what doesn’t.</h1>
+      <p class="lede page__lede">
+        Written to be checkable rather than reassuring. Where something is not private,
+        this page says so in the same size type as everything else.
+      </p>
+      <p class="page__meta">
+        <span>Last updated 14 August 2026</span>
+        <span>Applies to Meram 2.0 beta and to meram.app</span>
+      </p>
+    </header>
+
+    <div class="pageGrid">
+      <div class="prose">
+        <h2>The short version</h2>
+        <p>
+          Meram has no server. There is no account, no login and no product analytics.
+          Your dictations, your dictionary and your settings live in files on your own
+          machine. The one thing that leaves is your audio — sent to the transcription
+          provider <em>you</em> chose, using <em>your</em> key — plus the transcript, if
+          you switch on cleanup or translation. Nothing is sent to us, because there is
+          nowhere for it to be sent.
+        </p>
+        <div class="callout">
+          <strong>There is no fully offline mode today.</strong> On-device transcription
+          exists in the source but is deliberately switched off until it can be packaged
+          and verified, so “100% offline” is not a claim this product is entitled to make
+          yet. When that changes, this paragraph changes first.
+        </div>
+
+        <h2>What Meram sends</h2>
+        <table>
+          <thead>
+            <tr><th>What</th><th>Where it goes</th><th>When</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Recorded audio</td>
+              <td>Groq or OpenAI — whichever you selected, with your key</td>
+              <td>Every dictation. This is the transcription request itself.</td>
+            </tr>
+            <tr>
+              <td>The transcript, plus a short biasing prompt</td>
+              <td>The same transcription provider</td>
+              <td>The biasing prompt carries terms from your own history and dictionary, capped in length.</td>
+            </tr>
+            <tr>
+              <td>The transcript and the applicable context</td>
+              <td>The chat provider you configured</td>
+              <td>Only when AI cleanup, tone matching or translation is enabled.</td>
+            </tr>
+            <tr>
+              <td>Screen context</td>
+              <td>Whichever provider the request is going to</td>
+              <td>Only if you turn screen grounding on. It is <strong>off by default</strong>.</td>
+            </tr>
+            <tr>
+              <td>An update check</td>
+              <td>GitHub</td>
+              <td>On launch, unless you turn automatic updates off. GitHub sees your IP address, as any download does.</td>
+            </tr>
+            <tr>
+              <td>Crash reports</td>
+              <td>Sentry — only in a build compiled with a DSN</td>
+              <td>Not enabled by default. If a build you install has it, exception metadata can be sent.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          Those providers have their own terms and their own retention policies, and they
+          apply to your account with them rather than to anything of ours. Choosing a
+          provider is choosing whose privacy policy governs your audio.
+        </p>
+
+        <h2>What stays on your machine</h2>
+        <ul>
+          <li><strong>History.</strong> Every dictation, in a local SQLite database, along
+          with provider and model names, timing, and transcription-prompt diagnostics.</li>
+          <li><strong>Dictionary and snippets.</strong> Yours, local, editable and
+          deletable.</li>
+          <li><strong>Settings.</strong> A JSON file you can open and read.</li>
+          <li><strong>Audio recordings.</strong> Not kept, unless you switch on “keep
+          audio” — then they are written under the app data folder and stay there until
+          you delete them.</li>
+        </ul>
+
+        <h2>Your API key</h2>
+        <p>
+          Your key is stored through the operating system’s own encrypted storage
+          (Electron’s <code>safeStorage</code>) when the OS provides it. Where it does
+          not, a compatibility path can store the value in plain text — that is a real
+          limitation and it is written here rather than left in a source file.
+        </p>
+        <p>
+          There is also a <strong>second copy on disk</strong>:
+          <code>meram-settings.json.bak</code>, rewritten after every successful save. It
+          exists because the settings library silently replaces a file it cannot parse
+          with defaults, taking every key, hotkey and dictionary entry with it. The backup
+          carries exactly the same protection as the live file — no more, no less.
+        </p>
+        <p>
+          The key is sent only to the provider it belongs to. It never reaches us; we
+          operate no service that could receive it.
+        </p>
+
+        <h2>Things that are off unless you turn them on</h2>
+        <ul>
+          <li><strong>Screen context.</strong> Off by default. When on, what it reads is
+          best-effort and ephemeral unless something derived from it lands in history.</li>
+          <li><strong>Clipboard history.</strong> Off by default. When on, it keeps up to
+          200 entries locally, skips formats that password managers mark as
+          do-not-persist, and skips Meram’s own writes. No clipboard detector can promise
+          to recognise every secret, which is why it is off. Disabling it purges what was
+          stored.</li>
+          <li><strong>Wakeword.</strong> Off by default. When on, it holds a second,
+          permanently live microphone stream for as long as it is enabled — separate from
+          the dictation recorder. The capsule shows a microphone badge for the entire time
+          that stream is open, because a permanently open microphone should be visible.</li>
+          <li><strong>Semantic memory.</strong> Disabled entirely in this release. No
+          vectors are generated or searched.</li>
+        </ul>
+
+        <h2>Password fields</h2>
+        <p>
+          When the focused control is a password field — or the target is elevated, or
+          macOS Secure Event Input is active — Meram writes nothing at all. Not into the
+          field, and not onto your clipboard as a fallback. A dictation that is lost is a
+          much smaller problem than a password manager’s field receiving speech, or a
+          secret sitting in a clipboard you forgot about.
+        </p>
+
+        <h2>What this website sees</h2>
+        <p>
+          No analytics, no tracking pixels, no cookies, no consent banner to dismiss. The
+          fonts are served from this domain rather than from a font CDN. Two things are
+          worth naming anyway:
+        </p>
+        <ul>
+          <li><strong>GitHub.</strong> This site asks GitHub’s public API for the latest
+          release so the download buttons point at a real file. That request comes from
+          your browser, so GitHub sees your IP address and user agent.</li>
+          <li><strong>Hosting logs.</strong> The site is served by Vercel, which keeps
+          ordinary request logs — IP address, user agent, the URL requested — as any web
+          host does.</li>
+        </ul>
+        <p>
+          The microphone demo on the home page is exactly what it says it is: the audio
+          goes to a Web Audio analyser in your own tab, drives the light thread, and is
+          never recorded, uploaded or connected to the audio output. The page holds no API
+          key and cannot transcribe anything. Close the tab, or press the release button,
+          and the stream is stopped.
+        </p>
+
+        <h2>Deleting your data</h2>
+        <p>
+          There is no account to close and no request to file, because we hold nothing.
+          Delete individual dictations from History, clear the lot from Settings, or
+          remove <code>%APPDATA%\Meram</code> and every trace of your use is gone. Data
+          already sent to a transcription provider is governed by your relationship with
+          that provider.
+        </p>
+
+        <h2>Children</h2>
+        <p>Meram is not directed at children under 13 and collects nothing from anyone.</p>
+
+        <h2>Changes</h2>
+        <p>
+          When the product’s behaviour changes, this page changes with it — and where a
+          change makes something less private than it was, it will be described here in
+          plain terms rather than absorbed into a version bump.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+          Questions about any of this: <a href="mailto:kuntayerkus@gmail.com" data-cfg-href="support-email-mailto"><span data-cfg="support-email">kuntayerkus@gmail.com</span></a>.
+        </p>
+      </div>
+
+      <aside class="pageAside">
+        <div class="pageAside__card">
+          <h3>The honest summary</h3>
+          <p>
+            Your audio goes to one company you picked, using a key you own. Everything else
+            stays on your disk. There is no hosted mode, no account, and no offline mode —
+            yet.
+          </p>
+        </div>
+        <div class="pageAside__card">
+          <h3>Sub-processors</h3>
+          <p>
+            <strong>Groq</strong> or <strong>OpenAI</strong> — transcription, your key.<br>
+            <strong>Your chat provider</strong> — cleanup and translation, when enabled.<br>
+            <strong>GitHub</strong> — downloads and update checks.<br>
+            <strong>Vercel</strong> — this website.
+          </p>
+        </div>
+        <div class="pageAside__card">
+          <h3>Related</h3>
+          <p>
+            <a class="inlineLink" href="/terms/">Licence terms →</a><br>
+            <a class="inlineLink" href="/about/">Capability list →</a>
+          </p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div class="footer__brand">
+      <a class="nav__brand" href="/" aria-label="Meram home">
+        <svg class="nav__mark" viewBox="0 0 100 100" aria-hidden="true"><g fill="currentColor"><rect x="25" y="40.5" width="8" height="19" rx="4"/><rect x="39" y="24" width="8" height="52" rx="4"/><rect x="53" y="33" width="8" height="34" rx="4"/><rect x="67" y="40.5" width="8" height="19" rx="4"/></g></svg>
+        <span class="nav__word">Meram</span>
+      </a>
+      <p class="footer__tag">Keyboardless dictation for Windows and macOS — a shortcut, a capsule, and text where you were already working.</p>
+    </div>
+    <nav class="footer__cols" aria-label="Footer">
+      <div class="footer__col">
+        <h5>Product</h5>
+        <a href="/#flow">How it works</a>
+        <a href="/#refine">Refinement</a>
+        <a href="/#trust">Privacy</a>
+        <a href="/#pricing">Pricing</a>
+      </div>
+      <div class="footer__col">
+        <h5>Support</h5>
+        <a href="/download/">Download</a>
+        <a href="/changelog/">Release notes</a>
+        <a href="/contact/">Contact</a>
+        <a href="/about/">About</a>
+      </div>
+      <div class="footer__col">
+        <h5>Legal</h5>
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Licence</a>
+        <a href="/refunds/">Refunds</a>
+      </div>
+      <div class="footer__col">
+        <h5>Guides</h5>
+        <a href="/guides/voice-typing-windows/">Voice typing on Windows</a>
+        <a href="/guides/dictation-privacy/">What dictation apps send</a>
+        <a href="/tr/gizlilik/">Türkçe</a>
+      </div>
+    </nav>
+  </div>
+  <div class="wrap footer__base">
+    <p>© 2026 Grio Works. All rights reserved.</p>
+    <p class="footer__note">Not affiliated with Microsoft, Apple, Groq or OpenAI.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>

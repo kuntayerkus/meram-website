@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>What dictation apps actually send — seven questions to ask</title>
+<meta name="description" content="Dictation software hears everything you say and can type into any window. Seven questions that separate a private dictation tool from one that only sounds private — with Meram’s own answers.">
+<meta name="theme-color" content="#0A0A0B">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://meram.app/guides/dictation-privacy/">
+<link rel="alternate" hreflang="en" href="https://meram.app/guides/dictation-privacy/">
+<link rel="alternate" hreflang="tr" href="https://meram.app/tr/rehberler/dikte-gizliligi/">
+<link rel="alternate" hreflang="x-default" href="https://meram.app/guides/dictation-privacy/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://meram.app/guides/dictation-privacy/">
+<meta property="og:site_name" content="Meram">
+<meta property="og:title" content="What dictation apps actually send — seven questions to ask">
+<meta property="og:description" content="Seven questions that separate a private dictation tool from one that only sounds private.">
+<meta property="og:image" content="https://meram.app/assets/img/og-image.png">
+<link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/archivo-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__brand" href="/" aria-label="Meram home">
+      <svg class="nav__mark" viewBox="0 0 100 100" aria-hidden="true"><g fill="currentColor"><rect x="25" y="40.5" width="8" height="19" rx="4"/><rect x="39" y="24" width="8" height="52" rx="4"/><rect x="53" y="33" width="8" height="34" rx="4"/><rect x="67" y="40.5" width="8" height="19" rx="4"/></g></svg>
+      <span class="nav__word">Meram</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/#flow">How it works</a>
+      <a href="/#refine">Refinement</a>
+      <a href="/#trust">Privacy</a>
+      <a href="/#pricing">Pricing</a>
+    </nav>
+    <div class="langs" role="group" aria-label="Language">
+      <a href="/guides/dictation-privacy/" aria-current="true" hreflang="en">EN</a>
+      <a href="/tr/rehberler/dikte-gizliligi/" hreflang="tr">TR</a>
+    </div>
+    <a class="btn btn--sm btn--primary nav__cta js-latest" href="/download/"><span>Download</span></a>
+  </div>
+</header>
+
+<main id="main" class="page">
+  <div class="wrap">
+    <a class="page__crumb" href="/">← Meram</a>
+
+    <header class="page__head">
+      <p class="kicker">Guide</p>
+      <h1 class="h2">Seven questions to ask<br>a <em>dictation app</em>.</h1>
+      <p class="lede page__lede">
+        Dictation software hears everything you say while it is open and can type into any
+        window you have. That is a lot of trust for a category that mostly markets itself
+        on speed.
+      </p>
+      <p class="page__meta"><span>Updated August 2026</span><span>8 minute read</span></p>
+    </header>
+
+    <div class="pageGrid">
+      <div class="prose">
+        <p>
+          Every question below has a version Meram fails. They are here in the order that
+          matters, with our own answers written next to them, because a checklist that only
+          flatters the product publishing it is an advertisement.
+        </p>
+
+        <h2>1. Where does the audio go?</h2>
+        <p>
+          There are three honest answers, and marketing pages routinely blur them:
+          <strong>on-device</strong> (the audio never leaves), <strong>hosted</strong> (it
+          goes to the vendor’s servers), and <strong>bring your own key</strong> (it goes
+          straight to a provider you have an account with).
+        </p>
+        <p>
+          Watch for “private by design” or “your data is yours” used where one of those
+          three words belongs. Those phrases are compatible with sending every word you
+          say to a third party.
+        </p>
+        <p><strong>Meram:</strong> bring your own key. Audio goes to Groq or OpenAI with
+        your key, on your account. There is no Meram server for it to reach.</p>
+
+        <h2>2. Is it retained, and for how long?</h2>
+        <p>
+          Sending is one question; keeping is another. Ask whether audio is written to
+          disk at all, whether transcripts are stored server-side, and what the retention
+          window is. If the answer is a link to a provider’s policy rather than the
+          vendor’s own, at least you know who to read.
+        </p>
+        <p><strong>Meram:</strong> recordings are not kept unless you switch on “keep
+        audio”. Transcripts live in a local database. Retention at the provider is between
+        you and them, and that is a real dependency rather than a technicality.</p>
+
+        <h2>3. Is there really an offline mode?</h2>
+        <p>
+          “Offline” is the most abused word in this category. It sometimes means “the app
+          opens without a connection”. Ask directly: can it transcribe with the network
+          switched off? Then switch the network off and try.
+        </p>
+        <p><strong>Meram: no.</strong> On-device Whisper is written and deliberately
+        disabled until it can be packaged with pinned checksums and a verification corpus.
+        Windows’ built-in voice typing is better than Meram on this specific axis today.</p>
+
+        <h2>4. What does it read from your screen?</h2>
+        <p>
+          Good dictation wants context — which app you are in, sometimes the text around
+          your cursor. That is genuinely useful and genuinely invasive, so it should be a
+          setting you turned on, not a default you discovered.
+        </p>
+        <p><strong>Meram:</strong> the focused application’s name is used to match tone.
+        Reading the field around your cursor is best-effort and limited. Screen grounding
+        is a separate setting and is <strong>off by default</strong>.</p>
+
+        <h2>5. How is your API key stored?</h2>
+        <p>
+          If you bring your own key, that key is money. Ask whether it goes to the
+          operating system’s keystore, whether there is a plaintext fallback, and whether
+          any copy of it is written anywhere else.
+        </p>
+        <p><strong>Meram:</strong> the OS keystore where available, with a plaintext
+        compatibility fallback where it is not — and a second copy in a settings backup
+        file, with the same protection as the original.
+        <a class="inlineLink" href="/privacy/">Both facts are on the privacy page,</a>
+        because the second one is exactly the sort of detail that usually is not.</p>
+
+        <h2>6. What happens when it can’t type?</h2>
+        <p>
+          Rarely asked, and it is the one that bites. If the window changed while you were
+          talking, does the text land in the wrong application? Does it silently vanish?
+          Does it get pasted into a password field?
+        </p>
+        <p><strong>Meram:</strong> the target is verified against the window handle, the
+        process, that process’s start time and the focused control before a key is sent.
+        Unproven, and it goes to your clipboard. A password field, an elevated window or
+        Secure Input, and nothing is written at all — not even to the clipboard.</p>
+
+        <h2>7. Is there always-on listening?</h2>
+        <p>
+          A wakeword is a permanently open microphone. That may be a trade you want, but
+          you should be the one making it, and the interface should show you while the
+          stream is open.
+        </p>
+        <p><strong>Meram:</strong> wakeword is off by default. When on, it holds a second,
+        permanently live microphone stream, and the capsule shows a microphone badge for
+        the whole time it is open.</p>
+
+        <h2>The general rule</h2>
+        <div class="callout">
+          Trust the vendor that names its limits over the one that only names its
+          strengths. A privacy page listing four things that <em>are not</em> private is
+          worth more than a landing page with a padlock on it — because the first one can
+          be checked, and checking it is the whole point.
+        </div>
+        <p><a class="inlineLink" href="/privacy/">Meram’s privacy page →</a></p>
+      </div>
+
+      <aside class="pageAside">
+        <div class="pageAside__card">
+          <h3>Short version</h3>
+          <p>
+            Where does the audio go, is it kept, is offline real, what does it read, where
+            is your key, what happens on failure, and is it always listening.
+          </p>
+        </div>
+        <div class="pageAside__card">
+          <h3>Next</h3>
+          <p>
+            <a class="inlineLink" href="/guides/voice-typing-windows/">Voice typing on Windows →</a><br>
+            <a class="inlineLink" href="/about/">What is actually finished →</a>
+          </p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div class="footer__brand">
+      <a class="nav__brand" href="/" aria-label="Meram home">
+        <svg class="nav__mark" viewBox="0 0 100 100" aria-hidden="true"><g fill="currentColor"><rect x="25" y="40.5" width="8" height="19" rx="4"/><rect x="39" y="24" width="8" height="52" rx="4"/><rect x="53" y="33" width="8" height="34" rx="4"/><rect x="67" y="40.5" width="8" height="19" rx="4"/></g></svg>
+        <span class="nav__word">Meram</span>
+      </a>
+      <p class="footer__tag">Keyboardless dictation for Windows and macOS — a shortcut, a capsule, and text where you were already working.</p>
+    </div>
+    <nav class="footer__cols" aria-label="Footer">
+      <div class="footer__col">
+        <h5>Product</h5>
+        <a href="/#flow">How it works</a>
+        <a href="/#refine">Refinement</a>
+        <a href="/#trust">Privacy</a>
+        <a href="/#pricing">Pricing</a>
+      </div>
+      <div class="footer__col">
+        <h5>Support</h5>
+        <a href="/download/">Download</a>
+        <a href="/changelog/">Release notes</a>
+        <a href="/contact/">Contact</a>
+        <a href="/about/">About</a>
+      </div>
+      <div class="footer__col">
+        <h5>Legal</h5>
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Licence</a>
+        <a href="/refunds/">Refunds</a>
+      </div>
+      <div class="footer__col">
+        <h5>Guides</h5>
+        <a href="/guides/voice-typing-windows/">Voice typing on Windows</a>
+        <a href="/guides/dictation-privacy/">What dictation apps send</a>
+        <a href="/tr/rehberler/dikte-gizliligi/">Türkçe</a>
+      </div>
+    </nav>
+  </div>
+  <div class="wrap footer__base">
+    <p>© 2026 Grio Works. All rights reserved.</p>
+    <p class="footer__note">Not affiliated with Microsoft, Apple, Groq or OpenAI.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Meram">
+  <!-- The application icon: a machined near-black squircle carrying the mark.
+       One implied top light, no coloured glow — the product's own rule. -->
+  <defs>
+    <linearGradient id="mi-body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3A3A3C"/>
+      <stop offset="0.42" stop-color="#1C1C1E"/>
+      <stop offset="1" stop-color="#0B0B0C"/>
+    </linearGradient>
+    <linearGradient id="mi-edge" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.34"/>
+      <stop offset="0.5" stop-color="#FFFFFF" stop-opacity="0.06"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0.10"/>
+    </linearGradient>
+  </defs>
+  <rect x="1" y="1" width="98" height="98" rx="23" fill="url(#mi-body)"/>
+  <rect x="1.5" y="1.5" width="97" height="97" rx="22.5" fill="none" stroke="url(#mi-edge)" stroke-width="1"/>
+  <g fill="#FAFAFA">
+    <rect x="25" y="40.5" width="8" height="19" rx="4"/>
+    <rect x="39" y="24"   width="8" height="52" rx="4"/>
+    <rect x="53" y="33"   width="8" height="34" rx="4"/>
+    <rect x="67" y="40.5" width="8" height="19" rx="4"/>
+  </g>
+</svg>

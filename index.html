@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Meram — Hold a key. Speak. It’s typed.</title>
+<meta name="description" content="Dictation for Windows. Hold a global shortcut, speak, and finished text lands in the app you were already in. Your own API key, your own machine, no account.">
+<meta name="theme-color" content="#0A0A0B">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://meram.app/">
+<link rel="alternate" hreflang="en" href="https://meram.app/">
+<link rel="alternate" hreflang="tr" href="https://meram.app/tr/">
+<link rel="alternate" hreflang="x-default" href="https://meram.app/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://meram.app/">
+<meta property="og:site_name" content="Meram">
+<meta property="og:locale" content="en">
+<meta property="og:locale:alternate" content="tr">
+<meta property="og:title" content="Meram — Hold a key. Speak. It’s typed.">
+<meta property="og:description" content="Dictation for Windows. Hold a shortcut, speak, and finished text lands in the app you were already in.">
+<meta property="og:image" content="https://meram.app/assets/img/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Meram — Hold a key. Speak. It’s typed.">
+<meta name="twitter:description" content="Dictation for Windows. Hold a shortcut, speak, and finished text lands in the app you were already in.">
+<meta name="twitter:image" content="https://meram.app/assets/img/og-image.png">
+
+<link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+<link rel="apple-touch-icon" href="/assets/img/meram-icon.svg">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/archivo-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Meram",
+  "url": "https://meram.app/",
+  "operatingSystem": "Windows 10, Windows 11",
+  "applicationCategory": "UtilitiesApplication",
+  "softwareVersion": "2.0 beta",
+  "inLanguage": ["en", "tr"],
+  "publisher": { "@type": "Organization", "name": "Grio Works" },
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free while in beta. Requires your own Groq or OpenAI API key." }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need an API key to use Meram?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes, today you do. Meram sends your audio to Groq or OpenAI using a key you supply; there is no hosted mode yet. Groq’s Whisper models cost roughly four cents per hour of audio, paid to Groq rather than to Meram." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does my voice leave my computer?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes — to the transcription provider you chose, and nowhere else. There is no fully offline mode today. On-device Whisper exists in the code but is deliberately disabled until its packaged audio contract can be verified." }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does Windows warn me about the installer?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Because the installer is not signed. There is no Authenticode certificate for the project yet, so SmartScreen shows an unknown-publisher warning. Choose More info, then Run anyway." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a macOS version of Meram?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Not yet. macOS runs from the same codebase and can already dictate and type, but the build is not signed or notarized, so it is not published." }
+    },
+    {
+      "@type": "Question",
+      "name": "Will Meram stay free?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The beta is free. When hosted transcription ships there will be a paid plan alongside a free tier, and bringing your own API key will remain the cheapest way to use it." }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ────────────────────────────  NAV  ──────────────────────────── -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__brand" href="#top" aria-label="Meram home">
+      <svg class="nav__mark" viewBox="0 0 100 100" aria-hidden="true"><g fill="currentColor"><rect x="25" y="40.5" width="8" height="19" rx="4"/><rect x="39" y="24" width="8" height="52" rx="4"/><rect x="53" y="33" width="8" height="34" rx="4"/><rect x="67" y="40.5" width="8" height="19" rx="4"/></g></svg>
+      <span class="nav__word">Meram</span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#flow">How it works</a>
+      <a href="#refine">Refinement</a>
+      <a href="#trust">Privacy</a>
+      <a href="#pricing">Pricing</a>
+    </nav>
+
+    <div class="langs" role="group" aria-label="Language">
+      <a href="/" aria-current="true" hreflang="en">EN</a>
+      <a href="/tr/" hreflang="tr">TR</a>
+    </div>
+
+    <a class="btn btn--sm btn--primary nav__cta js-latest" href="/download/"><span>Download</span></a>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ────────────────────────────  HERO  ──────────────────────────── -->
+<section class="hero" id="top">
+  <div class="hero__glow" aria-hidden="true"></div>
+
+  <div class="wrap hero__copy">
+    <p class="eyebrow reveal">
+      <span class="eyebrow__dot" aria-hidden="true"></span>
+      Beta · Windows · your own API key
+    </p>
+
+    <h1 class="display reveal" style="--d:1">
+      Hold a key.<br>Speak. <em>It’s typed.</em>
+    </h1>
+
+    <p class="lede reveal" style="--d:2">
+      Meram turns speech into finished text and puts it in the app you were
+      already working in. No window to switch to, no paste, no hands.
+    </p>
+
+    <div class="hero__actions reveal" style="--d:3">
+      <a class="btn btn--primary btn--lg js-latest" href="/download/">
+        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" class="btn__glyph">
+          <path fill="currentColor" d="M8 1.5v8.19l2.72-2.72 1.06 1.06L8 11.81 4.22 8.03l1.06-1.06L8 9.69V1.5h0zM2.5 11v2.5h11V11H15v2.75c0 .69-.56 1.25-1.25 1.25H2.25C1.56 15 1 14.44 1 13.75V11h1.5z"/>
+        </svg>
+        <span>Download the beta</span>
+      </a>
+      <a class="btn btn--ghost btn--lg" href="#flow">
+        <span>See how it works</span><span class="btn__arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+
+    <p class="hero__meta reveal" style="--d:4">
+      Free while in beta · <span data-cfg="platform-today">Windows 10/11 · x64</span> ·
+      <a href="/download/#unsigned">the installer isn’t signed — why</a>
+    </p>
+  </div>
+
+  <!-- The mock-up is somebody else’s window, because that is the only place
+       Meram is ever seen. The capsule inside it is the real component. -->
+  <div class="stage reveal" style="--d:5">
+    <div class="win">
+      <div class="win__screen">
+        <div class="win__wall" aria-hidden="true"></div>
+
+        <div class="app" id="appWin">
+          <div class="app__bar">
+            <span class="app__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="app__title">New message</span>
+            <span class="app__badge">Focused</span>
+          </div>
+          <div class="app__body">
+            <p class="app__field"><b>To</b> the rest of the team</p>
+            <p class="app__field"><b>Subject</b> Deploy notes</p>
+            <p class="app__text" id="appText" data-placeholder="Hold the shortcut and start talking…"></p>
+          </div>
+        </div>
+
+        <div class="pillHolder" id="pillHolder">
+          <div class="pill" id="heroPill" data-status="idle" data-theme="dark" role="status" aria-live="polite">
+            <span class="pill__ribbon"></span>
+            <span class="pill__label"><span class="pill__labelText" id="pillLabel">Ready</span></span>
+            <button type="button" class="pill__copy" id="pillCopy">Copy</button>
+          </div>
+        </div>
+
+        <div class="taskbar" aria-hidden="true">
+          <span class="taskbar__item"></span>
+          <span class="taskbar__item"></span>
+          <span class="taskbar__item taskbar__item--app">
+            <svg viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="#111113"/><g fill="#FAFAFA"><rect x="25" y="40.5" width="8" height="19" rx="4"/><rect x="39" y="24" width="8" height="52" rx="4"/><rect x="53" y="33" width="8" height="34" rx="4"/><rect x="67" y="40.5" width="8" height="19" rx="4"/></g></svg>
+            <i class="taskbar__dot"></i>
+          </span>
+          <span class="taskbar__item"></span>
+          <span class="taskbar__clock">09:41</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="demoBar">
+      <button type="button" class="ctl" id="demoRun" aria-pressed="false">
+        <span class="ctl__dot" aria-hidden="true"></span>
+        <span>Run the take</span>
+      </button>
+      <button type="button" class="ctl" id="demoMic" aria-pressed="false">Use my microphone</button>
+      <p class="demoBar__note" id="demoNote"></p>
+    </div>
+
+    <p class="stage__caption">
+      <span class="stage__captionDot" aria-hidden="true"></span>
+      This capsule is the real component — same geometry, same springs. Try the actual shortcut:
+      <span class="chord" id="heroChord" aria-hidden="true"><span class="chord__key">Ctrl</span><span class="chord__plus">+</span><span class="chord__key">Shift</span><span class="chord__plus">+</span><span class="chord__key chord__key--wide">Space</span></span>
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════  THE FLOW  ══════════════════════
+     The spine of the page. Meram’s entire interface is one capsule running
+     five states, so the page runs the same five at poster scale. Act 03 is
+     "thinking" — and the product turns to paper while it thinks. -->
+<section class="flow" id="flow">
+  <div class="flow__sticky">
+    <canvas class="flow__canvas" id="flowCanvas" aria-hidden="true"></canvas>
+
+    <div class="flow__frame">
+      <div class="flow__index" aria-hidden="true">
+        <span class="flow__count"><i id="flowStep">01</i> / 05</span>
+        <span class="flow__rail"><i id="flowRail"></i></span>
+      </div>
+
+      <div class="flow__acts">
+        <article class="act is-on" data-act="0">
+          <h2 class="act__title">One key is<br>the whole <em>interface</em>.</h2>
+          <p class="act__body">
+            There is nothing to switch to and nothing to open. Hold the shortcut in
+            any application and a two-hundred-pixel capsule appears over whatever
+            you were already doing.
+          </p>
+          <div class="act__widget">
+            <span class="holdKey">
+              Hold
+              <span class="chord" aria-hidden="true"><span class="chord__key">Ctrl</span><span class="chord__plus">+</span><span class="chord__key">Shift</span><span class="chord__plus">+</span><span class="chord__key chord__key--wide">Space</span></span>
+            </span>
+          </div>
+        </article>
+
+        <article class="act" data-act="1">
+          <h2 class="act__title">Speak, and it<br><em>comes alive</em>.</h2>
+          <p class="act__body">
+            Three curtains of light, driven by four frequency bands read straight off
+            the microphone, and a deep click the moment the stream opens. You never
+            have to wonder whether it heard you.
+          </p>
+          <p class="act__note">
+            The thread beside this text runs the app’s own code — peak-hold with an
+            exponential release, three springs, sixty-four samples a frame.
+          </p>
+        </article>
+
+        <article class="act" data-act="2" data-paper="1">
+          <h2 class="act__title">Then it <em>cleans up</em><br>after you.</h2>
+          <p class="act__body">
+            The restarts and the “um”s go. Your own words — names, jargon, the spelling
+            you actually use — come out of a dictionary that never leaves your machine.
+            The capsule turns to paper while it works, so you can read the state without
+            hearing a sound.
+          </p>
+        </article>
+
+        <article class="act" data-act="3">
+          <h2 class="act__title">It lands where you<br><em>already were</em>.</h2>
+          <p class="act__body">
+            One sweep of light confirms it, and the text is typed into the field you
+            left — not into a window you now have to copy out of and paste back.
+          </p>
+        </article>
+
+        <article class="act" data-act="4">
+          <h2 class="act__title">Unless it can’t<br><em>prove</em> that’s you.</h2>
+          <p class="act__body">
+            Before a single keystroke, Meram compares the window, the process, when that
+            process started, and which control has focus.
+          </p>
+          <div class="act__widget">
+            <ul class="ladder">
+              <li><span class="ladder__tag">exact</span><span>Same window, same field. <b>Typed straight in.</b></span></li>
+              <li><span class="ladder__tag">window_only</span><span>The window matches, the field can’t be proven. <b>Clipboard</b>, and the capsule offers it back.</span></li>
+              <li class="is-refusal"><span class="ladder__tag">refused</span><span>Password field, elevated window, Secure Input. <b>Nothing is typed and nothing is copied.</b></span></li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <div class="flow__spacer" aria-hidden="true"></div>
+</section>
+
+<!-- ═══════════════════  DIFFERENTIATOR BEATS  ═════════════════════ -->
+<section class="section feature" id="target-lock">
+  <div class="wrap feature__inner">
+    <p class="kicker reveal">Target lock</p>
+    <h2 class="h2 reveal" style="--d:1">It would rather not type<br>than type in the <em>wrong window</em>.</h2>
+    <p class="body body--wide reveal" style="--d:2">
+      Every commit is checked against the window handle, the process id, the moment
+      that process started, and the control that currently has focus. The comparison
+      returns a confidence rather than a yes or no — and “the window matches but the
+      field doesn’t” is treated as a failure, because it is one.
+    </p>
+    <p class="body body--sm body--wide reveal" style="--d:3">
+      Windows reports when a target is elevated and macOS reports when Secure Event
+      Input is active. Both are detected before a keystroke is attempted, not
+      discovered afterwards. A password field receives nothing at all — not even a
+      copy on your clipboard.
+    </p>
+  </div>
+</section>
+
+<section class="section feature feature--alt" id="never-lost">
+  <div class="wrap feature__inner">
+    <p class="kicker reveal">Clipboard fallback</p>
+    <h2 class="h2 reveal" style="--d:1">A dictation you <em>can’t get back</em><br>is worse than no dictation.</h2>
+    <p class="body body--wide reveal" style="--d:2">
+      When the text can’t be typed, it goes to your clipboard and the capsule grows a
+      Copy button instead of an apology. Finish the thought, look up, and the words are
+      still there — in the field, or one keystroke away from it.
+    </p>
+    <p class="body body--sm body--wide reveal" style="--d:3">
+      You can also end a recording with the mouse rather than the keyboard, which
+      matters more than it sounds like it should when the hand you’d reach with is
+      already holding something else.
+    </p>
+
+    <figure class="pillFigure reveal" style="--d:4">
+      <div class="pill has-copy" id="fallbackPill" data-status="done" data-theme="dark">
+        <span class="pill__ribbon"></span>
+        <span class="pill__label"><span class="pill__labelText">Done</span></span>
+        <button type="button" class="pill__copy" tabindex="-1">Copy</button>
+      </div>
+      <figcaption>The capsule in the state nobody designs for: the field could not be
+      proven, so the text is on your clipboard and it says so.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section feature" id="audio-chain">
+  <div class="wrap feature__inner">
+    <p class="kicker reveal">The audio chain</p>
+    <h2 class="h2 reveal" style="--d:1">Noise suppression is off.<br><em>On purpose.</em></h2>
+    <p class="body body--wide reveal" style="--d:2">
+      WebRTC noise suppression is tuned for human listeners, and it eats the fricatives
+      — ş, ç, s, h, f — that carry meaning in Turkish. Switching it on makes a recording
+      sound cleaner and makes the transcript worse. So it is off, and this is the note
+      that says so instead of a settings toggle nobody finds.
+    </p>
+    <p class="body body--sm body--wide reveal" style="--d:3">
+      There is exactly one gain stage — the browser’s own AGC — and behind it a limiter
+      rather than a compressor. A compressor rides the whole signal and lifts the room
+      between words; the gaps stop reading as silence, and Whisper invents text to fill
+      them. Whisper mode applies a real 2.5× lift when you speak quietly.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════  USE CASES  ══════════════════════ -->
+<section class="section usecases" id="use-cases">
+  <div class="wrap">
+    <p class="kicker usecases__head">Who this is for</p>
+    <div class="usecases__grid">
+      <div class="usecase">
+        <h3 class="usecase__title">People who write in Turkish</h3>
+        <p class="usecase__body">
+          The audio chain and the vocabulary are tuned for Turkish rather than adapted
+          to it afterwards. Say it in Turkish and land it in English if you want to —
+          <strong>translation is one setting</strong>, not a second application.
+        </p>
+      </div>
+      <div class="usecase">
+        <h3 class="usecase__title">Developers</h3>
+        <p class="usecase__body">
+          Your tools come out spelled correctly. Terms are mined from your own history
+          and handed to the model as <strong>biasing before transcription</strong>,
+          which works far better than correcting the same word every day.
+        </p>
+      </div>
+      <div class="usecase">
+        <h3 class="usecase__title">Anyone who answers a lot of messages</h3>
+        <p class="usecase__body">
+          Meram knows which application has focus and can match the register to it, so
+          the same sentence lands <strong>looser in a chat than in a document</strong>
+          without you thinking about it.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════  REFINEMENT  ════════════════════════ -->
+<section class="section refine" id="refine">
+  <div class="wrap refine__grid">
+    <div class="refine__lead">
+      <p class="kicker">Refinement</p>
+      <h2 class="h2">Not a transcript.<br>What you <em>meant</em>.</h2>
+      <p class="body">
+        Raw speech is full of restarts, hedges and half-abandoned sentences. Meram
+        strips them, applies your dictionary, and matches the register to where you’re
+        typing — before the text ever reaches the screen.
+      </p>
+      <p class="body body--sm refine__note">
+        The disfluency pass on the left is computed in your browser, from that raw
+        sentence, so you can see exactly what would be taken out. The rewrites on the
+        right are recorded examples of what the model returns — this page holds no API
+        key and does not transcribe anything.
+      </p>
+    </div>
+
+    <div class="refine__demo" id="rewrite">
+      <div class="demoHead">
+        <span class="demoHead__title">One dictation</span>
+        <span class="demoHead__value" id="rewriteTone">Neutral</span>
+      </div>
+
+      <div class="rewrite">
+        <div class="rewrite__pane">
+          <p class="rewrite__label">What you said</p>
+          <p class="rewrite__text" id="rewriteRaw"></p>
+        </div>
+        <div class="rewrite__pane rewrite__pane--out">
+          <p class="rewrite__label">What lands</p>
+          <p class="rewrite__text" id="rewriteOut"></p>
+        </div>
+      </div>
+
+      <div class="chips" role="group" aria-label="Tone">
+        <button type="button" class="chip is-on" data-tone="neutral">Neutral</button>
+        <button type="button" class="chip" data-tone="formal">Formal</button>
+        <button type="button" class="chip" data-tone="casual">Casual</button>
+        <button type="button" class="chip" data-tone="bullets">Bullet points</button>
+      </div>
+
+      <p class="rewrite__meta" id="rewriteMeta"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════  THE ARITHMETIC  ════════════════════ -->
+<section class="section maths" id="maths">
+  <div class="wrap maths__grid">
+    <div>
+      <p class="kicker">The arithmetic</p>
+      <h2 class="h2" style="margin:1rem 0 1.3rem">Your hands are<br>the <em>bottleneck</em>.</h2>
+      <p class="body">
+        You compose prose at forty-odd words a minute with your fingers. You speak at
+        a hundred and thirty — and that number is not borrowed from a study, it is the
+        average dictation speed Meram’s own dashboard reports, pauses included.
+      </p>
+      <p class="body">
+        The gap is not a rounding error. Put your own numbers in and watch what it is.
+      </p>
+    </div>
+
+    <div class="dial" id="dial">
+      <div class="dial__row">
+        <span class="dial__label">Words you write in a day</span>
+        <span class="dial__value" id="dialWordsValue">900</span>
+      </div>
+      <div class="slider" id="dialWords">
+        <div class="slider__track"><div class="slider__fill"></div></div>
+        <div class="slider__knob" tabindex="0" role="slider" aria-label="Words you write in a day" aria-valuemin="200" aria-valuemax="4000" aria-valuenow="900"></div>
+      </div>
+
+      <div class="dial__row" style="margin-top:1.6rem">
+        <span class="dial__label">Your typing speed</span>
+        <span class="dial__value" id="dialWpmValue">45 wpm</span>
+      </div>
+      <div class="slider" id="dialWpm">
+        <div class="slider__track"><div class="slider__fill"></div></div>
+        <div class="slider__knob" tabindex="0" role="slider" aria-label="Your typing speed in words per minute" aria-valuemin="20" aria-valuemax="90" aria-valuenow="45"></div>
+      </div>
+
+      <div class="dial__out">
+        <p class="dial__big" id="dialBig">13 minutes a day</p>
+        <p class="dial__sub" id="dialSub">1 h 5 min a week · about 50 h a year</p>
+      </div>
+
+      <p class="dial__foot">
+        Dictation is taken at <span data-cfg="dictation-wpm">130</span> words a minute, pauses
+        included. This is an estimate, not a promise, and it assumes you would have written
+        the same words either way.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════  ZERO SETUP  ═════════════════════ -->
+<section class="section zero" id="setup">
+  <div class="wrap">
+    <h2 class="statement">
+      Nothing to sign up for.<br>Nothing <em>left running</em>.
+    </h2>
+
+    <div class="zero__cols">
+      <div>
+        <p class="zero__label">How dictation usually goes</p>
+        <ol class="steps">
+          <li><span class="steps__n">1</span>Create an account</li>
+          <li><span class="steps__n">2</span>Open a browser tab to dictate into</li>
+          <li><span class="steps__n">3</span>Wait on a round-trip you don’t control</li>
+          <li><span class="steps__n">4</span>Copy the result out</li>
+          <li><span class="steps__n">5</span>Switch back to the app you were in</li>
+          <li><span class="steps__n">6</span>Paste, then fix the formatting</li>
+        </ol>
+      </div>
+
+      <div>
+        <p class="zero__label zero__label--us">Meram</p>
+        <p class="zero__one">Install it. Hold the key.</p>
+        <p class="zero__oneSub">Give it a microphone and your own provider key. It is dictating.</p>
+        <ul class="checklist">
+          <li>No account, no sign-in, no product analytics</li>
+          <li>History, dictionary and settings live in a local SQLite file you can open</li>
+          <li>Your API key goes to the OS keystore, and only ever to the provider it belongs to</li>
+          <li>Uninstall and the only thing left is that folder — delete it and it’s gone</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="permBlock">
+      <p class="kicker">What Meram asks for</p>
+      <dl class="permBlock__list">
+        <div>
+          <dt>Microphone</dt>
+          <dd>Required. The stream opens when you hold the key and is released when you
+          let go — it is not held open between dictations.</dd>
+        </div>
+        <div>
+          <dt>Accessibility (macOS)</dt>
+          <dd>Required there for typing into another application. Without it macOS will
+          not let any app send a keystroke, and Meram says so rather than failing quietly.</dd>
+        </div>
+        <div>
+          <dt>Keyboard hook</dt>
+          <dd>Optional. Hold-to-talk needs a low-level hook; if it can’t load, Meram falls
+          back to tap-to-toggle instead of pretending the key is being watched.</dd>
+        </div>
+      </dl>
+      <p class="permBlock__foot">
+        That’s the list. Screen context is a separate, off-by-default setting, and the
+        page that explains exactly what leaves your machine is the same one that admits
+        what does. <a href="/privacy/">Read the privacy page →</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════  FULL-BLEED BEAT  ═════════════════════ -->
+<section class="bleed">
+  <canvas class="bleed__thread" id="bleedThread" aria-hidden="true"></canvas>
+  <div class="bleed__inner">
+    <p class="bleed__line">
+      The point isn’t that it’s fast.<br>
+      The point is that you <em>stop noticing it</em>.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════  DETAILS  ══════════════════════════ -->
+<section class="section details">
+  <div class="wrap">
+    <p class="kicker details__kicker">And the rest of it</p>
+    <dl class="details__list">
+      <div><dt>Hold, or tap</dt><dd>Hold-to-talk by default, tap-to-toggle if you’d rather. One setting, and the fallback is automatic when the hook is unavailable.</dd></div>
+      <div><dt>Your own vocabulary</dt><dd>Terms mined from your own history — ranked by frequency, recency and the app you’re typing in — handed to Whisper as biasing. On device, at no storage cost.</dd></div>
+      <div><dt>Command mode</dt><dd>Select text, press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd>, and say what to do with it. Consoles are skipped deliberately: with no selection, Ctrl+C there is an interrupt.</dd></div>
+      <div><dt>Translate as you speak</dt><dd>Speak Turkish, land English. It is a setting on the dictation you are already doing, not a second tool to open.</dd></div>
+      <div><dt>History that is yours</dt><dd>Every dictation, searchable, in a local SQLite database. Delete one, delete all of them, or keep the audio only if you ask to.</dd></div>
+      <div><dt>Two providers</dt><dd>Groq by default, OpenAI if you prefer. On-device Whisper exists in the code and stays disabled until its packaged audio contract is proven.</dd></div>
+      <div><dt>Readable without motion</dt><dd>Every animation has a still equivalent, and the capsule’s state is legible without sound, colour or movement.</dd></div>
+      <div><dt>Windows now, macOS in progress</dt><dd>One codebase, one repository. macOS already dictates and types; it is unsigned, so it is not published yet.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ══════════════════════════  COMPARE  ══════════════════════════ -->
+<section class="section compare" id="compare">
+  <div class="wrap">
+    <h2 class="h2 compare__head">What works today.</h2>
+    <p class="body body--wide compare__sub">
+      Not a competitor scorecard — Meram’s own envelope, and the row that says “not yet”
+      is the reason you can trust the rows that don’t.
+    </p>
+    <div class="compare__scroll">
+      <table class="planTable">
+        <thead>
+          <tr>
+            <th scope="col">Capability</th>
+            <th scope="col" class="is-now">Beta, today</th>
+            <th scope="col">Planned</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Dictation into any Windows application</th><td class="is-yes col--now">✓</td><td class="is-yes">✓</td></tr>
+          <tr><th scope="row">Cleanup, personal dictionary, tone</th><td class="is-yes col--now">✓</td><td class="is-yes">✓</td></tr>
+          <tr><th scope="row">Translate while dictating</th><td class="is-yes col--now">✓</td><td class="is-yes">✓</td></tr>
+          <tr><th scope="row">Local history, dictionary, snippets</th><td class="is-yes col--now">✓</td><td class="is-yes">✓</td></tr>
+          <tr><th scope="row">Bring your own Groq / OpenAI key</th><td class="is-yes col--now">✓</td><td class="is-yes">✓</td></tr>
+          <tr><th scope="row">Price</th><td class="is-yes col--now">Free</td><td class="is-soon">Free tier + paid plan</td></tr>
+          <tr><th scope="row">Hosted transcription — no key to manage</th><td class="col--now">—</td><td class="is-soon">Planned</td></tr>
+          <tr><th scope="row">macOS build</th><td class="col--now">—</td><td class="is-soon">In progress</td></tr>
+          <tr><th scope="row">Signed installer, signed updates</th><td class="col--now">—</td><td class="is-soon">Planned</td></tr>
+          <tr><th scope="row">Fully offline transcription</th><td class="col--now">—</td><td class="is-soon">Written, disabled</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="compare__foot planTable__foot">
+      This table is the repository’s own capability list. Where that document and the
+      running software disagree, the software wins and the document gets corrected —
+      which is the only version of this table that stays honest.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════  TRUST  ════════════════════════════ -->
+<section class="section trust" id="trust">
+  <div class="wrap trust__inner">
+    <h2 class="h2 trust__head">
+      On your machine.<br>No account. <em>No analytics.</em>
+    </h2>
+    <ul class="trust__grid">
+      <li><strong>What leaves</strong><span>Your audio, to the provider you selected — plus the transcript when you turn on cleanup or translation. That is the whole list.</span></li>
+      <li><strong>What stays</strong><span>History, dictionary, snippets and settings, in a SQLite file and a settings file on your disk that you can read and delete.</span></li>
+      <li><strong>Your key</strong><span>Stored through the OS keystore where one is available, and sent only to the provider it belongs to. Never to us — we have no server for it to reach.</span></li>
+      <li><strong>No product telemetry</strong><span>There is no usage analytics in the app. Crash reporting exists only in builds compiled with a DSN, and that is not the default.</span></li>
+    </ul>
+    <p class="trust__foot">
+      There is no fully offline path today, so this page does not claim one. On-device
+      Whisper is written and deliberately disabled until it can be packaged, checksummed
+      and verified — when that ships, this paragraph changes before the marketing does.
+    </p>
+  </div>
+</section>
+
+<!-- ═════════════════════════  PRICING  ═══════════════════════════ -->
+<section class="section pricing" id="pricing">
+  <div class="wrap">
+    <h2 class="h2 pricing__head">Free while it’s <em>in beta</em>.</h2>
+    <p class="body body--wide pricing__sub">
+      You bring a Groq or OpenAI key. An hour of speech costs roughly four cents —
+      paid to them, not to us.
+    </p>
+
+    <div class="pricing__grid">
+      <div class="offer">
+        <p class="offer__label">The beta</p>
+        <p class="offer__price">
+          <span class="offer__amount" data-cfg="price-today">Free</span>
+          <span class="offer__per">while in beta<br>your own provider key</span>
+        </p>
+        <p class="offer__note">
+          Every feature, no account, no card, no seat to manage. The only thing you need
+          is a provider key — and you keep control of it.
+        </p>
+
+        <div class="offer__actions">
+          <a class="btn btn--primary btn--lg btn--block js-latest" href="/download/">Download for Windows</a>
+          <a class="btn btn--ghost btn--lg btn--block" href="/changelog/">What’s in the current build</a>
+          <a class="offer__freelink" href="/about/">Read the honest capability list first →</a>
+        </div>
+
+        <ul class="offer__trust">
+          <li>No account</li>
+          <li>No card</li>
+          <li>Uninstalling is unsubscribing</li>
+        </ul>
+
+        <p class="offer__licence">
+          The installer is not signed yet, so Windows SmartScreen will show an
+          unknown-publisher warning: <strong>More info → Run anyway</strong>. The reason
+          there is no certificate yet is written down on the
+          <a class="inlineLink" href="/download/#unsigned">download page</a>.
+        </p>
+      </div>
+
+      <div class="offer__detail">
+        <p class="kicker">Planned — none of this exists yet</p>
+        <div class="plans" style="margin-top:1.2rem">
+          <div class="plan">
+            <span class="plan__name">Free</span>
+            <span class="plan__price">$0</span>
+            <span class="plan__body">A weekly word allowance, every feature, one device.</span>
+          </div>
+          <div class="plan">
+            <span class="plan__name">Pro</span>
+            <span class="plan__price"><span data-cfg="plan-pro">$10</span>/mo</span>
+            <span class="plan__body">Hosted transcription with no key to manage, fair-use ceiling, three devices.</span>
+          </div>
+          <div class="plan">
+            <span class="plan__name">Bring your own key</span>
+            <span class="plan__price"><span data-cfg="plan-byok">$4</span>/mo</span>
+            <span class="plan__body">Keep using your own provider key. It never touches our servers, because it never leaves your machine.</span>
+          </div>
+        </div>
+        <p class="plans__foot">
+          There is no checkout, no account system and no gateway behind these numbers
+          yet — which is why none of them is a button. Leave an email and you get exactly
+          one message when they become real.
+        </p>
+        <p style="margin-top:1rem">
+          <a class="btn btn--ghost btn--sm js-notify" href="mailto:kuntayerkus@gmail.com?subject=Notify%20me%20when%20Meram%20Pro%20ships" data-cfg-href="support-email-mailto">Tell me when it ships</a>
+        </p>
+
+        <dl class="spec">
+          <div><dt>Requires</dt><dd>Windows 10 / 11 · x64</dd></div>
+          <div><dt>macOS</dt><dd>In progress — not published</dd></div>
+          <div><dt>Provider</dt><dd>Groq or OpenAI · your key</dd></div>
+          <div><dt>Storage</dt><dd>Local SQLite + settings file</dd></div>
+          <div><dt>Updates</dt><dd>Automatic, from GitHub releases</dd></div>
+          <div><dt>Installer</dt><dd>Not signed yet</dd></div>
+          <div><dt>Licence</dt><dd>Proprietary · © Grio Works</dd></div>
+        </dl>
+
+        <div class="faq">
+          <details>
+            <summary>Do I need an API key?</summary>
+            <p>Yes, today. Meram sends your audio to Groq or OpenAI with a key you supply;
+            there is no hosted mode yet. Groq’s Whisper models cost roughly four cents per
+            hour of audio, billed by Groq.</p>
+          </details>
+          <details>
+            <summary>Does my voice leave my computer?</summary>
+            <p>Yes — to the provider you chose, and nowhere else. There is no fully offline
+            mode today. On-device Whisper exists in the code and is disabled until it can be
+            packaged and verified.</p>
+          </details>
+          <details>
+            <summary>Why does Windows warn me about the installer?</summary>
+            <p>Because it isn’t signed. No Authenticode certificate exists for the project
+            yet, so SmartScreen shows an unknown-publisher warning. More info → Run anyway.</p>
+          </details>
+          <details>
+            <summary>Does it update itself?</summary>
+            <p>Yes. An installed copy checks GitHub on launch and updates in the background.
+            That channel is unsigned too, which is a deliberate beta trade-off and one that
+            has to be closed before anything is called stable.</p>
+          </details>
+          <details>
+            <summary>Is there a Mac version?</summary>
+            <p>Not yet. macOS runs from the same codebase and already dictates and types, but
+            it is neither signed nor notarized, so it is not published.</p>
+          </details>
+          <details>
+            <summary>Will it stay free?</summary>
+            <p>The beta is free. When hosted transcription ships there will be a paid plan
+            and a free tier — and bringing your own key will stay the cheapest way to use it.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════  CTA  ═════════════════════════════ -->
+<section class="cta">
+  <div class="cta__glow" aria-hidden="true"></div>
+  <div class="wrap cta__inner">
+    <img src="/assets/img/meram-icon.svg" alt="" width="96" height="96" class="cta__icon">
+    <h2 class="h2">It’s already listening<br>for <em>one key</em>.</h2>
+    <div class="hero__actions hero__actions--center">
+      <a class="btn btn--primary btn--lg js-latest" href="/download/">
+        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" class="btn__glyph">
+          <path fill="currentColor" d="M8 1.5v8.19l2.72-2.72 1.06 1.06L8 11.81 4.22 8.03l1.06-1.06L8 9.69V1.5h0zM2.5 11v2.5h11V11H15v2.75c0 .69-.56 1.25-1.25 1.25H2.25C1.56 15 1 14.44 1 13.75V11h1.5z"/>
+        </svg>
+        <span>Download the beta</span>
+      </a>
+    </div>
+    <p class="hero__meta">Free · <span data-cfg="platform-today">Windows 10/11 · x64</span> · unsigned installer</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ══════════════════════════  FOOTER  ═══════════════════════════ -->
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div class="footer__brand">
+      <a class="nav__brand" href="#top" aria-label="Meram home">
+        <svg class="nav__mark" viewBox="0 0 100 100" aria-hidden="true"><g fill="currentColor"><rect x="25" y="40.5" width="8" height="19" rx="4"/><rect x="39" y="24" width="8" height="52" rx="4"/><rect x="53" y="33" width="8" height="34" rx="4"/><rect x="67" y="40.5" width="8" height="19" rx="4"/></g></svg>
+        <span class="nav__word">Meram</span>
+      </a>
+      <p class="footer__tag">Keyboardless dictation for Windows and macOS — a shortcut, a capsule, and text where you were already working.</p>
+    </div>
+
+    <nav class="footer__cols" aria-label="Footer">
+      <div class="footer__col">
+        <h5>Product</h5>
+        <a href="#flow">How it works</a>
+        <a href="#refine">Refinement</a>
+        <a href="#trust">Privacy</a>
+        <a href="#pricing">Pricing</a>
+      </div>
+      <div class="footer__col">
+        <h5>Support</h5>
+        <a href="/download/">Download</a>
+        <a href="/changelog/">Release notes</a>
+        <a href="/contact/">Contact</a>
+        <a href="/about/">About</a>
+      </div>
+      <div class="footer__col">
+        <h5>Legal</h5>
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Licence</a>
+        <a href="/refunds/">Refunds</a>
+      </div>
+      <div class="footer__col">
+        <h5>Guides</h5>
+        <a href="/guides/voice-typing-windows/">Voice typing on Windows</a>
+        <a href="/guides/dictation-privacy/">What dictation apps send</a>
+        <a href="/tr/">Türkçe</a>
+      </div>
+    </nav>
+  </div>
+
+  <div class="wrap footer__credit">
+    <p>Meram is made by Grio Works, not a faceless corporation. <a href="/about/">Who makes Meram →</a></p>
+  </div>
+
+  <div class="wrap footer__base">
+    <p>© 2026 Grio Works. All rights reserved.</p>
+    <p class="footer__note">Not affiliated with Microsoft, Apple, Groq or OpenAI. Windows is a trademark of Microsoft Corporation; macOS is a trademark of Apple Inc.</p>
+  </div>
+</footer>
+
+<dialog id="notifyModal" class="modal">
+  <h3 class="modal__title">There’s nothing to buy yet.</h3>
+  <p class="modal__body">
+    Hosted transcription, accounts and paid plans are planned, not built. Leave an
+    email and you get one message when they ship — with launch pricing. Nothing else,
+    ever.
+  </p>
+  <form class="modal__form">
+    <label class="visually-hidden" for="notifyEmail">Email address</label>
+    <input type="email" id="notifyEmail" name="email" placeholder="you@example.com" required autocomplete="email">
+    <button type="submit" class="btn btn--primary btn--block">Notify me</button>
+  </form>
+  <p class="modal__note" hidden></p>
+  <button type="button" class="modal__close">Close</button>
+</dialog>
+
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>
