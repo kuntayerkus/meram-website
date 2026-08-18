@@ -1337,6 +1337,20 @@
       const field = form.querySelector('input[type="email"]');
       const value = field ? field.value.trim() : '';
       if (!value) return;
+
+      // PostHog Waitlist tracking & user identification
+      if (window.posthog && typeof window.posthog.capture === 'function') {
+        if (typeof window.posthog.identify === 'function') {
+          window.posthog.identify(value, { email: value, waitlist: true });
+        }
+        window.posthog.capture('waitlist_submitted', {
+          email: value,
+          source: 'meram_pro_notify_modal',
+          page_path: window.location.pathname,
+          lang: LANG
+        });
+      }
+
       const subject = encodeURIComponent(LANG === 'tr' ? 'Meram Pro çıkınca haber ver' : 'Notify me when Meram Pro ships');
       const body = encodeURIComponent(`${value}`);
       window.location.href = `mailto:${CONFIG.SUPPORT_EMAIL}?subject=${subject}&body=${body}`;
@@ -1470,6 +1484,18 @@
       
       speedInput.disabled = true;
 
+      // PostHog Speed Test Completion event
+      if (window.posthog && typeof window.posthog.capture === 'function') {
+        window.posthog.capture('speed_test_completed', {
+          wpm: finalWpm,
+          cpm: finalCpm,
+          accuracy: accuracy,
+          time_sec: Number(elapsedSec.toFixed(1)),
+          speed_ratio: ratio,
+          lang: LANG
+        });
+      }
+
       if (speedFinish) {
         speedFinish.textContent = LANG === 'tr' ? 'Tamamlandı' : 'Completed';
         speedFinish.style.background = '#22C55E';
@@ -1598,4 +1624,59 @@
     paint();
     setInterval(paint, 20000);
   }
+
+  /* ══════════════════════  13. EVENT TRACKING (POSTHOG)  ═══════════════════
+     Capture critical conversions: Download CTA clicks, platform selections,
+     and documentation/guide explorations. */
+
+  function captureEvent(eventName, properties = {}) {
+    if (window.posthog && typeof window.posthog.capture === 'function') {
+      window.posthog.capture(eventName, {
+        page_path: window.location.pathname,
+        page_title: document.title,
+        lang: LANG,
+        ...properties
+      });
+    }
+  }
+
+  function getElementLocation(el) {
+    if (!el) return 'unknown';
+    if (el.closest('header, nav, .nav')) return 'navigation';
+    if (el.closest('.hero, #top, .heroLanding')) return 'hero';
+    if (el.closest('.pricing, #pricing, .offer')) return 'pricing';
+    if (el.closest('.dlCard, .download__card')) return 'download_page_card';
+    if (el.closest('.cta')) return 'bottom_cta';
+    if (el.closest('.pageAside, aside')) return 'sidebar';
+    if (el.closest('.prose')) return 'article_content';
+    if (el.closest('footer, .footer')) return 'footer';
+    return 'page_body';
+  }
+
+  document.addEventListener('click', (e) => {
+    const target = e.target instanceof Element ? e.target.closest('a, button') : null;
+    if (!target) return;
+
+    const href = target.getAttribute('href') || '';
+    const isDownloadBtn = target.classList.contains('js-latest') ||
+      href.includes('/download') ||
+      href.includes('/tr/indir') ||
+      href.endsWith('.exe') ||
+      href.endsWith('.dmg') ||
+      href.endsWith('.zip') ||
+      href.includes('releases/latest') ||
+      href.includes('releases/download');
+
+    if (isDownloadBtn && !target.classList.contains('js-notify')) {
+      const buttonText = (target.textContent || '').replace(/\s+/g, ' ').trim();
+      const location = getElementLocation(target);
+      captureEvent('download_clicked', {
+        button_text: buttonText,
+        href: target.href || href,
+        is_direct_asset: /\.(exe|dmg|zip)$/i.test(target.href || href),
+        location: location
+      });
+    }
+  });
 })();
+
