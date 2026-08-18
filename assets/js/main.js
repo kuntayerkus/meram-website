@@ -1341,9 +1341,10 @@
       // PostHog Waitlist tracking & user identification
       if (window.posthog && typeof window.posthog.capture === 'function') {
         if (typeof window.posthog.identify === 'function') {
-          window.posthog.identify(value, { email: value, waitlist: true });
+          window.posthog.identify(value, { email: value, plan: 'meram_pro', waitlist: true });
         }
         window.posthog.capture('waitlist_submitted', {
+          plan: 'meram_pro',
           email: value,
           source: 'meram_pro_notify_modal',
           page_path: window.location.pathname,
@@ -1626,8 +1627,21 @@
   }
 
   /* ══════════════════════  13. EVENT TRACKING (POSTHOG)  ═══════════════════
-     Capture critical conversions: Download CTA clicks, platform selections,
-     and documentation/guide explorations. */
+     Capture critical funnel events:
+       - Download Free (platform: 'macos' | 'windows')
+       - See how it works (demo_opened)
+       - Invite Friends (invite_friends_clicked)
+       - Pro waitlist signup (waitlist_submitted) */
+
+  function getVisitorPlatform(href = '') {
+    if (/\.dmg$/i.test(href) || /macos|mac/i.test(href)) return 'macos';
+    if (/\.exe$/i.test(href) || /windows|win/i.test(href)) return 'windows';
+    const ua = (navigator.userAgent || navigator.platform || '').toLowerCase();
+    if (ua.includes('mac') || ua.includes('iphone') || ua.includes('ipad')) return 'macos';
+    if (ua.includes('win')) return 'windows';
+    if (ua.includes('linux')) return 'linux';
+    return 'windows';
+  }
 
   function captureEvent(eventName, properties = {}) {
     if (window.posthog && typeof window.posthog.capture === 'function') {
@@ -1642,6 +1656,7 @@
 
   function getElementLocation(el) {
     if (!el) return 'unknown';
+    if (el.closest('.referralCard')) return 'referral_card';
     if (el.closest('header, nav, .nav')) return 'navigation';
     if (el.closest('.hero, #top, .heroLanding')) return 'hero';
     if (el.closest('.pricing, #pricing, .offer')) return 'pricing';
@@ -1658,6 +1673,34 @@
     if (!target) return;
 
     const href = target.getAttribute('href') || '';
+    const buttonText = (target.textContent || '').replace(/\s+/g, ' ').trim();
+    const location = getElementLocation(target);
+
+    // 1. Start & Invite Friends
+    const isInviteBtn = target.closest('.referralCard') ||
+      /invite friends|davet et/i.test(buttonText);
+    if (isInviteBtn) {
+      captureEvent('invite_friends_clicked', {
+        button_text: buttonText,
+        href: target.href || href,
+        location: location
+      });
+    }
+
+    // 2. See how it works (Demo opened)
+    const isDemoBtn = target.id === 'demoRun' ||
+      href === '#flow' ||
+      href === '#demo' ||
+      /see how it works|nasıl çalıştığını gör|nasıl çalışır/i.test(buttonText);
+    if (isDemoBtn) {
+      captureEvent('demo_opened', {
+        button_text: buttonText,
+        href: target.href || href,
+        location: location
+      });
+    }
+
+    // 3. Download Free buttons
     const isDownloadBtn = target.classList.contains('js-latest') ||
       href.includes('/download') ||
       href.includes('/tr/indir') ||
@@ -1667,10 +1710,10 @@
       href.includes('releases/latest') ||
       href.includes('releases/download');
 
-    if (isDownloadBtn && !target.classList.contains('js-notify')) {
-      const buttonText = (target.textContent || '').replace(/\s+/g, ' ').trim();
-      const location = getElementLocation(target);
+    if (isDownloadBtn && !target.classList.contains('js-notify') && !isInviteBtn) {
+      const platform = getVisitorPlatform(target.href || href);
       captureEvent('download_clicked', {
+        platform: platform,
         button_text: buttonText,
         href: target.href || href,
         is_direct_asset: /\.(exe|dmg|zip)$/i.test(target.href || href),
@@ -1679,4 +1722,5 @@
     }
   });
 })();
+
 
