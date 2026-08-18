@@ -15,15 +15,17 @@ download/  privacy/         English pages — each a real folder + index.html, s
 terms/  refunds/            "/privacy/" resolves on any static host
 contact/  changelog/  about/
 guides/                     two long-form guides, same folder convention
+typing-speed-test/          interactive Typing Speed Test (WPM) tool page (EN)
 
 tr/indir/  tr/gizlilik/     the Turkish mirror, one folder per page, using
 tr/kosullar/  tr/iade/      Turkish URLs rather than /tr/privacy/
 tr/iletisim/  tr/surum-notlari/
 tr/hakkinda/  tr/rehberler/
+tr/klavye-hiz-testi/        interactive Klavye Hız Testi (WPM) tool page (TR)
 
 assets/css/style.css        design system + every component
-assets/js/main.js           springs, the Aurora Ribbon engine, the scroll stage,
-                            the refinement demo, the dial, and the CONFIG block
+assets/js/main.js           springs, Aurora Ribbon engine, interactive speed test,
+                            refinement demo, time-saved dial, and CONFIG block
 assets/fonts/               self-hosted woff2 (Archivo, Instrument Serif)
 assets/img/                 SVG mark and icon, OG cards (EN + TR)
 robots.txt  sitemap.xml     every page, with hreflang pairs
@@ -183,13 +185,12 @@ springs instantly; `prefers-reduced-transparency` makes every material solid;
 ## The interactive bits
 
 - **The capsule** is the app's component, as above.
+- **The live speed test** in `#maths` and on `/typing-speed-test/` (`/tr/klavye-hiz-testi/`)
+  measures the visitor's real keyboard typing speed (WPM & accuracy) character-by-character
+  and calculates time saved compared to speaking with Meram (~140 WPM).
 - **The disfluency pass** in `#refine` is computed in the browser from the raw
-  sentence, so the strike-throughs show exactly what would be removed. The tone
-  rewrites beside it are recorded examples and the page says so — this site holds
-  no API key and transcribes nothing.
-- **The dial** in `#maths` divides. Words ÷ typing speed, minus words ÷ dictation
-  speed, and every figure under it follows from the two sliders. The dictation
-  figure is the app's own dashboard average, named in `CONFIG`.
+  sentence, so the strike-throughs show exactly what would be removed.
+- **The dial** in `#maths` computes time saved over a year based on daily words and typing WPM.
 - **The mock-up clock** reads the visitor's own time. A frozen 9:41 is a
   screenshot tell.
 

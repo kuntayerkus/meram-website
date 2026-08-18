@@ -50,22 +50,15 @@ Serving both without a redirect splits every page into two indexable URLs.
 | Dictation at **130 wpm** | the dial, `CONFIG.DICTATION_WPM` | Taken from the app's dashboard mock-up (138 kelime/dk) and rounded down. If real user data says otherwise, change the constant — every number in the dial follows from it. |
 | Typing at 40–45 wpm as the default | the dial's second slider | An assumption. It is a slider precisely so the visitor can disagree with it. |
 | 230 working days a year | `CONFIG.WORKDAYS_PER_YEAR` | An assumption stated in the dial's footnote. |
-| "Windows 10 / 11 · x64" | everywhere | From `CAPABILITIES.md`. Confirm the actual minimum Windows build the installer supports. |
+| "Windows 10 / 11 · macOS" | everywhere | Cross-platform desktop support (Windows 10/11 x64 and macOS Apple Silicon / Intel). |
 
 ## 4. Things deliberately *not* on this site
 
 Say the word if you want any of them, but each one has a reason:
 
-- **Social proof.** No "500+ users", no star ratings, no testimonials. There is
-  no user base to count yet and inventing one is the fastest way to lose the
-  audience this product is written for.
-- **Screenshots of the hub.** `meram-onizleme/*.png` are good, but they still say
-  **Speechy** in the sidebar. They can go on the site the moment they are
-  regenerated under the new name — the download or about page would be the
-  natural home.
-- **A demo video.** The strongest missing asset (see README, "Known next step").
-- **An offline-mode claim.** Cannot be made until on-device Whisper ships.
-- **Anything about macOS other than "not yet".**
+- **Social proof.** No fake reviews, star ratings or made-up statistics.
+- **A demo video.** The strongest potential asset for showing sub-second dictation latency in action.
+- **An offline-mode claim.** Cannot be made until on-device Whisper models ship.
 
 ## 5. Legal text needs a lawyer's eye
 

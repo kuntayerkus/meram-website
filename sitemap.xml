@@ -140,4 +140,19 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://meram.app/tr/rehberler/dikte-gizliligi/"/>
   </url>
 
+  <url>
+    <loc>https://meram.app/typing-speed-test/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://meram.app/typing-speed-test/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://meram.app/tr/klavye-hiz-testi/"/>
+  </url>
+  <url>
+    <loc>https://meram.app/tr/klavye-hiz-testi/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://meram.app/typing-speed-test/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://meram.app/tr/klavye-hiz-testi/"/>
+  </url>
+
 </urlset>
