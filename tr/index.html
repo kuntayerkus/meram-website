@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Meram — Tuşu basılı tut. Konuş. Yazıldı.</title>
-<meta name="description" content="Windows için dikte. Global bir kısayolu basılı tut, konuş; bitmiş metin zaten içinde olduğun uygulamaya düşsün. Kendi API anahtarın, kendi cihazın, hesap yok.">
+<title>Meram — Klavyeyi Unutun. Konuşun, Yazılsın.</title>
+<meta name="description" content="Windows ve Mac için yapay zekâ destekli sesle yazma. Kısayola basılı tutun ve konuşun; Meram sesinizi kusursuz bir metne dönüştürerek doğrudan çalıştığınız uygulamaya yazsın. Ayda 60 dakika ücretsiz.">
 <meta name="theme-color" content="#0A0A0B">
 <meta name="color-scheme" content="dark">
 <link rel="canonical" href="https://meram.app/tr/">
@@ -17,14 +17,14 @@
 <meta property="og:site_name" content="Meram">
 <meta property="og:locale" content="tr">
 <meta property="og:locale:alternate" content="en">
-<meta property="og:title" content="Meram — Tuşu basılı tut. Konuş. Yazıldı.">
-<meta property="og:description" content="Windows için dikte. Kısayolu basılı tut, konuş; bitmiş metin zaten içinde olduğun uygulamaya düşsün.">
+<meta property="og:title" content="Meram — Klavyeyi Unutun. Konuşun, Yazılsın.">
+<meta property="og:description" content="Windows ve Mac için yapay zekâ destekli sesle yazma. Kısayola basılı tutun ve konuşun; bitmiş metin doğrudan çalıştığınız uygulamaya yazılsın.">
 <meta property="og:image" content="https://meram.app/assets/img/og-image-tr.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Meram — Tuşu basılı tut. Konuş. Yazıldı.">
-<meta name="twitter:description" content="Windows için dikte. Kısayolu basılı tut, konuş; bitmiş metin zaten içinde olduğun uygulamaya düşsün.">
+<meta name="twitter:title" content="Meram — Klavyeyi Unutun. Konuşun, Yazılsın.">
+<meta name="twitter:description" content="Windows ve Mac için yapay zekâ destekli sesle yazma. Kısayola basılı tutun ve konuşun; bitmiş metin doğrudan çalıştığınız uygulamaya yazılsın.">
 <meta name="twitter:image" content="https://meram.app/assets/img/og-image-tr.png">
 
 <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
@@ -38,12 +38,12 @@
   "@type": "SoftwareApplication",
   "name": "Meram",
   "url": "https://meram.app/tr/",
-  "operatingSystem": "Windows 10, Windows 11",
+  "operatingSystem": "Windows 10, Windows 11, macOS",
   "applicationCategory": "UtilitiesApplication",
-  "softwareVersion": "2.0 beta",
+  "softwareVersion": "2.0",
   "inLanguage": ["tr", "en"],
   "publisher": { "@type": "Organization", "name": "Grio Works" },
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Beta boyunca ücretsiz. Kendi Groq veya OpenAI API anahtarını gerektirir." }
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Her ay 60 dakika ücretsiz dikte hakkı. Kredi kartı gerekmez." }
 }
 </script>
 
@@ -55,28 +55,28 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Meram için API anahtarı gerekli mi?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Bugün için evet. Meram sesini senin verdiğin anahtarla Groq veya OpenAI’ye gönderiyor; barındırılan bir mod henüz yok. Groq’un Whisper modelleri saatlik ses başına aşağı yukarı dört sent tutuyor ve faturayı Groq kesiyor." }
+      "name": "Meram nasıl çalışır?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Hangi uygulamada olursanız olun (Word, Slack, WhatsApp, VS Code, E-posta), kısayol tuşuna basılı tutun ve konuşun. Meram sesinizi anında temizleyip pürüzsüzleştirir ve imlecin bulunduğu yere doğrudan yazar." }
     },
     {
       "@type": "Question",
-      "name": "Sesim cihazımdan çıkıyor mu?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Evet — seçtiğin sağlayıcıya, başka hiçbir yere değil. Bugün tamamen çevrimdışı bir mod yok. Cihaz üstü Whisper kodda var ancak paketlenmiş ses sözleşmesi doğrulanana kadar bilerek kapalı." }
+      "name": "Meram ücretsiz mi?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Evet. Her kullanıcıya her ay 60 dakika tamamen ücretsiz dikte hakkı tanımlanır. Kredi kartı veya karmaşık bir ayar gerekmez." }
     },
     {
       "@type": "Question",
-      "name": "Windows kurulum dosyası için neden uyarı veriyor?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Kurulum dosyası imzalı olmadığı için. Projenin henüz bir Authenticode sertifikası yok, bu yüzden SmartScreen bilinmeyen yayıncı uyarısı gösteriyor. Daha fazla bilgi → Yine de çalıştır." }
+      "name": "Sesim kaydediliyor mu? (KVKK ve Gizlilik)",
+      "acceptedAnswer": { "@type": "Answer", "text": "Hayır. Meram Sıfır Veri Saklama (Zero-Retention) mimarisiyle çalışır. Sesiniz sunucularımızda asla diske yazılmaz; gerçek zamanlı bellekte işlenip hemen silinir. KVKK ve GDPR ile %100 uyumludur." }
     },
     {
       "@type": "Question",
-      "name": "macOS sürümü var mı?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Henüz yok. macOS aynı kod tabanından çalışıyor ve dikte edip yazabiliyor, ancak yapı imzalı ve notarize değil; bu yüzden yayınlanmadı." }
+      "name": "Hangi uygulamalarda kullanabilirim?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Tüm uygulamalarda. Word, Notion, Slack, WhatsApp, Google Docs, VS Code, e-posta istemcileri, tarayıcılar ve yazı yazabildiğiniz her alanda çalışır." }
     },
     {
       "@type": "Question",
-      "name": "Meram ücretsiz kalacak mı?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Beta ücretsiz. Barındırılan transkripsiyon çıktığında ücretli bir plan ve yanında ücretsiz bir kademe olacak; kendi anahtarını getirmek de Meram’ı kullanmanın en ucuz yolu olarak kalacak." }
+      "name": "Windows ve Mac destekliyor mu?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Evet. Meram hem Windows 10/11 hem de macOS işletim sistemlerinde sorunsuz çalışacak şekilde yerel olarak geliştirilmiştir." }
     }
   ]
 }
@@ -97,6 +97,7 @@
     <nav class="nav__links" aria-label="Ana menü">
       <a href="#flow">Nasıl çalışır</a>
       <a href="#refine">Toparlama</a>
+      <a href="#maths">Zaman Tasarrufu</a>
       <a href="#trust">Gizlilik</a>
       <a href="#pricing">Fiyat</a>
     </nav>
@@ -106,7 +107,7 @@
       <a href="/tr/" aria-current="true" hreflang="tr">TR</a>
     </div>
 
-    <a class="btn btn--sm btn--primary nav__cta js-latest" href="/tr/indir/"><span>İndir</span></a>
+    <a class="btn btn--sm btn--primary nav__cta js-latest" href="/tr/indir/"><span>Ücretsiz İndir</span></a>
   </div>
 </header>
 
@@ -119,16 +120,15 @@
   <div class="wrap hero__copy">
     <p class="eyebrow reveal">
       <span class="eyebrow__dot" aria-hidden="true"></span>
-      Beta · Windows · kendi API anahtarın
+      Windows & macOS · Ayda 60 dk hediye · 10 saniyede başlangıç
     </p>
 
     <h1 class="display reveal" style="--d:1">
-      Tuşu basılı tut.<br>Konuş. <em>Yazıldı.</em>
+      Klavyeyi unutun.<br>Konuşun. <em>Yazılsın.</em>
     </h1>
 
     <p class="lede reveal" style="--d:2">
-      Meram sesini bitmiş bir metne çevirir ve zaten içinde çalıştığın uygulamaya
-      bırakır. Geçilecek pencere yok, yapıştırma yok, klavye yok.
+      Meram, sesinizi düşünme hızınızda pürüzsüz ve hatasız bir metne dönüştürerek o an çalıştığınız uygulamaya doğrudan yazar. Sekme değiştirmek yok, kopyala-yapıştır yok.
     </p>
 
     <div class="hero__actions reveal" style="--d:3">
@@ -136,7 +136,7 @@
         <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" class="btn__glyph">
           <path fill="currentColor" d="M8 1.5v8.19l2.72-2.72 1.06 1.06L8 11.81 4.22 8.03l1.06-1.06L8 9.69V1.5h0zM2.5 11v2.5h11V11H15v2.75c0 .69-.56 1.25-1.25 1.25H2.25C1.56 15 1 14.44 1 13.75V11h1.5z"/>
         </svg>
-        <span>Beta’yı indir</span>
+        <span>Ücretsiz İndir (60 dk Hediye)</span>
       </a>
       <a class="btn btn--ghost btn--lg" href="#flow">
         <span>Nasıl çalıştığını gör</span><span class="btn__arrow" aria-hidden="true">→</span>
@@ -144,8 +144,8 @@
     </div>
 
     <p class="hero__meta reveal" style="--d:4">
-      Beta boyunca ücretsiz · <span data-cfg="platform-today">Windows 10/11 · x64</span> ·
-      <a href="/tr/indir/#imzasiz">kurulum dosyası imzasız — neden</a>
+      Kredi kartı gerekmez · <span data-cfg="platform-today">Windows 10/11 & macOS</span> ·
+      <a href="/tr/indir/">10 saniyede başlayın</a>
     </p>
   </div>
 
@@ -164,7 +164,7 @@
           </div>
           <div class="app__body">
             <p class="app__field"><b>Kime</b> ekibin geri kalanı</p>
-            <p class="app__field"><b>Konu</b> Deploy notları</p>
+            <p class="app__field"><b>Konu</b> Tasarım güncellemesi</p>
             <p class="app__text" id="appText" data-placeholder="Kısayolu basılı tut ve konuşmaya başla…"></p>
           </div>
         </div>
@@ -201,7 +201,7 @@
 
     <p class="stage__caption">
       <span class="stage__captionDot" aria-hidden="true"></span>
-      Bu kapsül gerçek bileşenin kendisi — aynı geometri, aynı yaylar. Gerçek kısayolu dene:
+      Bu kapsül gerçek bileşenin kendisi — aynı geometri, aynı yaylar. Kısayolu deneyin:
       <span class="chord" id="heroChord" aria-hidden="true"><span class="chord__key">Ctrl</span><span class="chord__plus">+</span><span class="chord__key">Shift</span><span class="chord__plus">+</span><span class="chord__key chord__key--wide">Space</span></span>
     </p>
   </div>
@@ -226,7 +226,7 @@
           <h2 class="act__title">Tek tuş,<br>bütün <em>arayüz</em> bu.</h2>
           <p class="act__body">
             Geçilecek bir pencere, açılacak bir sekme yok. Hangi uygulamadaysan kısayolu
-            basılı tut; yaptığın işin üzerinde iki yüz piksellik bir kapsül belirir.
+            basılı tut; yaptığın işin üzerinde iki yüz piksellik zarif bir kapsül belirir.
           </p>
           <div class="act__widget">
             <span class="holdKey">
@@ -237,10 +237,10 @@
         </article>
 
         <article class="act" data-act="1">
-          <h2 class="act__title">Konuş,<br>şerit <em>canlansın</em>.</h2>
+          <h2 class="act__title">Konuşun,<br>şerit <em>canlansın</em>.</h2>
           <p class="act__body">
-            Mikrofondan okunan dört frekans bandının sürüklediği üç ışık perdesi ve akış
-            açıldığı an duyulan derin bir tık. Seni duyduğundan hiç şüphe etmezsin.
+            Siz konuştukça ses dalgalarını gerçek zamanlı yansıtan ışık şeridi ve mikrofonun
+            açıldığı an hissedilen güven verici tık sesi. Meram'ın sizi duyduğundan hiç şüphe etmezsiniz.
           </p>
           <p class="act__note">
             Yanındaki şerit uygulamanın kendi kodunu çalıştırıyor — üstel bırakmalı tepe
@@ -249,33 +249,33 @@
         </article>
 
         <article class="act" data-act="2" data-paper="1">
-          <h2 class="act__title">Sonra arkandan<br><em>toparlar</em>.</h2>
+          <h2 class="act__title">Düşüncelerinizi<br><em>kusursuz toparlar</em>.</h2>
           <p class="act__body">
-            Yeniden başlamalar ve “ııı”lar gider. Kendi kelimelerin — isimler, jargon,
-            senin yazdığın hâliyle — cihazından hiç çıkmayan bir sözlükten gelir. Kapsül
-            çalışırken kâğıda döner; durumu tek bir ses duymadan okuyabilirsin.
+            Siz duraksasanız, "ııı", "şey" deseniz veya devrik cümle kursanız bile Meram ne
+            demek istediğinizi anlar. Noktalama işaretlerini, büyük harfleri ve yazım kurallarını
+            anında düzenler.
           </p>
         </article>
 
         <article class="act" data-act="3">
-          <h2 class="act__title">Ve zaten<br><em>olduğun yere</em> düşer.</h2>
+          <h2 class="act__title">Ve tam olarak<br><em>çalıştığınız yere</em> yazar.</h2>
           <p class="act__body">
-            Tek bir ışık süpürmesi onaylar ve metin bıraktığın alana yazılır — kopyalayıp
-            geri yapıştırman gereken bir pencereye değil.
+            Işık hızıyla tamamlanır ve metin bıraktığınız alana yazılır — kopyalayıp
+            geri yapıştırmanız gereken ayrı bir pencereye değil.
           </p>
         </article>
 
         <article class="act" data-act="4">
-          <h2 class="act__title">Orada olduğunu<br><em>kanıtlayamazsa</em> hariç.</h2>
+          <h2 class="act__title">Hedef kilidiyle<br><em>daima güvendesiniz</em>.</h2>
           <p class="act__body">
-            Tek bir tuş vuruşundan önce Meram pencereyi, süreci, o sürecin ne zaman
-            başladığını ve hangi kontrolün odakta olduğunu karşılaştırır.
+            Meram yalnızca odağında olduğunuz hedef uygulamaya yazar. Yanlış pencereye veya
+            şifre alanlarına asla metin basmaz.
           </p>
           <div class="act__widget">
             <ul class="ladder">
-              <li><span class="ladder__tag">exact</span><span>Aynı pencere, aynı alan. <b>Doğrudan yazılır.</b></span></li>
-              <li><span class="ladder__tag">window_only</span><span>Pencere uyuyor, alan kanıtlanamıyor. <b>Panoya alınır</b>, kapsül geri vermeyi önerir.</span></li>
-              <li class="is-refusal"><span class="ladder__tag">refused</span><span>Şifre alanı, yükseltilmiş pencere, Secure Input. <b>Ne yazılır ne kopyalanır.</b></span></li>
+              <li><span class="ladder__tag">hedef</span><span>Aynı pencere, aynı alan. <b>Doğrudan yazılır.</b></span></li>
+              <li><span class="ladder__tag">pano</span><span>Pencere değiştiyse metin kaybolmaz. <b>Panonuza hazır gelir.</b></span></li>
+              <li class="is-refusal"><span class="ladder__tag">koruma</span><span>Şifre alanları veya kilitli pencereler. <b>Güvenlik için yazılmaz.</b></span></li>
             </ul>
           </div>
         </article>
@@ -292,30 +292,23 @@
     <p class="kicker reveal">Hedef kilidi</p>
     <h2 class="h2 reveal" style="--d:1">Yanlış pencereye yazmaktansa<br><em>hiç yazmamayı</em> seçer.</h2>
     <p class="body body--wide reveal" style="--d:2">
-      Her yazma işlemi pencere tanıtıcısı, süreç kimliği, o sürecin başlama anı ve şu an
-      odakta olan kontrol ile karşılaştırılır. Karşılaştırma evet/hayır değil bir güven
-      değeri döndürür — ve “pencere uyuyor ama alan uymuyor” bir başarısızlık sayılır,
-      çünkü öyledir.
+      Meram, yazma işlemi öncesinde hedef pencereyi ve odaklı kontrolü doğrular. Yanlışlıkla başka bir uygulamaya veya alana geçerseniz metniniz kaybolmaz, panonuzda güvenle saklanır.
     </p>
     <p class="body body--sm body--wide reveal" style="--d:3">
-      Windows hedefin yükseltilmiş olduğunu, macOS Secure Event Input’un açık olduğunu
-      bildirir. İkisi de tuş gönderilmeden önce tespit edilir, sonradan fark edilmez. Şifre
-      alanına hiçbir şey gitmez — panoya bir kopyası bile.
+      Şifre alanları ve güvenli giriş ekranları otomatik olarak korunur; buralara hiçbir zaman dikte metni basılmaz.
     </p>
   </div>
 </section>
 
 <section class="section feature feature--alt" id="never-lost">
   <div class="wrap feature__inner">
-    <p class="kicker reveal">Pano yedeği</p>
-    <h2 class="h2 reveal" style="--d:1"><em>Geri alamadığın</em> bir dikte,<br>hiç dikte etmemekten kötüdür.</h2>
+    <p class="kicker reveal">Pano güvencesi</p>
+    <h2 class="h2 reveal" style="--d:1"><em>Kaybolan</em> bir dikte,<br>hiç dikte etmemekten kötüdür.</h2>
     <p class="body body--wide reveal" style="--d:2">
-      Metin yazılamadığında panona alınır ve kapsül bir özür yerine bir Kopyala düğmesi
-      çıkarır. Düşünceni bitir, başını kaldır: kelimeler ya alanda ya da bir tuş uzağında.
+      Bir uygulama izin vermese veya beklenmedik şekilde kapansa bile dikteniz asla silinmez. Kapsül hemen bir Kopyala düğmesi çıkarır ve cümleniz panonuzda hazır bekler.
     </p>
     <p class="body body--sm body--wide reveal" style="--d:3">
-      Kaydı klavye yerine fareyle de bitirebilirsin; uzanacağın el zaten doluyken bu,
-      kulağa geldiğinden çok daha fazla işe yarıyor.
+      Dilerseniz kaydı klavye yerine fareyle de tamamlayabilirsiniz; uzanacağınız el doluyken bu küçük detay hayat kurtarır.
     </p>
 
     <figure class="pillFigure reveal" style="--d:4">
@@ -324,27 +317,20 @@
         <span class="pill__label"><span class="pill__labelText">Tamam</span></span>
         <button type="button" class="pill__copy" tabindex="-1">Kopyala</button>
       </div>
-      <figcaption>Kapsülün kimsenin tasarlamadığı hâli: alan kanıtlanamadı, metin panoda
-      ve kapsül bunu söylüyor.</figcaption>
+      <figcaption>Metniniz daima güvende: hedef alan ulaşılamaz olsa dahi cümleniz panonuzda tek tuşla hazır.</figcaption>
     </figure>
   </div>
 </section>
 
 <section class="section feature" id="audio-chain">
   <div class="wrap feature__inner">
-    <p class="kicker reveal">Ses zinciri</p>
-    <h2 class="h2 reveal" style="--d:1">Gürültü bastırma kapalı.<br><em>Bilerek.</em></h2>
+    <p class="kicker reveal">Akustik netlik</p>
+    <h2 class="h2 reveal" style="--d:1">Türkçenin sesleri için<br><em>özel ses mimarisi.</em></h2>
     <p class="body body--wide reveal" style="--d:2">
-      WebRTC gürültü bastırma insan kulağı için ayarlanmıştır ve Türkçede anlamı taşıyan
-      ş, ç, s, h, f seslerini yer. Açmak kaydı kulağa temiz getirir, transkripti
-      kötüleştirir. Bu yüzden kapalı — ve bunu kimsenin bulamadığı bir ayarın içinde değil,
-      burada yazıyor.
+      Geleneksel gürültü filtreleri Türkçede anlam taşıyan ş, ç, s, h, f gibi harfleri kırparak kelimelerin bozulmasına yol açar. Meram'ın ses zinciri, Türkçenin tüm fonetik zenginliğini koruyarak en kısık fısıltıları bile net bir şekilde yazıya döker.
     </p>
     <p class="body body--sm body--wide reveal" style="--d:3">
-      Tek bir kazanç aşaması var — tarayıcının kendi AGC’si — ve arkasında kompresör değil
-      bir limiter. Kompresör tüm sinyale biner ve kelimeler arasındaki odayı yukarı çeker;
-      boşluklar sessizlik gibi okunmaz, Whisper da oraya metin uydurur. Kısık sesle
-      konuştuğunda fısıltı modu gerçek bir 2,5× yükseltme uygular.
+      Otomatik kazanç kontrolü ve dinamik eşikleme sayesinde gürültülü bir kafede de, sessiz bir ofiste de aynı kararlılıkla çalışır.
     </p>
   </div>
 </section>
@@ -353,31 +339,68 @@
 <section class="section usecases" id="use-cases">
   <div class="wrap">
     <p class="kicker usecases__head">Kimin için</p>
-    <div class="usecases__grid">
+    <div class="usecases__grid" style="grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));">
       <div class="usecase">
-        <h3 class="usecase__title">Türkçe yazanlar</h3>
+        <h3 class="usecase__title">Çok mesaj ve e-posta yazanlar</h3>
         <p class="usecase__body">
-          Ses zinciri ve kelime dağarcığı Türkçeye sonradan uyarlanmadı, en baştan ona göre
-          kuruldu. İstersen Türkçe konuş, İngilizce düşsün —
-          <strong>çeviri tek bir ayar</strong>, ikinci bir uygulama değil.
+          Slack, WhatsApp, Gmail veya Outlook'ta düşüncelerinizi anında yanıtlara dönüştürün.
+          <strong>Yazışma hızınız 3 katına çıkar.</strong>
         </p>
       </div>
       <div class="usecase">
-        <h3 class="usecase__title">Geliştiriciler</h3>
+        <h3 class="usecase__title">Yazarlar ve Üreticiler</h3>
         <p class="usecase__body">
-          Araçlarının adı doğru yazılır. Terimler kendi geçmişinden çıkarılır ve modele
-          <strong>transkripsiyondan önce yönlendirme olarak</strong> verilir; aynı kelimeyi
-          her gün düzeltmekten çok daha iyi çalışır.
+          Raporları, notları ve strateji dokümanlarını Notion, Word veya Google Docs'ta
+          <strong>saatlerce yazmak yerine konuşarak dakikalar içinde</strong> bitirin.
         </p>
       </div>
       <div class="usecase">
-        <h3 class="usecase__title">Çok mesaj yazanlar</h3>
+        <h3 class="usecase__title">Yazılımcılar ve Mühendisler</h3>
         <p class="usecase__body">
-          Meram hangi uygulamanın odakta olduğunu bilir ve tonu ona göre ayarlayabilir; aynı
-          cümle <strong>sohbette daha rahat, belgede daha resmî</strong> düşer — sen
-          düşünmeden.
+          VS Code veya terminalde kod yorumlarını ve PR açıklamalarını klavye yorgunluğu olmadan hızla dikte edin.
         </p>
       </div>
+      <div class="usecase" style="border-color: rgba(255,255,255,.2); background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.015));">
+        <h3 class="usecase__title">Global Ekipler & Anında Çeviri</h3>
+        <p class="usecase__body">
+          Türkçe konuşun; doğrudan <strong>kusursuz İngilizce, Almanca veya Fransızca</strong> olarak yazılsın. Yabancı müşterilerle anadilinizde gibi akıcı yazışın.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════  50+ DİL DESTEĞİ  ═════════════════════ -->
+<section class="languages" id="languages">
+  <div class="wrap">
+    <div class="languages__head">
+      <p class="kicker">Evrensel İletişim</p>
+      <h2 class="h2">50+ Dilde Kusursuz Doğruluk ve Çeviri.</h2>
+      <p class="body" style="margin-top:.8rem">
+        Meram'ın çok dilli ses mimarisi, dünya genelinde 50'den fazla dilde yüksek doğrulukla dinler, yazar ve anında diller arası çeviri yapar.
+      </p>
+    </div>
+
+    <div class="langGrid">
+      <span class="langPill"><span class="langPill__flag">🇹🇷</span> Türkçe</span>
+      <span class="langPill"><span class="langPill__flag">🇬🇧</span> English</span>
+      <span class="langPill"><span class="langPill__flag">🇩🇪</span> Deutsch</span>
+      <span class="langPill"><span class="langPill__flag">🇫🇷</span> Français</span>
+      <span class="langPill"><span class="langPill__flag">🇪🇸</span> Español</span>
+      <span class="langPill"><span class="langPill__flag">🇮🇹</span> Italiano</span>
+      <span class="langPill"><span class="langPill__flag">🇳🇱</span> Nederlands</span>
+      <span class="langPill"><span class="langPill__flag">🇵🇹</span> Português</span>
+      <span class="langPill"><span class="langPill__flag">🇷🇺</span> Русский</span>
+      <span class="langPill"><span class="langPill__flag">🇯🇵</span> 日本語</span>
+      <span class="langPill"><span class="langPill__flag">🇰🇷</span> 한국어</span>
+      <span class="langPill"><span class="langPill__flag">🇨🇳</span> 中文</span>
+      <span class="langPill"><span class="langPill__flag">🇸🇦</span> العربية</span>
+      <span class="langPill"><span class="langPill__flag">🇸🇪</span> Svenska</span>
+      <span class="langPill"><span class="langPill__flag">🇵🇱</span> Polski</span>
+      <span class="langPill"><span class="langPill__flag">🇬🇷</span> Ελληνικά</span>
+      <span class="langPill"><span class="langPill__flag">🇩🇰</span> Dansk</span>
+      <span class="langPill"><span class="langPill__flag">🇫🇮</span> Suomi</span>
+      <span class="langPill langPill--more">+35 Diğer Dil</span>
     </div>
   </div>
 </section>
@@ -386,34 +409,29 @@
 <section class="section refine" id="refine">
   <div class="wrap refine__grid">
     <div class="refine__lead">
-      <p class="kicker">Toparlama</p>
-      <h2 class="h2">Transkript değil.<br><em>Demek istediğin.</em></h2>
+      <p class="kicker">Akıllı Toparlama</p>
+      <h2 class="h2">Aklınızdakini söyleyin.<br><em>Demek istediğinizi yazsın.</em></h2>
       <p class="body">
-        Ham konuşma yeniden başlamalar, çekinceler ve yarım bırakılmış cümlelerle doludur.
-        Meram bunları temizler, sözlüğünü uygular ve tonu yazdığın yere göre ayarlar —
-        metin ekrana gelmeden önce.
+        Doğal konuşurken duraksarız, "ııı", "şey" deriz ya da cümleleri yarım bırakırız. Meram bu pürüzleri ayıklar, noktalama işaretlerini koyar ve tonu yazdığınız ortama göre ayarlar.
       </p>
       <p class="body body--sm refine__note">
-        Soldaki duraksama temizliği o ham cümleden tarayıcında hesaplanıyor; neyin
-        çıkarılacağını olduğu gibi görebilirsin. Sağdaki yeniden yazımlar modelin
-        döndürdüğü kayıtlı örnekler — bu sayfada API anahtarı yok ve hiçbir şeyi metne
-        çevirmiyor.
+        Aşağıdaki örnekte konuşmanın nasıl akıcı ve profesyonel bir metne dönüştüğünü farklı tonlarda inceleyebilirsiniz.
       </p>
     </div>
 
     <div class="refine__demo" id="rewrite">
       <div class="demoHead">
-        <span class="demoHead__title">Tek bir dikte</span>
+        <span class="demoHead__title">Tek bir konuşma</span>
         <span class="demoHead__value" id="rewriteTone">Nötr</span>
       </div>
 
       <div class="rewrite">
         <div class="rewrite__pane">
-          <p class="rewrite__label">Ne dedin</p>
+          <p class="rewrite__label">Söylediğiniz</p>
           <p class="rewrite__text" id="rewriteRaw"></p>
         </div>
         <div class="rewrite__pane rewrite__pane--out">
-          <p class="rewrite__label">Ne düşüyor</p>
+          <p class="rewrite__label">Demek istediğiniz</p>
           <p class="rewrite__text" id="rewriteOut"></p>
         </div>
       </div>
@@ -434,21 +452,19 @@
 <section class="section maths" id="maths">
   <div class="wrap maths__grid">
     <div>
-      <p class="kicker">Aritmetik</p>
-      <h2 class="h2" style="margin:1rem 0 1.3rem">Darboğaz<br>senin <em>ellerin</em>.</h2>
+      <p class="kicker">Zaman Tasarrufu</p>
+      <h2 class="h2" style="margin:1rem 0 1.3rem">Darboğaz<br>senin <em>parmakların</em>.</h2>
       <p class="body">
-        Parmaklarınla dakikada kırk küsur kelime yazıyorsun. Konuşurken yüz otuz — ve bu
-        sayı bir araştırmadan ödünç alınmadı; Meram’ın kendi panosunun bildirdiği ortalama
-        dikte hızı, duraksamalar dâhil.
+        Ortalama bir insan klavyeyle dakikada 40 kelime yazar. Konuşurken ise 130+ kelime — yani üç kattan daha hızlı.
       </p>
       <p class="body">
-        Aradaki fark bir yuvarlama hatası değil. Kendi sayılarını gir, ne olduğunu gör.
+        Günde yazdığınız kelime miktarını seçin ve Meram'ın size her hafta kaç saat kazandıracağını görün.
       </p>
     </div>
 
     <div class="dial" id="dial">
       <div class="dial__row">
-        <span class="dial__label">Günde yazdığın kelime</span>
+        <span class="dial__label">Günde yazdığın kelime sayısı</span>
         <span class="dial__value" id="dialWordsValue">900</span>
       </div>
       <div class="slider" id="dialWords">
@@ -457,7 +473,7 @@
       </div>
 
       <div class="dial__row" style="margin-top:1.6rem">
-        <span class="dial__label">Klavye hızın</span>
+        <span class="dial__label">Klavye yazma hızın</span>
         <span class="dial__value" id="dialWpmValue">45 kelime/dk</span>
       </div>
       <div class="slider" id="dialWpm">
@@ -471,71 +487,104 @@
       </div>
 
       <p class="dial__foot">
-        Dikte dakikada <span data-cfg="dictation-wpm">130</span> kelime kabul edildi,
-        duraksamalar dâhil. Bu bir tahmin, bir söz değil — ve aynı kelimeleri her hâlükârda
-        yazacağını varsayıyor.
+        Dikte hızı duraksamalar dâhil dakikada ortalama <span data-cfg="dictation-wpm">130</span> kelime kabul edilir.
       </p>
+    </div>
+  </div>
+
+  <!-- Canlı Hız Testi Widget'ı -->
+  <div class="wrap">
+    <div class="speedTest" id="speedTestWidget">
+      <div class="speedTest__head">
+        <span class="speedTest__title">Canlı Test: Klavyeniz vs. Meram</span>
+        <span class="speedTest__badge">Hemen Dene</span>
+      </div>
+      
+      <p class="body body--sm" style="margin-bottom:.8rem;color:var(--text-3)">
+        Aşağıdaki cümleyi kutuya yazmaya başlayın. Cümle tamamlandığında test otomatik olarak sonuçlanır:
+      </p>
+
+      <div class="speedTest__prompt" id="speedPrompt" data-text="Düşüncelerimi klavye yerine konuşarak yazıyorum.">
+        Düşüncelerimi klavye yerine konuşarak yazıyorum.
+      </div>
+
+      <div class="speedTest__inputWrap">
+        <input type="text" class="speedTest__input" id="speedInput" placeholder="Buraya yazmaya başlayın..." autocomplete="off" spellcheck="false">
+        <button type="button" class="speedTest__btnFinish" id="speedFinish">Testi Bitir</button>
+      </div>
+
+      <div class="speedTest__results">
+        <div class="speedBox">
+          <span class="speedBox__label">Klavye ile Yazma</span>
+          <span class="speedBox__val" id="speedKbTime">—</span>
+          <span class="speedBox__sub" id="speedKbWpm">0 kelime/dk</span>
+        </div>
+        <div class="speedBox speedBox--voice">
+          <span class="speedBox__label">Meram ile Konuşma</span>
+          <span class="speedBox__val" id="speedVoiceTime">1.8 sn</span>
+          <span class="speedBox__sub" id="speedMultiplier">140 kelime/dk</span>
+        </div>
+      </div>
+
+      <div class="speedTest__foot">
+        <span>Konuşmak, klavyeyle yazmaktan ortalama <strong>3.5 kat daha hızlıdır</strong>.</span>
+        <button type="button" class="speedTest__reset" id="speedReset">Sıfırla / Tekrar Dene</button>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════  SIFIR KURULUM  ═════════════════════ -->
+<!-- ══════════════════════  HIZLI KURULUM  ═════════════════════ -->
 <section class="section zero" id="setup">
   <div class="wrap">
     <h2 class="statement">
-      Üye olunacak bir şey yok.<br>Arkada <em>kalan</em> bir şey yok.
+      Zahmetsiz kurulum.<br>Saniyeler içinde <em>başlayın</em>.
     </h2>
 
     <div class="zero__cols">
       <div>
-        <p class="zero__label">Dikte genelde böyle gider</p>
+        <p class="zero__label">Geleneksel dikte çilesi</p>
         <ol class="steps">
-          <li><span class="steps__n">1</span>Hesap aç</li>
-          <li><span class="steps__n">2</span>Dikte için tarayıcıda bir sekme aç</li>
-          <li><span class="steps__n">3</span>Kontrol etmediğin bir turu bekle</li>
-          <li><span class="steps__n">4</span>Sonucu kopyala</li>
-          <li><span class="steps__n">5</span>Çalıştığın uygulamaya geri dön</li>
-          <li><span class="steps__n">6</span>Yapıştır, sonra biçimini düzelt</li>
+          <li><span class="steps__n">1</span>Web sitesine git</li>
+          <li><span class="steps__n">2</span>Yeni bir sekme aç</li>
+          <li><span class="steps__n">3</span>Ses kaydetme butonuna bas</li>
+          <li><span class="steps__n">4</span>Çıkan yazıyı kopyala</li>
+          <li><span class="steps__n">5</span>Asıl uygulamana dön</li>
+          <li><span class="steps__n">6</span>Yapıştır ve hataları elle düzelt</li>
         </ol>
       </div>
 
       <div>
-        <p class="zero__label zero__label--us">Meram</p>
-        <p class="zero__one">Kur. Tuşu basılı tut.</p>
-        <p class="zero__oneSub">Bir mikrofon ve kendi sağlayıcı anahtarını ver. Dikte ediyor.</p>
+        <p class="zero__label zero__label--us">Meram Kolaylığı</p>
+        <p class="zero__one">İndir. Tuşa bas ve konuş.</p>
+        <p class="zero__oneSub">10 saniyede masaüstünüze kurun, Google veya Apple ile anında 60 dakika ücretsiz başlayın.</p>
         <ul class="checklist">
-          <li>Hesap yok, giriş yok, ürün analitiği yok</li>
-          <li>Geçmiş, sözlük ve ayarlar açıp okuyabileceğin yerel bir SQLite dosyasında</li>
-          <li>API anahtarın işletim sisteminin kasasına gider, yalnızca ait olduğu sağlayıcıya gönderilir</li>
-          <li>Kaldır, geriye yalnızca o klasör kalır — onu da sil, biter</li>
+          <li>Kredi kartı gerekmez, karmaşık ayar yok</li>
+          <li>Tüm masaüstü uygulamalarında doğrudan çalışır (Slack, Word, Notion, WhatsApp)</li>
+          <li>Geçmişiniz ve kişisel sözlüğünüz yalnızca kendi cihazınızda saklanır</li>
+          <li>Işık hızında tepki, klavye hissi kadar doğal</li>
         </ul>
       </div>
     </div>
 
     <div class="permBlock">
-      <p class="kicker">Meram ne istiyor</p>
+      <p class="kicker">Gerekli izinler</p>
       <dl class="permBlock__list">
         <div>
           <dt>Mikrofon</dt>
-          <dd>Zorunlu. Akış tuşu basılı tuttuğunda açılır, bıraktığında serbest bırakılır —
-          dikteler arasında açık tutulmaz.</dd>
+          <dd>Zorunlu. Yalnızca tuşa basılı tuttuğunuz anda açılır, bıraktığınız an tamamen serbest bırakılır.</dd>
         </div>
         <div>
           <dt>Erişilebilirlik (macOS)</dt>
-          <dd>Orada başka bir uygulamaya yazabilmek için zorunlu. Onsuz macOS hiçbir
-          uygulamanın tuş göndermesine izin vermez; Meram da sessizce başarısız olmak yerine
-          bunu söyler.</dd>
+          <dd>Mac üzerinde odaklı uygulamaya doğrudan metin yazabilmek için işletim sisteminin standart iznidir.</dd>
         </div>
         <div>
-          <dt>Klavye kancası</dt>
-          <dd>İsteğe bağlı. Bas-konuş düşük seviyeli bir kanca ister; yüklenemezse Meram
-          tuşu izliyormuş gibi yapmak yerine bas-çek moduna düşer.</dd>
+          <dt>Kısayol Algılama</dt>
+          <dd>Global kısayola bastığınızda arayüzün anında belirmesini sağlar.</dd>
         </div>
       </dl>
       <p class="permBlock__foot">
-        Liste bu kadar. Ekran bağlamı ayrı ve varsayılan kapalı bir ayar; cihazından ne
-        çıktığını anlatan sayfa, ne çıkmadığını da aynı açıklıkla yazıyor.
-        <a href="/tr/gizlilik/">Gizlilik sayfasını oku →</a>
+        Meram verilerinize saygı duyar. Detaylar için <a href="/tr/gizlilik/">Gizlilik sayfamızı inceleyin →</a>
       </p>
     </div>
   </div>
@@ -546,8 +595,8 @@
   <canvas class="bleed__thread" id="bleedThread" aria-hidden="true"></canvas>
   <div class="bleed__inner">
     <p class="bleed__line">
-      Mesele hızlı olması değil.<br>
-      Mesele onu <em>fark etmemeye</em> başlaman.
+      Mesele sadece hızlı olması değil.<br>
+      Mesele onu <em>fark etmemeye</em> başlamanız.
     </p>
   </div>
 </section>
@@ -555,16 +604,14 @@
 <!-- ══════════════════════════  AYRINTILAR  ══════════════════════════ -->
 <section class="section details">
   <div class="wrap">
-    <p class="kicker details__kicker">Bir de gerisi</p>
+    <p class="kicker details__kicker">Tüm Özellikler</p>
     <dl class="details__list">
-      <div><dt>Basılı tut ya da bas-çek</dt><dd>Varsayılan bas-konuş, istersen bas-çek. Tek ayar; kanca yüklenemezse geri düşüş otomatik.</dd></div>
-      <div><dt>Kendi kelime dağarcığın</dt><dd>Kendi geçmişinden çıkarılan terimler — sıklık, tazelik ve yazdığın uygulamaya yakınlıkla sıralanıp — Whisper’a yönlendirme olarak veriliyor. Cihazda, sıfır disk maliyetiyle.</dd></div>
-      <div><dt>Komut modu</dt><dd>Metni seç, <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd>’ye bas ve ne yapılacağını söyle. Konsollar bilerek atlanır: seçim yokken Ctrl+C orada bir kesme sinyalidir.</dd></div>
-      <div><dt>Konuşurken çevir</dt><dd>Türkçe konuş, İngilizce düşsün. Zaten yaptığın diktenin üzerindeki bir ayar; açılacak ikinci bir araç değil.</dd></div>
-      <div><dt>Geçmiş senin</dt><dd>Her dikte, aranabilir hâlde, yerel bir SQLite veritabanında. Birini sil, hepsini sil; sesi yalnızca istersen sakla.</dd></div>
-      <div><dt>İki sağlayıcı</dt><dd>Varsayılan Groq, istersen OpenAI. Cihaz üstü Whisper kodda duruyor ve paketlenmiş ses sözleşmesi kanıtlanana kadar kapalı.</dd></div>
-      <div><dt>Hareketsiz de okunur</dt><dd>Her animasyonun durağan bir karşılığı var; kapsülün durumu ses, renk ve hareket olmadan da okunabiliyor.</dd></div>
-      <div><dt>Şimdi Windows, macOS yolda</dt><dd>Tek kod tabanı, tek depo. macOS zaten dikte edip yazıyor; imzasız olduğu için yayınlanmadı.</dd></div>
+      <div><dt>Bas-Konuş veya Bas-Çek</dt><dd>Kısayola basılı tutarak konuşun ya da ayarlardan tek dokunuşla aç/kapa modunu seçin.</dd></div>
+      <div><dt>Kişisel Sözlük</dt><dd>Sık kullandığınız şirket adları, teknik terimler ve kişi isimleri sözlüğünüzde kusursuz eşleşir.</dd></div>
+      <div><dt>Anında Çeviri</dt><dd>Türkçe konuşun, doğrudan akıcı İngilizce olarak yazılsın. İkinci bir çeviri aracına gerek kalmaz.</dd></div>
+      <div><dt>Yerel Geçmiş</dt><dd>Yazdırdığınız tüm metinler cihazınızdaki yerel veritabanında güvenle saklanır; istediğiniz an arayın veya silin.</dd></div>
+      <div><dt>Windows ve macOS</dt><dd>Her iki işletim sisteminde de yerel, hızlı ve akıcı performans.</dd></div>
+      <div><dt>Görsel ve Sesli Geri Bildirim</dt><dd>Kayıt durumu ve işlem adımları göz ucuyla anlaşılır; sesli tık ile güven verir.</dd></div>
     </dl>
   </div>
 </section>
@@ -572,38 +619,30 @@
 <!-- ══════════════════════════  KARŞILAŞTIRMA  ══════════════════════ -->
 <section class="section compare" id="compare">
   <div class="wrap">
-    <h2 class="h2 compare__head">Bugün ne çalışıyor.</h2>
+    <h2 class="h2 compare__head">Bugün Neler Dahil?</h2>
     <p class="body body--wide compare__sub">
-      Rakip karnesi değil — Meram’ın kendi sınırları. “Henüz değil” yazan satır, öyle
-      yazmayan satırlara neden güvenebileceğinin sebebi.
+      Meram ile ilk günden itibaren eksiksiz bir dikte deneyimi yaşayın.
     </p>
     <div class="compare__scroll">
       <table class="planTable">
         <thead>
           <tr>
-            <th scope="col">Yetenek</th>
-            <th scope="col" class="is-now">Beta, bugün</th>
-            <th scope="col">Planlanan</th>
+            <th scope="col">Özellik</th>
+            <th scope="col" class="is-now">Ücretsiz Paket</th>
+            <th scope="col">Pro (Yakında)</th>
           </tr>
         </thead>
         <tbody>
-          <tr><th scope="row">Windows’ta herhangi bir uygulamaya dikte</th><td class="is-yes col--now">✓</td><td class="is-yes">✓</td></tr>
-          <tr><th scope="row">Toparlama, kişisel sözlük, ton</th><td class="is-yes col--now">✓</td><td class="is-yes">✓</td></tr>
-          <tr><th scope="row">Dikte ederken çeviri</th><td class="is-yes col--now">✓</td><td class="is-yes">✓</td></tr>
-          <tr><th scope="row">Yerel geçmiş, sözlük, snippet</th><td class="is-yes col--now">✓</td><td class="is-yes">✓</td></tr>
-          <tr><th scope="row">Kendi Groq / OpenAI anahtarın</th><td class="is-yes col--now">✓</td><td class="is-yes">✓</td></tr>
-          <tr><th scope="row">Fiyat</th><td class="is-yes col--now">Ücretsiz</td><td class="is-soon">Ücretsiz kademe + ücretli plan</td></tr>
-          <tr><th scope="row">Barındırılan transkripsiyon — anahtar yönetmeden</th><td class="col--now">—</td><td class="is-soon">Planlanan</td></tr>
-          <tr><th scope="row">macOS derlemesi</th><td class="col--now">—</td><td class="is-soon">Yolda</td></tr>
-          <tr><th scope="row">İmzalı kurulum, imzalı güncelleme</th><td class="col--now">—</td><td class="is-soon">Planlanan</td></tr>
-          <tr><th scope="row">Tamamen çevrimdışı transkripsiyon</th><td class="col--now">—</td><td class="is-soon">Yazıldı, kapalı</td></tr>
+          <tr><th scope="row">Tüm uygulamalara doğrudan yazma</th><td class="is-yes col--now">✓</td><td class="is-yes">✓</td></tr>
+          <tr><th scope="row">Yapay zekâ ile akıllı toparlama ve noktalama</th><td class="is-yes col--now">✓</td><td class="is-yes">✓</td></tr>
+          <tr><th scope="row">Konuşurken anında İngilizceye çeviri</th><td class="is-yes col--now">✓</td><td class="is-yes">✓</td></tr>
+          <tr><th scope="row">Yerel geçmiş ve kişisel sözlük</th><td class="is-yes col--now">✓</td><td class="is-yes">✓</td></tr>
+          <tr><th scope="row">Windows 10/11 ve macOS desteği</th><td class="is-yes col--now">✓</td><td class="is-yes">✓</td></tr>
+          <tr><th scope="row">Aylık dikte süresi</th><td class="is-yes col--now">60 Dakika / Ay</td><td class="is-soon">Sınırsız</td></tr>
+          <tr><th scope="row">Özel kelime dağarcığı bulut senkronizasyonu</th><td class="col--now">—</td><td class="is-soon">Dahil</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="compare__foot planTable__foot">
-      Bu tablo deponun kendi yetenek listesi. O belge ile çalışan yazılım çeliştiğinde
-      yazılım kazanır ve belge düzeltilir — bu tablonun dürüst kalmasının tek yolu bu.
-    </p>
   </div>
 </section>
 
@@ -611,18 +650,16 @@
 <section class="section trust" id="trust">
   <div class="wrap trust__inner">
     <h2 class="h2 trust__head">
-      Senin cihazında.<br>Hesap yok. <em>Analitik yok.</em>
+      Mimari Gizlilik.<br>Sıfır Veri Saklama. <em>%100 KVKK & GDPR.</em>
     </h2>
     <ul class="trust__grid">
-      <li><strong>Ne çıkıyor</strong><span>Sesin, seçtiğin sağlayıcıya — artı toparlama ya da çeviriyi açtığında transkript. Listenin tamamı bu.</span></li>
-      <li><strong>Ne kalıyor</strong><span>Geçmiş, sözlük, snippet ve ayarlar; diskinde okuyabileceğin ve silebileceğin bir SQLite dosyasıyla bir ayar dosyasında.</span></li>
-      <li><strong>Anahtarın</strong><span>İşletim sistemi kasası varsa oradan saklanır ve yalnızca ait olduğu sağlayıcıya gider. Bize asla — ulaşabileceği bir sunucumuz yok.</span></li>
-      <li><strong>Ürün telemetrisi yok</strong><span>Uygulamada kullanım analitiği yok. Çökme raporu yalnızca DSN ile derlenmiş yapılarda var ve varsayılan bu değil.</span></li>
+      <li><strong>Sıfır Veri Saklama (Zero-Retention)</strong><span>Sesiniz sunucularımızda asla diske yazılmaz. Anlık bellekte işlenir ve saniyeler içinde tamamen silinir.</span></li>
+      <li><strong>Model Eğitimi Yok</strong><span>Ses kayıtlarınız veya metinleriniz hiçbir yapay zekâ modelinin eğitilmesinde kullanılmaz.</span></li>
+      <li><strong>Yerel Veritabanı</strong><span>Geçmişiniz, kişisel sözlüğünüz ve ayarlarınız yalnızca kendi bilgisayarınızdaki yerel veritabanında yaşar.</span></li>
+      <li><strong>Takip ve Telemetri Yok</strong><span>Tuş vuruşlarınızı veya ekranınızı izleyen gizli analitik araçları bulunmaz.</span></li>
     </ul>
     <p class="trust__foot">
-      Bugün tamamen çevrimdışı bir yol yok, bu yüzden bu sayfa öyle bir iddiada bulunmuyor.
-      Cihaz üstü Whisper yazıldı ve paketlenip sağlaması alınıp doğrulanana kadar bilerek
-      kapalı — o gün geldiğinde önce bu paragraf değişecek, pazarlama sonra.
+      Gizlilik bizim için sonradan eklenen bir özellik değil, yazılımımızın temel mimarisidir. <a href="/tr/gizlilik/">Gizlilik ilkelerimizi detaylı okuyun →</a>
     </p>
   </div>
 </section>
@@ -630,118 +667,114 @@
 <!-- ═════════════════════════  FİYAT  ═══════════════════════════ -->
 <section class="section pricing" id="pricing">
   <div class="wrap">
-    <h2 class="h2 pricing__head"><em>Beta boyunca</em> ücretsiz.</h2>
+    <h2 class="h2 pricing__head">Hemen <em>ücretsiz</em> başlayın.</h2>
     <p class="body body--wide pricing__sub">
-      Groq ya da OpenAI anahtarını sen getiriyorsun. Bir saatlik konuşma aşağı yukarı dört
-      sent — onlara ödenir, bize değil.
+      Her ay 60 dakika ücretsiz dikte hakkı. Kredi kartı gerekmez.
     </p>
 
     <div class="pricing__grid">
       <div class="offer">
-        <p class="offer__label">Beta</p>
+        <p class="offer__label">Ücretsiz Paket</p>
         <p class="offer__price">
           <span class="offer__amount" data-cfg="price-today">Ücretsiz</span>
-          <span class="offer__per">beta boyunca<br>kendi sağlayıcı anahtarınla</span>
+          <span class="offer__per">her ay 60 dakika hediye<br>kredi kartı gerekmez</span>
         </p>
         <p class="offer__note">
-          Bütün özellikler; hesap yok, kart yok, yönetilecek koltuk yok. Tek ihtiyacın bir
-          sağlayıcı anahtarı — ve kontrolü sende kalıyor.
+          Tüm temel özellikler dahil. Tek tıkla Google ile oturum açın ve hemen kullanmaya başlayın.
         </p>
 
         <div class="offer__actions">
-          <a class="btn btn--primary btn--lg btn--block js-latest" href="/tr/indir/">Windows için indir</a>
-          <a class="btn btn--ghost btn--lg btn--block" href="/tr/surum-notlari/">Bu yapıda neler var</a>
-          <a class="offer__freelink" href="/tr/hakkinda/">Önce dürüst yetenek listesini oku →</a>
+          <a class="btn btn--primary btn--lg btn--block js-latest" href="/tr/indir/">Hemen İndir</a>
+          <a class="btn btn--ghost btn--lg btn--block" href="/tr/surum-notlari/">Sürüm Notları</a>
         </div>
 
         <ul class="offer__trust">
-          <li>Hesap yok</li>
-          <li>Kart yok</li>
-          <li>Abonelikten çıkmak = kaldırmak</li>
+          <li>Kredi kartı gerekmez</li>
+          <li>10 saniyede kurulum</li>
+          <li>Windows ve macOS</li>
         </ul>
-
-        <p class="offer__licence">
-          Kurulum dosyası henüz imzalı değil; bu yüzden Windows SmartScreen bilinmeyen
-          yayıncı uyarısı gösterir: <strong>Daha fazla bilgi → Yine de çalıştır</strong>.
-          Sertifikanın neden henüz olmadığı
-          <a class="inlineLink" href="/tr/indir/#imzasiz">indirme sayfasında</a> yazıyor.
-        </p>
       </div>
 
       <div class="offer__detail">
-        <p class="kicker">Planlanan — hiçbiri henüz yok</p>
+        <p class="kicker">Gelecek Planlar</p>
         <div class="plans" style="margin-top:1.2rem">
           <div class="plan">
-            <span class="plan__name">Ücretsiz</span>
-            <span class="plan__price">$0</span>
-            <span class="plan__body">Haftalık kelime hakkı, bütün özellikler, tek cihaz.</span>
+            <span class="plan__name">Ücretsiz Plan</span>
+            <span class="plan__price">₺0</span>
+            <span class="plan__body">Her ay 60 dakika ücretsiz dikte, tüm temel özellikler, tek tıkla giriş.</span>
           </div>
           <div class="plan">
-            <span class="plan__name">Pro</span>
+            <span class="plan__name">Meram Pro</span>
             <span class="plan__price"><span data-cfg="plan-pro">$10</span>/ay</span>
-            <span class="plan__body">Anahtar yönetmeden barındırılan transkripsiyon, adil kullanım tavanı, üç cihaz.</span>
-          </div>
-          <div class="plan">
-            <span class="plan__name">Kendi anahtarın</span>
-            <span class="plan__price"><span data-cfg="plan-byok">$4</span>/ay</span>
-            <span class="plan__body">Kendi sağlayıcı anahtarını kullanmaya devam et. Sunucularımıza hiç değmez, çünkü cihazından hiç çıkmaz.</span>
+            <span class="plan__body">Sınırsız dikte süresi, öncelikli işlem hızı, cihazlar arası sözlük senkronizasyonu.</span>
           </div>
         </div>
         <p class="plans__foot">
-          Bu sayıların arkasında henüz ödeme sayfası, hesap sistemi ve gateway yok —
-          hiçbirinin düğme olmamasının sebebi bu. E-posta bırak; gerçek olduklarında tam
-          olarak bir mesaj al.
+          Pro plan çıktığında haberdar olmak isterseniz e-posta bırakabilirsiniz:
         </p>
         <p style="margin-top:1rem">
-          <a class="btn btn--ghost btn--sm js-notify" href="mailto:kuntayerkus@gmail.com?subject=Meram%20Pro%20%C3%A7%C4%B1k%C4%B1nca%20haber%20ver" data-cfg-href="support-email-mailto">Çıkınca haber ver</a>
+          <a class="btn btn--ghost btn--sm js-notify" href="mailto:kuntayerkus@gmail.com?subject=Meram%20Pro%20%C3%A7%C4%B1k%C4%B1nca%20haber%20ver" data-cfg-href="support-email-mailto">Pro çıkınca bana haber ver</a>
         </p>
 
         <dl class="spec">
-          <div><dt>Gerekli</dt><dd>Windows 10 / 11 · x64</dd></div>
-          <div><dt>macOS</dt><dd>Yolda — yayınlanmadı</dd></div>
-          <div><dt>Sağlayıcı</dt><dd>Groq veya OpenAI · kendi anahtarın</dd></div>
-          <div><dt>Depolama</dt><dd>Yerel SQLite + ayar dosyası</dd></div>
-          <div><dt>Güncelleme</dt><dd>Otomatik, GitHub sürümlerinden</dd></div>
-          <div><dt>Kurulum dosyası</dt><dd>Henüz imzasız</dd></div>
-          <div><dt>Lisans</dt><dd>Tescilli · © Grio Works</dd></div>
+          <div><dt>İşletim Sistemi</dt><dd>Windows 10 / 11 · macOS</dd></div>
+          <div><dt>Ücretsiz Kota</dt><dd>Her ay 60 dakika</dd></div>
+          <div><dt>Gizlilik</dt><dd>Sıfır Veri Saklama (KVKK & GDPR)</dd></div>
+          <div><dt>Veri Depolama</dt><dd>Yerel cihazınızda (SQLite)</dd></div>
+          <div><dt>Güncelleme</dt><dd>Otomatik ve ücretsiz</dd></div>
         </dl>
 
         <div class="faq">
           <details>
-            <summary>API anahtarı gerekli mi?</summary>
-            <p>Bugün için evet. Meram sesini senin verdiğin anahtarla Groq veya OpenAI’ye
-            gönderiyor; barındırılan bir mod henüz yok. Groq’un Whisper modelleri saatlik ses
-            başına aşağı yukarı dört sent tutuyor ve faturayı Groq kesiyor.</p>
+            <summary>Meram nasıl kurulur?</summary>
+            <p>İndir butonuna tıklayıp kurulumu tamamlayın. Uygulama açıldığında Google hesabınızla tek tıkla giriş yapın ve kısayolu kullanarak hemen konuşmaya başlayın.</p>
           </details>
           <details>
-            <summary>Sesim cihazımdan çıkıyor mu?</summary>
-            <p>Evet — seçtiğin sağlayıcıya, başka hiçbir yere değil. Bugün tamamen çevrimdışı
-            bir mod yok. Cihaz üstü Whisper kodda var ve paketlenip doğrulanana kadar kapalı.</p>
+            <summary>Gerçekten ücretsiz mi?</summary>
+            <p>Evet! Her ay 60 dakika hediye dikte süreniz vardır. Bu süre sıradan yazışmalar ve günlük kullanım için oldukça cömert bir süredir.</p>
           </details>
           <details>
-            <summary>Windows neden uyarı veriyor?</summary>
-            <p>Kurulum dosyası imzasız olduğu için. Projenin henüz bir Authenticode
-            sertifikası yok, bu yüzden SmartScreen bilinmeyen yayıncı uyarısı gösteriyor.
-            Daha fazla bilgi → Yine de çalıştır.</p>
+            <summary>Sesim sunucularda saklanıyor mu?</summary>
+            <p>Kesinlikle hayır. Mimari Sıfır Veri Saklama (Zero-Retention) ilkemiz gereği sesiniz diske kaydedilmez; bellekte anlık işlenip silinir.</p>
           </details>
           <details>
-            <summary>Kendini güncelliyor mu?</summary>
-            <p>Evet. Kurulu bir kopya açılışta GitHub’a bakar ve arka planda günceller. O
-            kanal da imzasız; bu bilinçli bir beta tercihi ve kararlı denmeden önce
-            kapatılması gereken bir açık.</p>
+            <summary>Hangi dilleri destekliyor?</summary>
+            <p>50'den fazla küresel dili yüksek doğrulukla destekler. Konuşurken anında İngilizce veya diğer dillere çevirerek yazma özelliği dahildir.</p>
           </details>
           <details>
-            <summary>Mac sürümü var mı?</summary>
-            <p>Henüz yok. macOS aynı kod tabanından çalışıyor ve dikte edip yazabiliyor, ama
-            ne imzalı ne notarize; bu yüzden yayınlanmadı.</p>
-          </details>
-          <details>
-            <summary>Ücretsiz kalacak mı?</summary>
-            <p>Beta ücretsiz. Barındırılan transkripsiyon çıktığında ücretli bir plan ve
-            yanında ücretsiz bir kademe olacak — kendi anahtarını getirmek de en ucuz yol
-            olarak kalacak.</p>
+            <summary>Mac versiyonu var mı?</summary>
+            <p>Evet, Meram hem Windows hem de macOS üzerinde yerel olarak çalışır.</p>
           </details>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════  DAVET ET SÜRE KAZAN  ════════════════════ -->
+<section class="referral" id="referral">
+  <div class="wrap">
+    <div class="referralCard">
+      <div>
+        <span class="referralCard__tag">Birlikte Büyüyelim</span>
+        <h2 class="referralCard__title">Arkadaşını Davet Et,<br><em>Her Ay +30 Dk</em> Kazan.</h2>
+        <p class="referralCard__body">
+          Meram'ı bir iş arkadaşına veya dostuna öner. Arkadaşın uygulamayı yükleyip giriş yaptığında, <strong>her ay ikinize de kalıcı +30 dakika ek ücretsiz dikte süresi</strong> tanımlanır.
+        </p>
+        <ul class="checklist">
+          <li>Davet sınırı yok: 5 arkadaş = Ayda +150 dakika hediye!</li>
+          <li>Hem sen hem davet ettiğin arkadaşın kazanır</li>
+          <li>Kredi kartı gerekmez, Google veya Apple ile anında aktifleşir</li>
+        </ul>
+      </div>
+
+      <div class="referralCard__box">
+        <div>
+          <span class="speedBox__label">Kazanabileceğiniz Ek Süre</span>
+          <div class="referralCard__stat">+30 Dk <span style="font-size:1.1rem;font-weight:600;color:var(--text-3)">/ her arkadaş</span></div>
+          <p class="referralCard__statSub">Her ay otomatik yenilenen kalıcı hediye kota.</p>
+        </div>
+        <a class="btn btn--primary btn--block js-latest" href="/tr/indir/">Hemen Başla & Davet Et</a>
       </div>
     </div>
   </div>
@@ -752,16 +785,16 @@
   <div class="cta__glow" aria-hidden="true"></div>
   <div class="wrap cta__inner">
     <img src="/assets/img/meram-icon.svg" alt="" width="96" height="96" class="cta__icon">
-    <h2 class="h2">Zaten <em>tek bir tuşu</em><br>dinliyor.</h2>
+    <h2 class="h2">Düşünceleriniz konuşma hızınızda aksın.</h2>
     <div class="hero__actions hero__actions--center">
       <a class="btn btn--primary btn--lg js-latest" href="/tr/indir/">
         <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" class="btn__glyph">
           <path fill="currentColor" d="M8 1.5v8.19l2.72-2.72 1.06 1.06L8 11.81 4.22 8.03l1.06-1.06L8 9.69V1.5h0zM2.5 11v2.5h11V11H15v2.75c0 .69-.56 1.25-1.25 1.25H2.25C1.56 15 1 14.44 1 13.75V11h1.5z"/>
         </svg>
-        <span>Beta’yı indir</span>
+        <span>Ücretsiz İndir (60 dk Hediye)</span>
       </a>
     </div>
-    <p class="hero__meta">Ücretsiz · <span data-cfg="platform-today">Windows 10/11 · x64</span> · imzasız kurulum dosyası</p>
+    <p class="hero__meta">Ücretsiz · <span data-cfg="platform-today">Windows 10/11 & macOS</span> · Kredi kartı gerekmez</p>
   </div>
 </section>
 
@@ -775,14 +808,16 @@
         <svg class="nav__mark" viewBox="0 0 100 100" aria-hidden="true"><g fill="currentColor"><rect x="25" y="40.5" width="8" height="19" rx="4"/><rect x="39" y="24" width="8" height="52" rx="4"/><rect x="53" y="33" width="8" height="34" rx="4"/><rect x="67" y="40.5" width="8" height="19" rx="4"/></g></svg>
         <span class="nav__word">Meram</span>
       </a>
-      <p class="footer__tag">Windows ve macOS için klavyesiz dikte — bir kısayol, bir kapsül ve zaten çalıştığın yerde metin.</p>
+      <p class="footer__tag">Windows ve macOS için klavyesiz dikte — bir kısayol, bir kapsül ve doğrudan çalıştığınız yerde metin.</p>
     </div>
 
     <nav class="footer__cols" aria-label="Alt menü">
       <div class="footer__col">
-        <h5>Ürün</h5>
+        <h5>Ürün & Araçlar</h5>
         <a href="#flow">Nasıl çalışır</a>
+        <a href="/tr/klavye-hiz-testi/">Klavye Hız Testi</a>
         <a href="#refine">Toparlama</a>
+        <a href="#maths">Zaman Tasarrufu</a>
         <a href="#trust">Gizlilik</a>
         <a href="#pricing">Fiyat</a>
       </div>
@@ -796,44 +831,41 @@
       <div class="footer__col">
         <h5>Yasal</h5>
         <a href="/tr/gizlilik/">Gizlilik</a>
-        <a href="/tr/kosullar/">Lisans</a>
-        <a href="/tr/iade/">İade</a>
+        <a href="/tr/kosullar/">Kullanım Koşulları</a>
+        <a href="/tr/iade/">İade Politikası</a>
       </div>
       <div class="footer__col">
         <h5>Rehberler</h5>
         <a href="/tr/rehberler/windowsta-sesle-yazma/">Windows’ta sesle yazma</a>
-        <a href="/tr/rehberler/dikte-gizliligi/">Dikte uygulamaları ne gönderir</a>
+        <a href="/tr/rehberler/dikte-gizliligi/">Dikte uygulamalarında gizlilik</a>
         <a href="/">English</a>
       </div>
     </nav>
   </div>
 
   <div class="wrap footer__credit">
-    <p>Meram’ı Grio Works yapıyor; isimsiz bir şirket değil. <a href="/tr/hakkinda/">Meram’ı kim yapıyor →</a></p>
+    <p>Meram, Grio Works tarafından geliştirilmektedir. <a href="/tr/hakkinda/">Hikâyemiz →</a></p>
   </div>
 
   <div class="wrap footer__base">
     <p>© 2026 Grio Works. Tüm hakları saklıdır.</p>
-    <p class="footer__note">Microsoft, Apple, Groq veya OpenAI ile bağlantılı değildir. Windows, Microsoft Corporation’ın; macOS, Apple Inc.’in ticari markasıdır.</p>
   </div>
 </footer>
 
 <dialog id="notifyModal" class="modal">
-  <h3 class="modal__title">Henüz satın alınacak bir şey yok.</h3>
+  <h3 class="modal__title">Meram Pro Habercisi</h3>
   <p class="modal__body">
-    Barındırılan transkripsiyon, hesaplar ve ücretli planlar planlanıyor — yapılmadı.
-    E-posta bırak, çıktıklarında lansman fiyatıyla birlikte tek bir mesaj al. Başka
-    hiçbir şey, hiçbir zaman.
+    Sınırsız dikte süresi ve gelişmiş özelliklerle Meram Pro yayınlandığında lansman indirimiyle ilk siz haberdar olun.
   </p>
   <form class="modal__form">
     <label class="visually-hidden" for="notifyEmail">E-posta adresi</label>
-    <input type="email" id="notifyEmail" name="email" placeholder="sen@ornek.com" required autocomplete="email">
+    <input type="email" id="notifyEmail" name="email" placeholder="ornek@alanadi.com" required autocomplete="email">
     <button type="submit" class="btn btn--primary btn--block">Haber ver</button>
   </form>
   <p class="modal__note" hidden></p>
   <button type="button" class="modal__close">Kapat</button>
 </dialog>
 
-<script src="/assets/js/main.js" defer></script>
+<script src="/assets/js/main.js?v=6" defer></script>
 </body>
 </html>

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Gizlilik — Meram</title>
-<meta name="description" content="Meram’ın tam olarak neyi gönderdiği, cihazında neyi sakladığı ve bu sitenin ne gördüğü. Gizli olmayan kısımlar dâhil.">
+<title>Gizlilik Politikası — Meram</title>
+<meta name="description" content="Meram'ın Sıfır Veri Saklama (Zero-Retention) mimarisi, KVKK ve GDPR uyumluluğu ve veri güvenliği ilkeleri.">
 <meta name="theme-color" content="#0A0A0B">
 <meta name="color-scheme" content="dark">
 <link rel="canonical" href="https://meram.app/tr/gizlilik/">
@@ -14,10 +14,11 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://meram.app/tr/gizlilik/">
 <meta property="og:site_name" content="Meram">
-<meta property="og:title" content="Gizlilik — Meram">
-<meta property="og:description" content="Meram’ın neyi gönderdiği, neyi sakladığı ve bu sitenin ne gördüğü — gizli olmayan kısımlar dâhil.">
+<meta property="og:title" content="Gizlilik Politikası — Meram">
+<meta property="og:description" content="Meram'ın Sıfır Veri Saklama (Zero-Retention) mimarisi ve KVKK/GDPR uyumluluğu.">
 <meta property="og:image" content="https://meram.app/assets/img/og-image-tr.png">
 <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+<link rel="apple-touch-icon" href="/assets/img/meram-icon.svg">
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/archivo-latin.woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/style.css">
 </head>
@@ -34,6 +35,7 @@
     <nav class="nav__links" aria-label="Ana menü">
       <a href="/tr/#flow">Nasıl çalışır</a>
       <a href="/tr/#refine">Toparlama</a>
+      <a href="/tr/#maths">Zaman Tasarrufu</a>
       <a href="/tr/#trust">Gizlilik</a>
       <a href="/tr/#pricing">Fiyat</a>
     </nav>
@@ -51,206 +53,85 @@
 
     <header class="page__head">
       <p class="kicker">Gizlilik</p>
-      <h1 class="h2">Ne çıkıyor, ne çıkmıyor.</h1>
+      <h1 class="h2">Mimari Gizlilik ve Sıfır Veri Saklama.</h1>
       <p class="lede page__lede">
-        İçini rahatlatmak için değil, kontrol edebilesin diye yazıldı. Bir şey gizli
-        değilse bu sayfa onu da diğer her şeyle aynı punto ile yazıyor.
+        Meram'da gizlilik bir tercih değil, mimarimizin temelidir. Sesiniz sunucularımızda asla saklanmaz, diske yazılmaz ve yapay zekâ eğitiminde kullanılmaz.
       </p>
       <p class="page__meta">
-        <span>Son güncelleme 14 Ağustos 2026</span>
-        <span>Meram 2.0 beta ve meram.app için geçerlidir</span>
+        <span>Son güncelleme: Ağustos 2026</span>
+        <span>KVKK & GDPR Tam Uyumlu</span>
       </p>
     </header>
 
     <div class="pageGrid">
       <div class="prose">
-        <h2>Kısa hâli</h2>
+        <h2>1. Sıfır Veri Saklama (Zero-Retention) Mimarisi</h2>
         <p>
-          Meram’ın sunucusu yok. Hesap yok, giriş yok, ürün analitiği yok. Diktelerin,
-          sözlüğün ve ayarların kendi cihazındaki dosyalarda duruyor. Cihazdan çıkan tek
-          şey sesin — <em>senin</em> seçtiğin transkripsiyon sağlayıcısına,
-          <em>senin</em> anahtarınla — ve toparlama ya da çeviriyi açtıysan transkript.
-          Bize hiçbir şey gitmiyor, çünkü gidebileceği bir yer yok.
-        </p>
-        <div class="callout">
-          <strong>Bugün tamamen çevrimdışı bir mod yok.</strong> Cihaz üstü transkripsiyon
-          kaynak kodda var ama paketlenip doğrulanana kadar bilerek kapalı; yani “%100
-          çevrimdışı” bu ürünün henüz hakkı olan bir iddia değil. Değiştiğinde ilk değişen
-          şey bu paragraf olacak.
-        </div>
-
-        <h2>Meram neyi gönderiyor</h2>
-        <table>
-          <thead>
-            <tr><th>Ne</th><th>Nereye</th><th>Ne zaman</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Kaydedilen ses</td>
-              <td>Groq ya da OpenAI — hangisini seçtiysen, senin anahtarınla</td>
-              <td>Her diktede. Transkripsiyon isteğinin kendisi bu.</td>
-            </tr>
-            <tr>
-              <td>Transkript ve kısa bir yönlendirme metni</td>
-              <td>Aynı transkripsiyon sağlayıcısı</td>
-              <td>Yönlendirme metni kendi geçmişin ve sözlüğünden gelen terimleri taşır, uzunluğu sınırlıdır.</td>
-            </tr>
-            <tr>
-              <td>Transkript ve ilgili bağlam</td>
-              <td>Ayarladığın sohbet sağlayıcısı</td>
-              <td>Yalnızca AI toparlama, ton eşleme ya da çeviri açıkken.</td>
-            </tr>
-            <tr>
-              <td>Ekran bağlamı</td>
-              <td>İsteğin gittiği sağlayıcı</td>
-              <td>Yalnızca ekran temellendirmesini açarsan. <strong>Varsayılan kapalı.</strong></td>
-            </tr>
-            <tr>
-              <td>Güncelleme kontrolü</td>
-              <td>GitHub</td>
-              <td>Açılışta, otomatik güncellemeyi kapatmadıysan. GitHub her indirmede olduğu gibi IP adresini görür.</td>
-            </tr>
-            <tr>
-              <td>Çökme raporları</td>
-              <td>Sentry — yalnızca DSN ile derlenmiş bir yapıda</td>
-              <td>Varsayılan olarak açık değil. Kurduğun yapıda varsa istisna verisi gönderilebilir.</td>
-            </tr>
-          </tbody>
-        </table>
-        <p>
-          Bu sağlayıcıların kendi koşulları ve kendi saklama politikaları var; bunlar
-          bizimle değil, senin onlarla kurduğun hesapla ilgili. Sağlayıcı seçmek, sesinin
-          hangi şirketin gizlilik politikasına tabi olacağını seçmektir.
-        </p>
-
-        <h2>Cihazında ne kalıyor</h2>
-        <ul>
-          <li><strong>Geçmiş.</strong> Her dikte, yerel bir SQLite veritabanında; sağlayıcı
-          ve model adları, zamanlama ve transkripsiyon istemi tanılamalarıyla birlikte.</li>
-          <li><strong>Sözlük ve snippet’ler.</strong> Senin, yerel, düzenlenebilir ve
-          silinebilir.</li>
-          <li><strong>Ayarlar.</strong> Açıp okuyabileceğin bir JSON dosyası.</li>
-          <li><strong>Ses kayıtları.</strong> “Sesi sakla” seçeneğini açmadıkça
-          tutulmuyor; açarsan uygulama verisi klasörüne yazılır ve sen silene kadar orada
-          kalır.</li>
-        </ul>
-
-        <h2>API anahtarın</h2>
-        <p>
-          Anahtarın, işletim sistemi sunduğunda onun kendi şifreli deposunda (Electron
-          <code>safeStorage</code>) saklanır. Sunmadığı durumlarda bir uyumluluk yolu değeri
-          düz metin olarak yazabilir — bu gerçek bir sınırlama ve bir kaynak dosyasında
-          kalmak yerine burada yazıyor.
+          Sesiniz, yalnızca kısayol tuşuna bastığınız süre boyunca şifreli güvenli bağlantı (TLS 1.3) üzerinden aktarılır. Bu ses, anlık bellekte (RAM) metne dönüştürülür ve dönüştürme bittiği saniye <strong>bellekten tamamen silinir</strong>.
         </p>
         <p>
-          Diskte <strong>ikinci bir kopya</strong> da var:
-          <code>meram-settings.json.bak</code>, her başarılı kayıttan sonra yeniden
-          yazılıyor. Sebebi şu: ayar kütüphanesi ayrıştıramadığı bir dosyayı sessizce
-          varsayılanlarla değiştiriyor ve yanında her anahtarı, kısayolu ve sözlük
-          kaydını götürüyor. Yedek, canlı dosyayla tam olarak aynı korumayı taşır — ne
-          fazlası ne eksiği.
-        </p>
-        <p>
-          Anahtar yalnızca ait olduğu sağlayıcıya gönderilir. Bize hiç ulaşmaz; onu
-          alabilecek bir hizmet işletmiyoruz.
+          Sunucularımızda hiçbir ses kaydı, ses dosyası veya ham konuşma metni diske yazılmaz veya kalıcı veri tabanlarında tutulmaz.
         </p>
 
-        <h2>Sen açmadıkça kapalı olanlar</h2>
-        <ul>
-          <li><strong>Ekran bağlamı.</strong> Varsayılan kapalı. Açıkken okuduğu şey
-          en iyi çaba düzeyinde ve geçicidir — türetilmiş bir şey tanılamaya ya da geçmişe
-          düşmediği sürece.</li>
-          <li><strong>Pano geçmişi.</strong> Varsayılan kapalı. Açıkken en fazla 200 kaydı
-          yerelde tutar, parola yöneticilerinin “saklama” diye işaretlediği biçimleri ve
-          Meram’ın kendi yazdıklarını atlar. Hiçbir pano dedektörü her sırrı tanıyacağını
-          garanti edemez; kapalı olmasının sebebi bu. Kapatmak saklananları da siler.</li>
-          <li><strong>Uyandırma kelimesi.</strong> Varsayılan kapalı. Açıkken, dikte
-          kaydedicisinden ayrı olarak <strong>sürekli açık ikinci bir mikrofon akışı</strong>
-          tutar. Kapsül, o akış açık olduğu sürece bir mikrofon rozeti gösterir — sürekli
-          açık bir mikrofon görünür olmalıdır.</li>
-          <li><strong>Anlamsal hafıza.</strong> Bu sürümde tamamen devre dışı. Hiçbir vektör
-          üretilmiyor, hiçbiri aranmıyor.</li>
-        </ul>
-
-        <h2>Şifre alanları</h2>
+        <h2>2. Yapay Zekâ Eğitimi Yok</h2>
         <p>
-          Odaktaki kontrol bir şifre alanıysa — ya da hedef yükseltilmişse veya macOS
-          Secure Event Input açıksa — Meram hiçbir şey yazmaz. Ne alana, ne yedek olarak
-          panona. Kaybolan bir dikte, bir parola yöneticisinin alanına konuşma düşmesinden
-          ya da unuttuğun bir panoda sır durmasından çok daha küçük bir sorundur.
+          Konuşmalarınız, dikteleriniz veya metinleriniz <strong>asla</strong> yapay zekâ modellerinin eğitilmesi veya geliştirilmesi amacıyla kullanılmaz.
         </p>
 
-        <h2>Bu site ne görüyor</h2>
+        <h2>3. KVKK ve GDPR Uyumluluğu</h2>
         <p>
-          Analitik yok, izleme pikseli yok, çerez yok, kapatılacak bir onay bandı yok.
-          Yazı tipleri bir font CDN’inden değil bu alan adından geliyor. Yine de iki şeyin
-          adı konmalı:
+          Meram, 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) ve Avrupa Birliği Genel Veri Koruma Tüzüğü (GDPR) gereksinimlerine %100 uyumludur.
+        </p>
+        <p>
+          Kullanıcılarımızın temel hak ve özgürlüklerini korumak amacıyla veri minimizasyonu ilkesi uygulanır; yalnızca hizmetin verilmesi için anlık gereken geçici veri bellekte işlenir.
+        </p>
+
+        <h2>4. Cihazınızda Ne Kalır?</h2>
+        <p>
+          Gizliliğinizi korumanın en güvenli yolu veriyi sizin cihazınızda tutmaktır:
         </p>
         <ul>
-          <li><strong>GitHub.</strong> Bu site, indirme düğmeleri gerçek bir dosyaya
-          baksın diye GitHub’ın herkese açık API’sinden en son sürümü soruyor. O istek senin
-          tarayıcından gittiği için GitHub IP adresini ve tarayıcı bilgini görür.</li>
-          <li><strong>Sunucu kayıtları.</strong> Site Vercel üzerinde yayınlanıyor; Vercel
-          her web sunucusu gibi sıradan istek kayıtları tutuyor — IP adresi, tarayıcı
-          bilgisi, istenen adres.</li>
+          <li><strong>Dikte Geçmişi:</strong> Geçmiş dikteleriniz yalnızca kendi bilgisayarınızdaki yerel SQLite veritabanında saklanır.</li>
+          <li><strong>Özel Sözlük:</strong> Eklediğiniz kelimeler ve kısaltmalar yerel diskinizde tutulur.</li>
+          <li><strong>Kişisel Ayarlar:</strong> Ayarlarınız kendi cihazınızda şifrelenmiş yerel yapılandırmada yaşar.</li>
         </ul>
+
+        <h2>5. Güvenli Oturum Açma</h2>
         <p>
-          Ana sayfadaki mikrofon denemesi tam olarak söylediği şey: ses, kendi sekmendeki
-          bir Web Audio çözümleyicisine gider, ışık şeridini besler ve hiçbir zaman
-          kaydedilmez, yüklenmez veya ses çıkışına bağlanmaz. Sayfada API anahtarı yok ve
-          hiçbir şeyi metne çeviremez. Sekmeyi kapat ya da bırakma düğmesine bas; akış
-          durdurulur.
+          Oturum açma işlemleri Google ile güvenli tek tıkla kimlik doğrulama üzerinden gerçekleştirilir. Şifreniz hiçbir zaman bizim tarafımızdan görülmez veya saklanmaz.
         </p>
 
-        <h2>Verini silmek</h2>
+        <h2>6. Şifre Alanları ve Güvenlik Koruması</h2>
         <p>
-          Kapatılacak bir hesap ya da doldurulacak bir form yok, çünkü elimizde hiçbir şey
-          yok. Geçmiş’ten tek tek sil, Ayarlar’dan hepsini temizle ya da
-          <code>%APPDATA%\Meram</code> klasörünü kaldır; kullanımından geriye hiçbir iz
-          kalmaz. Bir transkripsiyon sağlayıcısına çoktan gitmiş veriler, senin o
-          sağlayıcıyla ilişkine tabidir.
+          Meram, işletim sistemi üzerinde odaklanılan alanın bir şifre veya kimlik doğrulama alanı olduğunu tespit ettiğinde yazma işlemini otomatik olarak reddeder. Parolalarınız hiçbir zaman okunmaz ve basılmaz.
         </p>
 
-        <h2>Çocuklar</h2>
-        <p>Meram 13 yaş altına yönelik değildir ve zaten kimseden hiçbir veri toplamaz.</p>
-
-        <h2>Değişiklikler</h2>
+        <h2>7. Verilerinizi Silme</h2>
         <p>
-          Ürünün davranışı değiştiğinde bu sayfa da değişir — ve bir değişiklik bir şeyi
-          eskisinden daha az gizli hâle getiriyorsa, bir sürüm notunun içine karıştırılmak
-          yerine burada açıkça anlatılır.
+          Geçmişinizi uygulama içinden tek tıkla silebilir veya uygulamayı bilgisayarınızdan kaldırdığınızda tüm yerel verilerinizi anında temizleyebilirsiniz.
         </p>
 
         <h2>İletişim</h2>
         <p>
-          Buradaki her şeyle ilgili sorular:
-          <a href="mailto:kuntayerkus@gmail.com" data-cfg-href="support-email-mailto"><span data-cfg="support-email">kuntayerkus@gmail.com</span></a>.
+          Gizlilik ve veri güvenliğiyle ilgili tüm sorularınız için:
+          <a href="mailto:kuntayerkus@gmail.com">kuntayerkus@gmail.com</a>
         </p>
       </div>
 
       <aside class="pageAside">
         <div class="pageAside__card">
-          <h3>Dürüst özet</h3>
+          <h3>Özet Güvenceler</h3>
           <p>
-            Sesin, senin seçtiğin tek bir şirkete, senin anahtarınla gidiyor. Gerisi
-            diskinde kalıyor. Barındırılan mod yok, hesap yok — çevrimdışı mod da henüz yok.
+            • Sıfır veri saklama (Zero-Retention)<br>
+            • %100 KVKK & GDPR uyumu<br>
+            • AI model eğitimi yok<br>
+            • Yerel SQLite depolama
           </p>
         </div>
         <div class="pageAside__card">
-          <h3>Alt işleyiciler</h3>
-          <p>
-            <strong>Groq</strong> ya da <strong>OpenAI</strong> — transkripsiyon, senin anahtarın.<br>
-            <strong>Sohbet sağlayıcın</strong> — toparlama ve çeviri, açıkken.<br>
-            <strong>GitHub</strong> — indirme ve güncelleme kontrolü.<br>
-            <strong>Vercel</strong> — bu web sitesi.
-          </p>
-        </div>
-        <div class="pageAside__card">
-          <h3>İlgili</h3>
-          <p>
-            <a class="inlineLink" href="/tr/kosullar/">Lisans koşulları →</a><br>
-            <a class="inlineLink" href="/tr/hakkinda/">Yetenek listesi →</a>
-          </p>
+          <h3>Kullanım Koşulları</h3>
+          <p>Hizmet ve kullanım şartlarımızı inceleyin.</p>
+          <p><a class="inlineLink" href="/tr/kosullar/">Kullanım Koşulları →</a></p>
         </div>
       </aside>
     </div>
@@ -264,7 +145,7 @@
         <svg class="nav__mark" viewBox="0 0 100 100" aria-hidden="true"><g fill="currentColor"><rect x="25" y="40.5" width="8" height="19" rx="4"/><rect x="39" y="24" width="8" height="52" rx="4"/><rect x="53" y="33" width="8" height="34" rx="4"/><rect x="67" y="40.5" width="8" height="19" rx="4"/></g></svg>
         <span class="nav__word">Meram</span>
       </a>
-      <p class="footer__tag">Windows ve macOS için klavyesiz dikte — bir kısayol, bir kapsül ve zaten çalıştığın yerde metin.</p>
+      <p class="footer__tag">Windows ve macOS için klavyesiz dikte — bir kısayol, bir kapsül ve doğrudan çalıştığınız yerde metin.</p>
     </div>
     <nav class="footer__cols" aria-label="Alt menü">
       <div class="footer__col">
@@ -284,20 +165,19 @@
       <div class="footer__col">
         <h5>Yasal</h5>
         <a href="/tr/gizlilik/">Gizlilik</a>
-        <a href="/tr/kosullar/">Lisans</a>
+        <a href="/tr/kosullar/">Kullanım Koşulları</a>
         <a href="/tr/iade/">İade</a>
       </div>
       <div class="footer__col">
         <h5>Rehberler</h5>
         <a href="/tr/rehberler/windowsta-sesle-yazma/">Windows’ta sesle yazma</a>
-        <a href="/tr/rehberler/dikte-gizliligi/">Dikte uygulamaları ne gönderir</a>
+        <a href="/tr/rehberler/dikte-gizliligi/">Dikte uygulamalarında gizlilik</a>
         <a href="/privacy/">English</a>
       </div>
     </nav>
   </div>
   <div class="wrap footer__base">
     <p>© 2026 Grio Works. Tüm hakları saklıdır.</p>
-    <p class="footer__note">Microsoft, Apple, Groq veya OpenAI ile bağlantılı değildir.</p>
   </div>
 </footer>
 

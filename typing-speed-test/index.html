@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Typing Speed Test (WPM) — Test Your Words Per Minute Live | Meram</title>
+<meta name="description" content="Free online typing speed test. Measure your words per minute (WPM), accuracy, and keystrokes (CPM) live. Discover how much time AI voice dictation saves over typing.">
+<meta name="keywords" content="typing speed test, wpm test, words per minute, typing test online, keyboard speed test, typing practice, voice typing, ai dictation">
+<meta name="theme-color" content="#0A0A0B">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://meram.app/typing-speed-test/">
+<link rel="alternate" hreflang="en" href="https://meram.app/typing-speed-test/">
+<link rel="alternate" hreflang="tr" href="https://meram.app/tr/klavye-hiz-testi/">
+<link rel="alternate" hreflang="x-default" href="https://meram.app/typing-speed-test/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://meram.app/typing-speed-test/">
+<meta property="og:site_name" content="Meram">
+<meta property="og:title" content="Typing Speed Test (WPM) — Test Your Words Per Minute Live">
+<meta property="og:description" content="Free live typing speed test. Measure your WPM, accuracy, and typing speed in seconds.">
+<meta property="og:image" content="https://meram.app/assets/img/og-image-en.png">
+<link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+<link rel="apple-touch-icon" href="/assets/img/meram-icon.svg">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/archivo-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__brand" href="/" aria-label="Meram home">
+      <svg class="nav__mark" viewBox="0 0 100 100" aria-hidden="true"><g fill="currentColor"><rect x="25" y="40.5" width="8" height="19" rx="4"/><rect x="39" y="24" width="8" height="52" rx="4"/><rect x="53" y="33" width="8" height="34" rx="4"/><rect x="67" y="40.5" width="8" height="19" rx="4"/></g></svg>
+      <span class="nav__word">Meram</span>
+    </a>
+    <nav class="nav__links" aria-label="Main menu">
+      <a href="/#flow">How it works</a>
+      <a href="/#refine">Refinement</a>
+      <a href="/#maths">Time Saved</a>
+      <a href="/typing-speed-test/" aria-current="page" style="color:var(--text);font-weight:600">Speed Test</a>
+      <a href="/#pricing">Pricing</a>
+    </nav>
+    <div class="langs" role="group" aria-label="Language">
+      <a href="/typing-speed-test/" aria-current="true" hreflang="en">EN</a>
+      <a href="/tr/klavye-hiz-testi/" hreflang="tr">TR</a>
+    </div>
+    <a class="btn btn--sm btn--primary nav__cta js-latest" href="/download/"><span>Download Free</span></a>
+  </div>
+</header>
+
+<main id="main" class="page">
+  <div class="wrap">
+    <a class="page__crumb" href="/">← Meram</a>
+
+    <header class="page__head" style="text-align:center;max-width:46rem;margin-inline:auto;">
+      <p class="kicker">Free Online Tool</p>
+      <h1 class="h2" style="font-size:clamp(2rem, 4.5vw, 3.2rem);">Typing Speed Test</h1>
+      <p class="lede page__lede" style="margin-inline:auto;">
+        Test your words per minute (WPM) in real time. See character-by-character errors and calculate how many hours you could save with AI voice typing.
+      </p>
+    </header>
+
+    <!-- ══════════════════════  INTERACTIVE SPEED TEST WIDGET  ═════════════════════ -->
+    <div class="speedTest" id="speedTestWidget" style="max-width:54rem;margin:0 auto 3.5rem;">
+      <div class="speedTest__head">
+        <div style="display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;">
+          <span class="speedTest__title">Live Typing Speed Test</span>
+          <span class="speedTest__badge">Live Timer</span>
+        </div>
+        
+        <!-- Sentence chips -->
+        <div class="chips" style="margin:0;">
+          <button type="button" class="chip is-on js-speed-chip" data-text="I speak my thoughts instead of typing on a keyboard.">Short (10 Words)</button>
+          <button type="button" class="chip js-speed-chip" data-text="Drafting endless emails and messages by hand takes hours of unnecessary keyboard effort every day.">Medium (16 Words)</button>
+          <button type="button" class="chip js-speed-chip" data-text="While an average person types forty words per minute on a physical keyboard, AI voice typing lets you flow naturally at over one hundred and forty words per minute.">Long (28 Words)</button>
+        </div>
+      </div>
+      
+      <p class="body body--sm" style="margin-bottom:.8rem;color:var(--text-3)">
+        Click the input box below and start typing. The test completes automatically once finished:
+      </p>
+
+      <div class="speedTest__prompt" id="speedPrompt" data-text="I speak my thoughts instead of typing on a keyboard.">
+        I speak my thoughts instead of typing on a keyboard.
+      </div>
+
+      <div class="speedTest__inputWrap">
+        <input type="text" class="speedTest__input" id="speedInput" placeholder="Click here and start typing..." autocomplete="off" spellcheck="false" autofocus>
+        <button type="button" class="speedTest__btnFinish" id="speedFinish">Finish Test</button>
+      </div>
+
+      <div class="speedTest__results" style="grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));">
+        <div class="speedBox">
+          <span class="speedBox__label">Typing Time</span>
+          <span class="speedBox__val" id="speedKbTime">—</span>
+          <span class="speedBox__sub">Elapsed Time</span>
+        </div>
+        <div class="speedBox">
+          <span class="speedBox__label">Typing Speed</span>
+          <span class="speedBox__val" id="speedKbWpm">0 WPM</span>
+          <span class="speedBox__sub" id="speedKbCpm">0 CPM</span>
+        </div>
+        <div class="speedBox">
+          <span class="speedBox__label">Accuracy</span>
+          <span class="speedBox__val" id="speedKbAcc">%100</span>
+          <span class="speedBox__sub">Precision</span>
+        </div>
+        <div class="speedBox speedBox--voice">
+          <span class="speedBox__label">Meram Voice Typing</span>
+          <span class="speedBox__val" id="speedVoiceTime">1.8s</span>
+          <span class="speedBox__sub" id="speedMultiplier">140 WPM (3.5x)</span>
+        </div>
+      </div>
+
+      <div class="speedTest__foot">
+        <span>Speaking is on average <strong>3.5x faster</strong> than manual keyboard typing.</span>
+        <button type="button" class="speedTest__reset" id="speedReset">Reset / Try Again</button>
+      </div>
+    </div>
+
+    <!-- ══════════════════════  CTA BANNER  ═════════════════════ -->
+    <div style="background:linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.02));border:1px solid var(--edge-light);border-radius:var(--r-xl);padding:clamp(2rem, 4vw, 3rem);margin-bottom:clamp(3rem, 6vw, 4.5rem);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem;">
+      <div style="max-width:32rem;">
+        <span class="eyebrow" style="margin-bottom:.6rem;">Eliminate Keyboard Fatigue</span>
+        <h2 class="h2" style="font-size:clamp(1.4rem, 2.5vw, 1.8rem);margin-bottom:.5rem;">Typing at 40 WPM?</h2>
+        <p class="body" style="font-size:.95rem;">
+          Speak your mind naturally. Meram cleans filler words, fixes punctuation, and types at <strong>140+ WPM</strong> directly into Slack, Notion, Word, or any desktop app.
+        </p>
+      </div>
+      <div>
+        <a class="btn btn--primary btn--lg js-latest" href="/download/">
+          <span>Download Free (60 min/mo included)</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ══════════════════════  SEO GUIDE & KNOWLEDGE  ═════════════════════ -->
+    <div class="pageGrid">
+      <div class="prose">
+        <h2>What is WPM (Words Per Minute)?</h2>
+        <p>
+          <strong>Words Per Minute (WPM)</strong> is the standardized metric used globally to measure typing speed. In standard typographical calculations, <strong>1 word equals 5 characters</strong> (including spaces and punctuation).
+        </p>
+        <p>
+          For instance, typing 250 characters in 1 minute calculates to exactly <strong>50 WPM</strong>.
+        </p>
+
+        <h2>Average Typing Speed Benchmarks</h2>
+        <div style="overflow-x:auto;margin-bottom:1.5rem;">
+          <table>
+            <thead>
+              <tr>
+                <th>Level</th>
+                <th>WPM Range</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Beginner</strong></td>
+                <td>20 – 35 WPM</td>
+                <td>Sight-typists and casual computer users.</td>
+              </tr>
+              <tr>
+                <td><strong>Average</strong></td>
+                <td>35 – 50 WPM</td>
+                <td>Typical knowledge workers and office professionals.</td>
+              </tr>
+              <tr>
+                <td><strong>Advanced</strong></td>
+                <td>50 – 70 WPM</td>
+                <td>Touch-typists, coders, and professional writers.</td>
+              </tr>
+              <tr>
+                <td><strong>Elite / Typist</strong></td>
+                <td>70 – 100+ WPM</td>
+                <td>Professional transcriptionists and stenographers.</td>
+              </tr>
+              <tr style="background:rgba(255,255,255,.07);">
+                <td><strong>Meram (AI Voice Typing)</strong></td>
+                <td><strong>130 – 160 WPM</strong></td>
+                <td><strong>Zero keyboard fatigue, natural human speech speed.</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>How to Improve Your Typing Speed</h2>
+        <ul>
+          <li><strong>Proper Finger Placement:</strong> Keep your index fingers anchored on the home row bumps (F and J keys).</li>
+          <li><strong>Never Look Down:</strong> Keep your eyes locked on the monitor to build genuine muscular muscle memory.</li>
+          <li><strong>Prioritize Accuracy Over Speed:</strong> Reaching for Backspace to correct typos creates the biggest speed penalty. Aim for 95%+ accuracy first.</li>
+          <li><strong>The Modern Alternative — Voice Typing:</strong> Bypass physical keyboard bottlenecks altogether with native AI dictation software (Meram).</li>
+        </ul>
+
+        <h2>Why Speaking is 3.5x Faster Than Typing</h2>
+        <p>
+          The human vocal tract and brain evolved over hundreds of thousands of years for fluid, instant articulation. We naturally speak at 130–160 words per minute with zero physical strain.
+        </p>
+        <p>
+          Keyboards, by contrast, rely on the 1870s QWERTY mechanical typewriter layout designed specifically to slow typists down to avoid jamming mechanical arms. Meram breaks this 150-year bottleneck so you write at the speed of thought.
+        </p>
+
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq" style="margin-top:1.5rem;">
+          <details>
+            <summary>Is this typing speed test completely free?</summary>
+            <p>Yes, the Meram Typing Speed Test is 100% free with no sign-up required.</p>
+          </details>
+          <details>
+            <summary>What is the difference between CPM and WPM?</summary>
+            <p><strong>WPM (Words Per Minute)</strong> calculates standard 5-character words per minute, while <strong>CPM (Characters Per Minute)</strong> measures raw individual keystrokes per minute. Typically, 1 WPM = 5 CPM.</p>
+          </details>
+          <details>
+            <summary>What is Meram and how does it compare?</summary>
+            <p>Meram is a native desktop AI voice typing app for Windows and macOS. Instead of typing 40 words per minute by hand, you hold a shortcut and speak at 140+ WPM directly into any app (Slack, Word, Gmail, Notion).</p>
+          </details>
+        </div>
+      </div>
+
+      <aside class="pageAside">
+        <div class="pageAside__card">
+          <h3>Try Meram Free</h3>
+          <p>
+            60 free minutes every month. No credit card required. 10-second setup.
+          </p>
+          <p><a class="btn btn--primary btn--block btn--sm js-latest" href="/download/">Download Free →</a></p>
+        </div>
+        <div class="pageAside__card">
+          <h3>Calculate Time Saved</h3>
+          <p>See how many hours you save each week based on your daily word output.</p>
+          <p><a class="inlineLink" href="/#maths">Time Saved Calculator →</a></p>
+        </div>
+        <div class="pageAside__card">
+          <h3>Zero-Retention Privacy</h3>
+          <p>Audio is streamed in memory and immediately deleted. 100% GDPR compliant.</p>
+          <p><a class="inlineLink" href="/privacy/">Privacy Policy →</a></p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<!-- ══════════════════════════  FOOTER  ═══════════════════════════ -->
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div class="footer__brand">
+      <a class="nav__brand" href="/" aria-label="Meram home">
+        <svg class="nav__mark" viewBox="0 0 100 100" aria-hidden="true"><g fill="currentColor"><rect x="25" y="40.5" width="8" height="19" rx="4"/><rect x="39" y="24" width="8" height="52" rx="4"/><rect x="53" y="33" width="8" height="34" rx="4"/><rect x="67" y="40.5" width="8" height="19" rx="4"/></g></svg>
+        <span class="nav__word">Meram</span>
+      </a>
+      <p class="footer__tag">Keyboardless dictation for Windows and macOS — one shortcut, one capsule, text landed where you were.</p>
+    </div>
+
+    <nav class="footer__cols" aria-label="Footer navigation">
+      <div class="footer__col">
+        <h5>Product & Tools</h5>
+        <a href="/#flow">How it works</a>
+        <a href="/typing-speed-test/">Typing Speed Test</a>
+        <a href="/#refine">Refinement</a>
+        <a href="/#maths">Time Saved</a>
+        <a href="/#pricing">Pricing</a>
+      </div>
+      <div class="footer__col">
+        <h5>Support</h5>
+        <a href="/download/">Download</a>
+        <a href="/changelog/">Changelog</a>
+        <a href="/contact/">Contact</a>
+        <a href="/about/">About</a>
+      </div>
+      <div class="footer__col">
+        <h5>Legal</h5>
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <a href="/refunds/">Refunds</a>
+      </div>
+      <div class="footer__col">
+        <h5>Guides</h5>
+        <a href="/guides/voice-typing-windows/">Voice typing on Windows</a>
+        <a href="/guides/dictation-privacy/">Dictation privacy</a>
+        <a href="/tr/klavye-hiz-testi/">Türkçe Araç</a>
+      </div>
+    </nav>
+  </div>
+
+  <div class="wrap footer__credit">
+    <p>Meram is built by Grio Works. <a href="/about/">Our story →</a></p>
+  </div>
+
+  <div class="wrap footer__base">
+    <p>© 2026 Grio Works. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/main.js?v=6" defer></script>
+</body>
+</html>

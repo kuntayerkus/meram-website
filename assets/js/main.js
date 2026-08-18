@@ -29,7 +29,13 @@
     const t = clamp((x - e0) / (e1 - e0));
     return t * t * (3 - 2 * t);
   };
+  const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   const LANG = (document.documentElement.lang || 'en').toLowerCase().startsWith('tr') ? 'tr' : 'en';
+
+  /* ══════════════════════  0. CONFIG  ═══════════════════════════════════
+     The one place the release facts live. Every price, requirement and
+     download link on the site renders from this. The static HTML carries the
+     same values inline as a no-JS fallback — keep the two in sync. */
 
   /* ══════════════════════  0. CONFIG  ═══════════════════════════════════
      The one place the release facts live. Every price, requirement and
@@ -44,7 +50,8 @@
     /* Today */
     BETA: true,
     PRICE_TODAY: 0,
-    PLATFORM_TODAY: 'Windows 10/11 · x64',
+    FREE_MINUTES_MONTHLY: 60,
+    PLATFORM_TODAY: 'Windows 10/11 & macOS',
     SIGNED: false,                 // no Authenticode certificate exists yet
 
     /* Planned — shown only under a heading that says "planned", never as a
@@ -52,7 +59,6 @@
     PURCHASE_ENABLED: false,
     CHECKOUT_URL: '',
     PLAN_PRO_MONTHLY: 10,
-    PLAN_BYOK_MONTHLY: 4,
     TRIAL_DAYS: 14,
 
     /* The dial's assumptions, in one place so they can be argued with. */
@@ -62,28 +68,28 @@
 
   const I18N = {
     en: {
-      ready: 'Ready', listening: 'Listening', thinking: 'Thinking',
+      ready: 'Ready', listening: 'Listening', thinking: 'Polishing',
       done: 'Done', error: 'Not heard', copy: 'Copy',
       speak: 'Hold to speak', speakRelease: 'Release to finish',
       micOn: 'Use my microphone', micOff: 'Release microphone',
-      micDenied: 'Microphone declined — running the scripted take instead.',
-      micFail: 'No microphone available — running the scripted take instead.',
+      micDenied: 'Microphone declined — running the demo take instead.',
+      micFail: 'No microphone available — running the demo take instead.',
       micLive: 'Live: the thread is reading your voice in this tab. Nothing is recorded, nothing is sent.',
-      typed: 'Meram lands the finished text in the field you were already in — no window switch, no paste.',
+      typed: 'Meram lands the finished text directly in whatever app you were already in — no window switch, no copy-paste.',
       /* The example dictation. Deliberately messy, the way real speech is. */
-      raw: 'um so about the deploy, like, today I wrote a worker on cloud flare and uh the p95 latency stayed under forty milliseconds, um I will wire up the paddle webhook tomorrow',
+      raw: 'um so about the design update, like, today we polished the mobile view and uh the load time dropped under half a second, um I will share the preview link in Slack tomorrow',
       fillers: 'um+|uh+|er+|like|you know|i mean|sort of|kind of|basically|actually',
-      dict: [['cloud flare', 'Cloudflare'], ['paddle', 'Paddle'], ['p95', 'p95']],
+      dict: [['slack', 'Slack'], ['preview link', 'preview link']],
       tones: {
-        neutral: 'About the deploy: today I wrote a Worker on Cloudflare and the p95 latency stayed under 40 ms. I will wire up the Paddle webhook tomorrow.',
-        formal: 'Regarding the deployment: I implemented a Worker on Cloudflare today, and p95 latency remained below 40 ms. I will complete the Paddle webhook integration tomorrow.',
-        casual: 'Wrote a Worker on Cloudflare today — p95 latency stayed under 40 ms. I will hook up the Paddle webhook tomorrow.',
-        bullets: '• Wrote a Worker on Cloudflare\n• p95 latency under 40 ms\n• Paddle webhook to be wired up tomorrow'
+        neutral: 'About the design update: today we polished the mobile view and the load time dropped under 0.5s. I will share the preview link in Slack tomorrow.',
+        formal: 'Regarding the design update: the mobile interface was refined today, reducing load times to under 0.5 seconds. I will distribute the preview link tomorrow.',
+        casual: 'Polished the mobile view today — load times dropped under half a second! Dropping the link in Slack tomorrow.',
+        bullets: '• Polished mobile interface\n• Load times under 0.5s\n• Preview link to be shared in Slack tomorrow'
       },
       toneNames: { neutral: 'Neutral', formal: 'Formal', casual: 'Casual', bullets: 'Bullet points' },
       metaWords: (a, b) => `${a} words → ${b} words`,
-      metaFill: (n) => `${n} disfluenc${n === 1 ? 'y' : 'ies'} removed`,
-      metaDict: (n) => `${n} dictionary term${n === 1 ? '' : 's'} applied`,
+      metaFill: (n) => `${n} filler${n === 1 ? '' : 's'} removed`,
+      metaDict: (n) => `${n} term${n === 1 ? '' : 's'} formatted`,
       perDay: 'a day', perWeek: 'a week', perYear: 'a year',
       minutes: (n) => `${n} min`, hours: (n) => `${n} h`,
       dialOut: (m) => `${m} minutes a day`,
@@ -94,27 +100,27 @@
       locale: 'en-US'
     },
     tr: {
-      ready: 'Hazır', listening: 'Dinliyor', thinking: 'Düşünüyor',
+      ready: 'Hazır', listening: 'Dinliyor', thinking: 'Toparlıyor',
       done: 'Tamam', error: 'Duyulmadı', copy: 'Kopyala',
       speak: 'Basılı tut, konuş', speakRelease: 'Bitirmek için bırak',
       micOn: 'Mikrofonumu kullan', micOff: 'Mikrofonu bırak',
       micDenied: 'Mikrofon reddedildi — kayıtlı örnek oynatılıyor.',
       micFail: 'Mikrofon bulunamadı — kayıtlı örnek oynatılıyor.',
       micLive: 'Canlı: ışık şeridi sesini bu sekmede okuyor. Hiçbir şey kaydedilmiyor, hiçbir yere gönderilmiyor.',
-      typed: 'Meram bitmiş metni zaten içinde olduğun alana bırakır — pencere değiştirmeden, yapıştırmadan.',
-      raw: 'ııı şu deploy konusunda, yani, bugün cloud flare üzerinde bir worker yazdım ve şey, p95 gecikme kırk milisaniyenin altında kaldı, ııı yarın da paddle webhook’unu bağlarım',
+      typed: 'Meram pürüzsüz metni doğrudan çalıştığın uygulamaya bırakır — pencere değiştirmeden, kopyala-yapıştır yapmadan.',
+      raw: 'ııı şu tasarım güncellemesi konusunda, yani, bugün mobil arayüzü toparladık ve şey, sayfa açılış hızı yarım saniyenin altına indi, ııı yarın slack üzerinden önizleme linkini paylaşırım',
       fillers: 'ıı+ı*|ee+e*|şey|yani|hani|işte|falan|filan',
-      dict: [['cloud flare', 'Cloudflare'], ['paddle', 'Paddle'], ['p95', 'p95']],
+      dict: [['slack', 'Slack'], ['mobil arayüz', 'mobil arayüz']],
       tones: {
-        neutral: 'Deploy konusunda: bugün Cloudflare üzerinde bir Worker yazdım ve p95 gecikme 40 ms’nin altında kaldı. Yarın Paddle webhook’unu bağlayacağım.',
-        formal: 'Deploy süreciyle ilgili olarak bugün Cloudflare üzerinde bir Worker geliştirdim; p95 gecikme 40 ms’nin altında kaldı. Paddle webhook entegrasyonunu yarın tamamlayacağım.',
-        casual: 'Bugün Cloudflare’de bir Worker yazdım, p95 gecikme 40 ms’nin altında kaldı. Paddle webhook’unu da yarın bağlarım.',
-        bullets: '• Cloudflare üzerinde bir Worker yazıldı\n• p95 gecikme 40 ms’nin altında\n• Paddle webhook’u yarın bağlanacak'
+        neutral: 'Tasarım güncellemesi konusunda: bugün mobil arayüzü toparladık ve sayfa açılış hızı 0.5 saniyenin altına indi. Yarın Slack üzerinden önizleme linkini paylaşacağım.',
+        formal: 'Tasarım güncellemesine ilişkin olarak bugün mobil arayüz optimizasyonu tamamlanmış ve açılış süresi 0.5 saniyenin altına düşürülmüştür. Önizleme bağlantısını yarın ileteceğim.',
+        casual: 'Mobil arayüzü toparladık bugün, açılış hızı yarım saniyenin altına indi! Yarın Slack’ten linki atarım.',
+        bullets: '• Mobil arayüz optimizasyonu tamamlandı\n• Açılış hızı 0.5 saniyenin altında\n• Önizleme bağlantısı yarın Slack’te paylaşılacak'
       },
       toneNames: { neutral: 'Nötr', formal: 'Resmî', casual: 'Samimi', bullets: 'Madde imleri' },
       metaWords: (a, b) => `${a} kelime → ${b} kelime`,
-      metaFill: (n) => `${n} duraksama silindi`,
-      metaDict: (n) => `${n} sözlük terimi uygulandı`,
+      metaFill: (n) => `${n} duraksama temizlendi`,
+      metaDict: (n) => `${n} terim düzenlendi`,
       perDay: 'günde', perWeek: 'haftada', perYear: 'yılda',
       minutes: (n) => `${n} dk`, hours: (n) => `${n} sa`,
       dialOut: (m) => `günde ${m} dakika`,
@@ -130,8 +136,8 @@
   function applyConfig() {
     const text = {
       'price-today': CONFIG.PRICE_TODAY === 0 ? (LANG === 'tr' ? 'Ücretsiz' : 'Free') : String(CONFIG.PRICE_TODAY),
+      'free-minutes': String(CONFIG.FREE_MINUTES_MONTHLY),
       'plan-pro': '$' + CONFIG.PLAN_PRO_MONTHLY,
-      'plan-byok': '$' + CONFIG.PLAN_BYOK_MONTHLY,
       'trial-days': String(CONFIG.TRIAL_DAYS),
       'platform-today': CONFIG.PLATFORM_TODAY,
       'support-email': CONFIG.SUPPORT_EMAIL,
@@ -1340,7 +1346,247 @@
     notifyModal.addEventListener('click', (e) => { if (e.target === notifyModal) notifyModal.close(); });
   }
 
-  /* ══════════════════════  11. LIVE CLOCK IN THE MOCK-UP  ══════════════
+  /* ══════════════════════  11. SPEED TEST WIDGET  ═════════════════════ */
+  const speedWidget = document.getElementById('speedTestWidget');
+  const speedInput = document.getElementById('speedInput');
+  const speedPrompt = document.getElementById('speedPrompt');
+  const speedKbTime = document.getElementById('speedKbTime');
+  const speedKbWpm = document.getElementById('speedKbWpm');
+  const speedKbAcc = document.getElementById('speedKbAcc');
+  const speedKbCpm = document.getElementById('speedKbCpm');
+  const speedVoiceTime = document.getElementById('speedVoiceTime');
+  const speedMultiplier = document.getElementById('speedMultiplier');
+  const speedReset = document.getElementById('speedReset');
+  const speedFinish = document.getElementById('speedFinish');
+  const speedChips = document.querySelectorAll('.js-speed-chip');
+
+  if (speedInput && speedPrompt) {
+    let targetText = (speedPrompt.getAttribute('data-text') || speedPrompt.textContent || '').trim();
+    let wordCount = targetText.split(/\s+/).filter(Boolean).length;
+    let estimatedVoiceSec = Math.max(1.6, Number(((wordCount / 140) * 60).toFixed(1)));
+    
+    let startTime = null;
+    let timerInterval = null;
+    let isComplete = false;
+
+    const updateVoiceTimeEstimate = () => {
+      wordCount = targetText.split(/\s+/).filter(Boolean).length;
+      estimatedVoiceSec = Math.max(1.6, Number(((wordCount / 140) * 60).toFixed(1)));
+      if (speedVoiceTime) {
+        speedVoiceTime.textContent = LANG === 'tr' ? `${estimatedVoiceSec} sn` : `${estimatedVoiceSec}s`;
+      }
+    };
+    updateVoiceTimeEstimate();
+
+    const charEq = (a, b) => {
+      if (a === b) return true;
+      const al = a.toLowerCase();
+      const bl = b.toLowerCase();
+      if (al === bl) return true;
+      const an = al.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/ı/g, 'i');
+      const bn = bl.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/ı/g, 'i');
+      return an === bn;
+    };
+
+    const renderPrompt = (typedVal = '') => {
+      let html = '';
+      let errors = 0;
+      const targetLen = targetText.length;
+      const typedLen = typedVal.length;
+
+      for (let i = 0; i < targetLen; i++) {
+        const targetChar = targetText[i];
+        if (i < typedLen) {
+          const userChar = typedVal[i];
+          const isMatch = charEq(userChar, targetChar);
+          if (isMatch) {
+            html += `<span class="char char--correct">${esc(targetChar)}</span>`;
+          } else {
+            errors++;
+            html += `<span class="char char--wrong" title="Hatalı">${esc(targetChar === ' ' ? '␣' : targetChar)}</span>`;
+          }
+        } else if (i === typedLen && !isComplete) {
+          html += `<span class="char char--current">${esc(targetChar)}</span>`;
+        } else {
+          html += `<span class="char char--pending">${esc(targetChar)}</span>`;
+        }
+      }
+
+      if (typedLen > targetLen) {
+        const extra = typedVal.slice(targetLen);
+        html += `<span class="char char--wrong">${esc(extra)}</span>`;
+        errors += extra.length;
+      }
+
+      speedPrompt.innerHTML = html;
+      return errors;
+    };
+
+    const updateLiveTimer = () => {
+      if (!startTime || isComplete) return;
+      const now = performance.now();
+      const elapsedSec = Math.max(0.1, (now - startTime) / 1000);
+      const currentChars = speedInput.value.length;
+      const currentWords = Math.max(1, currentChars / 5);
+      const liveWpm = elapsedSec > 0.2 ? Math.round(currentWords / (elapsedSec / 60)) : 0;
+      const liveCpm = Math.round(currentChars / (elapsedSec / 60));
+      
+      if (speedKbTime) {
+        speedKbTime.textContent = LANG === 'tr' ? `${elapsedSec.toFixed(1)} sn` : `${elapsedSec.toFixed(1)}s`;
+      }
+      if (speedKbWpm) {
+        speedKbWpm.textContent = LANG === 'tr' ? `${liveWpm} kelime/dk` : `${liveWpm} WPM`;
+      }
+      if (speedKbCpm) {
+        speedKbCpm.textContent = `${liveCpm} CPM`;
+      }
+    };
+
+    const finishTest = () => {
+      if (isComplete) return;
+      isComplete = true;
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+      }
+
+      const val = speedInput.value;
+      const elapsedSec = startTime ? Math.max(0.5, (performance.now() - startTime) / 1000) : 2.5;
+      const charsTyped = Math.max(val.length, 1);
+      const wordsTyped = charsTyped / 5;
+      const finalWpm = Math.max(10, Math.round(wordsTyped / (elapsedSec / 60)));
+      const finalCpm = Math.round(charsTyped / (elapsedSec / 60));
+      const ratio = Math.max(1.5, Number((elapsedSec / estimatedVoiceSec).toFixed(1)));
+      const errors = renderPrompt(val);
+      const accuracy = Math.max(0, Math.round(((charsTyped - errors) / charsTyped) * 100));
+
+      if (speedKbTime) speedKbTime.textContent = (LANG === 'tr' ? `${elapsedSec.toFixed(1)} sn` : `${elapsedSec.toFixed(1)}s`);
+      if (speedKbWpm) speedKbWpm.textContent = (LANG === 'tr' ? `${finalWpm} kelime/dk` : `${finalWpm} WPM`);
+      if (speedKbCpm) speedKbCpm.textContent = `${finalCpm} CPM`;
+      if (speedKbAcc) speedKbAcc.textContent = `%${accuracy}`;
+      if (speedMultiplier) {
+        speedMultiplier.textContent = LANG === 'tr' ? `Meram ${ratio} Kat Daha Hızlı!` : `Meram is ${ratio}x Faster!`;
+      }
+      
+      speedInput.disabled = true;
+
+      if (speedFinish) {
+        speedFinish.textContent = LANG === 'tr' ? 'Tamamlandı' : 'Completed';
+        speedFinish.style.background = '#22C55E';
+        speedFinish.style.color = '#FFF';
+      }
+    };
+
+    const resetTest = () => {
+      speedInput.value = '';
+      speedInput.disabled = false;
+      startTime = null;
+      isComplete = false;
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+      }
+      renderPrompt('');
+      if (speedKbTime) speedKbTime.textContent = '—';
+      if (speedKbWpm) speedKbWpm.textContent = LANG === 'tr' ? '0 kelime/dk' : '0 WPM';
+      if (speedKbCpm) speedKbCpm.textContent = '0 CPM';
+      if (speedKbAcc) speedKbAcc.textContent = '%100';
+      if (speedMultiplier) speedMultiplier.textContent = LANG === 'tr' ? 'Hesaplanıyor…' : 'Computing…';
+      if (speedFinish) {
+        speedFinish.textContent = LANG === 'tr' ? 'Testi Bitir' : 'Finish Test';
+        speedFinish.style.background = '';
+        speedFinish.style.color = '';
+      }
+      speedInput.focus();
+    };
+
+    // Sentence mode chips
+    speedChips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        speedChips.forEach((c) => c.classList.remove('is-on'));
+        chip.classList.add('is-on');
+        targetText = (chip.getAttribute('data-text') || '').trim();
+        speedPrompt.setAttribute('data-text', targetText);
+        updateVoiceTimeEstimate();
+        resetTest();
+      });
+    });
+
+    // Initial render
+    renderPrompt('');
+
+    const startTimerIfNeeded = () => {
+      if (!startTime && !isComplete) {
+        startTime = performance.now();
+        if (timerInterval) clearInterval(timerInterval);
+        timerInterval = setInterval(updateLiveTimer, 40);
+        updateLiveTimer();
+      }
+    };
+
+    speedInput.addEventListener('keydown', (e) => {
+      if (isComplete) return;
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        finishTest();
+        return;
+      }
+      if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
+        startTimerIfNeeded();
+      }
+    });
+
+    speedInput.addEventListener('input', () => {
+      if (isComplete) return;
+      const val = speedInput.value;
+      if (val.length > 0) {
+        startTimerIfNeeded();
+      }
+      renderPrompt(val);
+      updateLiveTimer();
+
+      // Auto-finish if user typed entire sentence
+      if (val.length >= targetText.length) {
+        finishTest();
+      }
+    });
+
+    // Clicking prompt or widget focuses input
+    if (speedPrompt) {
+      speedPrompt.style.cursor = 'text';
+      speedPrompt.addEventListener('click', () => {
+        if (!isComplete) speedInput.focus();
+      });
+    }
+
+    if (speedWidget) {
+      speedWidget.addEventListener('click', (e) => {
+        if (!isComplete && e.target !== speedReset && e.target !== speedFinish && !e.target.classList.contains('js-speed-chip')) {
+          speedInput.focus();
+        }
+      });
+    }
+
+    if (speedFinish) {
+      speedFinish.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (isComplete) {
+          resetTest();
+        } else {
+          finishTest();
+        }
+      });
+    }
+
+    if (speedReset) {
+      speedReset.addEventListener('click', (e) => {
+        e.preventDefault();
+        resetTest();
+      });
+    }
+  }
+
+  /* ══════════════════════  12. LIVE CLOCK IN THE MOCK-UP  ══════════════
      A frozen 9:41 is a screenshot tell. The mock-up reads the visitor's own
      clock, because their desktop would. */
   const clockEl = document.querySelector('.taskbar__clock');

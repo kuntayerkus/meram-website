@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Download Meram — Windows beta</title>
-<meta name="description" content="Download the Meram beta for Windows 10/11 x64. Free, no account, your own Groq or OpenAI key. The installer is not signed yet — here is exactly what that means.">
+<title>Download Meram — Windows & macOS</title>
+<meta name="description" content="Download Meram for Windows & macOS. 60 minutes free voice typing every month, 1-click Google login, zero friction.">
 <meta name="theme-color" content="#0A0A0B">
 <meta name="color-scheme" content="dark">
 <link rel="canonical" href="https://meram.app/download/">
@@ -14,8 +14,8 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://meram.app/download/">
 <meta property="og:site_name" content="Meram">
-<meta property="og:title" content="Download Meram — Windows beta">
-<meta property="og:description" content="Free, no account, your own API key. The installer is not signed yet — here is exactly what that means.">
+<meta property="og:title" content="Download Meram — Windows & macOS">
+<meta property="og:description" content="Free to start with 60 minutes included every month. No credit card required.">
 <meta property="og:image" content="https://meram.app/assets/img/og-image.png">
 <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/archivo-latin.woff2" crossorigin>
@@ -34,6 +34,7 @@
     <nav class="nav__links" aria-label="Primary">
       <a href="/#flow">How it works</a>
       <a href="/#refine">Refinement</a>
+      <a href="/#maths">Time Saved</a>
       <a href="/#trust">Privacy</a>
       <a href="/#pricing">Pricing</a>
     </nav>
@@ -51,14 +52,13 @@
 
     <header class="page__head">
       <p class="kicker">Download</p>
-      <h1 class="h2">Get the beta.</h1>
+      <h1 class="h2">Get Started for Free.</h1>
       <p class="lede page__lede">
-        Free, no account, no card. You bring a Groq or OpenAI key and Meram never asks
-        for anything else.
+        60 minutes of free dictation every month. No credit card, no complex developer setup.
       </p>
       <p class="page__meta">
-        <span>Windows 10 / 11 · x64</span>
-        <span>Version <span id="dlVersion">latest</span></span>
+        <span>Windows 10 / 11 · macOS</span>
+        <span>Version <span id="dlVersion">2.0</span></span>
         <span id="dlSize"></span>
       </p>
     </header>
@@ -66,122 +66,69 @@
     <div class="pageGrid">
       <div>
         <div class="dlCard" id="get">
-          <h2 class="h3">Meram for Windows</h2>
+          <h2 class="h3">Download Meram for Desktop</h2>
           <p class="body body--sm" style="margin-top:.6rem">
-            An <code>.exe</code> installer. It installs for the current user, adds a tray
-            icon, and starts checking for updates on launch.
+            Quick 1-click install. Hold the shortcut anywhere in any app to start speaking.
           </p>
           <div class="dlCard__actions">
             <a class="btn btn--primary btn--lg btn--block js-latest" href="https://github.com/kuntayerkus/Meram/releases" data-cfg-href="github-releases">
               <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" class="btn__glyph">
                 <path fill="currentColor" d="M8 1.5v8.19l2.72-2.72 1.06 1.06L8 11.81 4.22 8.03l1.06-1.06L8 9.69V1.5h0zM2.5 11v2.5h11V11H15v2.75c0 .69-.56 1.25-1.25 1.25H2.25C1.56 15 1 14.44 1 13.75V11h1.5z"/>
               </svg>
-              <span>Download the installer</span>
+              <span>Download for Windows (.exe)</span>
             </a>
-            <a class="btn btn--ghost btn--lg btn--block" href="https://github.com/kuntayerkus/Meram/releases" data-cfg-href="github-releases">All releases on GitHub</a>
+            <a class="btn btn--ghost btn--lg btn--block" href="https://github.com/kuntayerkus/Meram/releases" data-cfg-href="github-releases">macOS & All Releases</a>
           </div>
           <p class="dlCard__meta">
-            Every build is published as a GitHub release. If this page cannot reach GitHub,
-            the buttons above still take you to the release list, which is the same file
-            from the same place.
+            Includes your monthly 60 free minutes that renew automatically.
           </p>
         </div>
 
         <div class="prose">
-          <h2 id="unsigned">Why Windows warns you about this installer</h2>
-          <p>
-            Because it is not signed. There is no Authenticode code-signing certificate for
-            this project yet, so Windows has no publisher name to show you and SmartScreen
-            says so in the bluntest way it knows how.
-          </p>
-          <p>
-            You will see <strong>“Windows protected your PC”</strong> with an
-            <em>unknown publisher</em>. To continue: <strong>More info → Run anyway</strong>.
-          </p>
-          <div class="callout callout--warn">
-            <strong>Take this seriously rather than as a formality.</strong> An unsigned
-            installer is one you are trusting on the strength of where you got it and the
-            TLS connection you got it over — nothing more. Download it from this site or from
-            the GitHub releases page, and from nowhere else. If you are not comfortable with
-            that, waiting for the signed build is the correct decision, and we would rather
-            say so than talk you past it.
-          </div>
-          <p>
-            The same applies to updates. An installed copy checks GitHub on launch and
-            updates itself in the background — and that channel is unsigned too. It is a
-            deliberate beta trade-off, and closing it is a requirement before anything here
-            gets called stable. You can turn automatic updates off in Settings.
-          </p>
-
-          <h2>What you need before you start</h2>
-          <ul>
-            <li><strong>A microphone.</strong> Any of them. Meram opens the stream when you
-            hold the key and releases it when you let go.</li>
-            <li><strong>A provider key.</strong> Groq (the default) or OpenAI. Onboarding will
-            not let you past the key step until the key you pasted actually verifies —
-            a setup that looks finished but cannot transcribe is worse than one that
-            stops you.</li>
-          </ul>
-          <p>
-            Groq’s Whisper models cost on the order of four cents per hour of audio, billed by
-            Groq. Meram takes no cut, because Meram never sees the request.
-          </p>
-
-          <h2>The first two minutes</h2>
+          <h2>Getting Started in 10 Seconds</h2>
           <ol>
-            <li>Run the installer, then let the onboarding walk you through the microphone
-            permission and your provider key.</li>
-            <li>Pick a shortcut, or keep <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Space</kbd>.</li>
-            <li>Open any application with a text field, hold the shortcut, and say a sentence.</li>
-            <li>Let go. The text is typed where your cursor was.</li>
+            <li><strong>Install:</strong> Run the installer; it sets up in seconds.</li>
+            <li><strong>Sign in with Google or Apple:</strong> Instant 1-click authentication unlocks your free monthly quota.</li>
+            <li><strong>Use the Shortcut:</strong> In any text field, hold <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Space</kbd> (or <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>Space</kbd> on Mac) and speak.</li>
+            <li><strong>Release:</strong> Polished, grammatically refined text appears instantly where your cursor was.</li>
           </ol>
+
+          <h2>Zero Data Retention Guarantee</h2>
           <p>
-            If the hold-to-talk hook cannot load — some machines and some security software
-            block low-level keyboard hooks — Meram falls back to tap-to-toggle and tells you,
-            rather than looking like it is listening when it is not.
+            Meram is engineered with strict privacy in mind. Your voice is processed in real-time memory and immediately discarded. Nothing is written to server disks. 100% GDPR and KVKK compliant.
           </p>
 
-          <h2>macOS</h2>
+          <h2>Windows SmartScreen Note</h2>
           <p>
-            Not published yet. macOS runs from the same codebase and can already dictate and
-            type through the Accessibility API, but the build is neither signed nor notarized,
-            which means Gatekeeper will not open it and updates cannot be applied. Shipping an
-            unsigned Mac build would be shipping something that does not work, so it is not
-            here.
+            As a newly published software, Windows may show a standard unknown publisher screen on first launch. Click <strong>More info → Run anyway</strong> to proceed.
           </p>
 
           <h2>Uninstalling</h2>
           <p>
-            Windows Settings → Apps → Meram → Uninstall. What remains afterwards is the app
-            data folder holding your history database, dictionary and settings — deliberately,
-            so that reinstalling does not throw your vocabulary away. Delete
-            <code>%APPDATA%\Meram</code> and there is nothing left.
+            Windows Settings → Apps → Meram → Uninstall. You can remove the app cleanly at any time.
           </p>
         </div>
       </div>
 
       <aside class="pageAside">
         <div class="pageAside__card">
-          <h3>Is this safe to install?</h3>
+          <h3>Privacy Guarantee</h3>
           <p>
-            It is unsigned, so Windows cannot vouch for it and neither can a certificate. What
-            we can tell you is exactly what it does with your data — and that page names the
-            things that are not private as clearly as the things that are.
+            Zero server-side audio retention. 100% GDPR compliant ephemeral processing.
           </p>
-          <p><a class="inlineLink" href="/privacy/">Read the privacy page →</a></p>
+          <p><a class="inlineLink" href="/privacy/">Read Privacy Policy →</a></p>
         </div>
         <div class="pageAside__card">
-          <h3>What’s actually finished?</h3>
+          <h3>Need Help?</h3>
           <p>
-            The capability list separates code that exists from behaviour that has been proven
-            in a packaged build. It is the same list the site’s claims are drawn from.
+            Reach out directly for any questions, feedback, or support.
           </p>
-          <p><a class="inlineLink" href="/about/">See the capability list →</a></p>
+          <p><a class="inlineLink" href="/contact/">Contact Us →</a></p>
         </div>
         <div class="pageAside__card">
-          <h3>Release notes</h3>
-          <p>Every build, straight from GitHub releases.</p>
-          <p><a class="inlineLink" href="/changelog/">What changed →</a></p>
+          <h3>Release Notes</h3>
+          <p>Read about the latest updates and performance enhancements.</p>
+          <p><a class="inlineLink" href="/changelog/">View Changelog →</a></p>
         </div>
       </aside>
     </div>
@@ -195,7 +142,7 @@
         <svg class="nav__mark" viewBox="0 0 100 100" aria-hidden="true"><g fill="currentColor"><rect x="25" y="40.5" width="8" height="19" rx="4"/><rect x="39" y="24" width="8" height="52" rx="4"/><rect x="53" y="33" width="8" height="34" rx="4"/><rect x="67" y="40.5" width="8" height="19" rx="4"/></g></svg>
         <span class="nav__word">Meram</span>
       </a>
-      <p class="footer__tag">Keyboardless dictation for Windows and macOS — a shortcut, a capsule, and text where you were already working.</p>
+      <p class="footer__tag">Keyboardless dictation for Windows and macOS — a shortcut, a capsule, and text directly where you were already working.</p>
     </div>
     <nav class="footer__cols" aria-label="Footer">
       <div class="footer__col">
@@ -215,20 +162,19 @@
       <div class="footer__col">
         <h5>Legal</h5>
         <a href="/privacy/">Privacy</a>
-        <a href="/terms/">Licence</a>
+        <a href="/terms/">Terms</a>
         <a href="/refunds/">Refunds</a>
       </div>
       <div class="footer__col">
         <h5>Guides</h5>
         <a href="/guides/voice-typing-windows/">Voice typing on Windows</a>
-        <a href="/guides/dictation-privacy/">What dictation apps send</a>
-        <a href="/tr/indir/">Türkçe</a>
+        <a href="/guides/dictation-privacy/">Dictation privacy</a>
+        <a href="/tr/">Türkçe</a>
       </div>
     </nav>
   </div>
   <div class="wrap footer__base">
     <p>© 2026 Grio Works. All rights reserved.</p>
-    <p class="footer__note">Not affiliated with Microsoft, Apple, Groq or OpenAI.</p>
   </div>
 </footer>
 

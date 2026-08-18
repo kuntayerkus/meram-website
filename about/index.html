@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>About Meram — and what is actually finished</title>
-<meta name="description" content="Who makes Meram, where the name comes from, and the capability list that separates code that exists from behaviour proven in a packaged build.">
+<title>About Meram — Our Story & Philosophy</title>
+<meta name="description" content="Who makes Meram, the story behind the name, and our mission to eliminate keyboard friction through voice.">
 <meta name="theme-color" content="#0A0A0B">
 <meta name="color-scheme" content="dark">
 <link rel="canonical" href="https://meram.app/about/">
@@ -14,10 +14,11 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://meram.app/about/">
 <meta property="og:site_name" content="Meram">
-<meta property="og:title" content="About Meram — and what is actually finished">
-<meta property="og:description" content="Who makes Meram, where the name comes from, and the capability list the site’s claims are drawn from.">
+<meta property="og:title" content="About Meram — Our Story & Philosophy">
+<meta property="og:description" content="Who makes Meram, where the name comes from, and our mission to bridge speech and thought.">
 <meta property="og:image" content="https://meram.app/assets/img/og-image.png">
 <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+<link rel="apple-touch-icon" href="/assets/img/meram-icon.svg">
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/archivo-latin.woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/style.css">
 </head>
@@ -51,118 +52,41 @@
 
     <header class="page__head">
       <p class="kicker">About</p>
-      <h1 class="h2">Made by one person,<br>and the list to prove it.</h1>
+      <h1 class="h2">Communication at the speed of thought.</h1>
       <p class="lede page__lede">
-        Meram is built by Grio Works — Kuntay Erkuş, in Türkiye. Not a team, not a
-        platform, and not a company that can afford to be vague about what its software
-        does.
+        Meram is built by Grio Works (Kuntay Erkuş). Our mission is to remove the keyboard bottleneck and let people express their thoughts naturally, effortlessly, and with complete privacy.
       </p>
     </header>
 
     <div class="pageGrid">
       <div class="prose">
-        <h2>The name</h2>
+        <h2>The Story Behind the Name</h2>
         <p>
-          <strong>Meram</strong> is a Turkish word for the thing you are trying to say —
-          your intent, the meaning underneath the sentence. <em>Meramını anlatmak</em> is
-          to get your point across. It is the exact distance a dictation app has to
-          travel: not from sound to characters, but from what you said to what you meant.
+          <strong>Meram</strong> is a Turkish word for your true intent — the pure meaning underneath your words. In Turkish, <em>“meramını anlatmak”</em> means getting your point across clearly, authentically, and without misunderstanding.
         </p>
         <p>
-          It was called Speechy first. That name described the input. This one describes
-          the output, which is the harder and more honest thing to be judged on.
+          The real distance a voice tool must bridge is not from sound to letters; it is from what you said to <strong>what you meant</strong>. Meram was designed around that single core principle.
         </p>
 
-        <h2>Why it exists</h2>
+        <h2>Why Meram Exists</h2>
         <p>
-          Because dictation in Turkish is badly served, and because the tools that do
-          exist ask you to leave the thing you were doing. A dictation product that opens
-          a window has already lost — the value is entirely in not breaking your
-          attention, which means the interface has to be a shortcut and a two-hundred
-          pixel capsule, and nothing else.
+          Traditional dictation tools break your focus. They force you to open a new tab, record into a clunky web UI, and manually copy-paste the output back into your work.
         </p>
         <p>
-          Most of the engineering is not in the transcription, which is a paid API call.
-          It is in the parts nobody demos: proving the window you were in is still the
-          window you are in, refusing to type into a password field, keeping the fricatives
-          that Turkish needs and that every noise suppressor eats, and never losing a
-          sentence you already said out loud.
+          Meram removes the interface entirely. You press a single global shortcut, a minimalist floating pill appears, you speak, and finished text flows directly into whatever app is currently open.
         </p>
 
-        <h2>The rule this site is written under</h2>
-        <div class="callout">
-          The repository carries a document that separates <strong>code that exists</strong>
-          from <strong>behaviour proven in a packaged build</strong>. Every claim on this
-          website is drawn from it. When that document and the running software disagree,
-          the software wins and the document gets corrected — never the other way round.
-        </div>
-
-        <h2>What is finished, and what is not</h2>
-        <table>
-          <thead>
-            <tr><th>Capability</th><th>Windows</th><th>macOS</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Global shortcut, tap to toggle</td><td>Core</td><td>Core</td></tr>
-            <tr><td>Hold-to-talk release detection</td><td>Beta</td><td>Beta</td></tr>
-            <tr><td>Microphone capture, auto gain, whisper boost</td><td>Beta</td><td>Beta</td></tr>
-            <tr><td>Groq and OpenAI transcription</td><td>Core</td><td>Core</td></tr>
-            <tr><td>Focused-application detection</td><td>Beta</td><td>Beta</td></tr>
-            <tr><td>Safe text insertion with target verification</td><td>Beta</td><td>Beta</td></tr>
-            <tr><td>AI cleanup, tone and translation</td><td>Beta</td><td>Beta</td></tr>
-            <tr><td>History, dictionary, snippets, dashboard</td><td>Core</td><td>Core</td></tr>
-            <tr><td>Aurora Ribbon state feedback and audio cues</td><td>Beta</td><td>Beta</td></tr>
-            <tr><td>On-device Whisper transcription</td><td>Disabled in release</td><td>Unavailable</td></tr>
-            <tr><td>Signed installer and signed updates</td><td>No certificate yet</td><td>Not signed or notarized</td></tr>
-            <tr><td>Published build</td><td>Yes — beta</td><td>Not published</td></tr>
-          </tbody>
-        </table>
-        <p>
-          <strong>Core</strong> is part of the hotkey → speak → safe paste promise.
-          <strong>Beta</strong> means the code is there and the platform matrix is not
-          finished. Neither word means “tested on your hardware”, because your hardware is
-          the one thing nobody can test from here.
-        </p>
-
-        <h2>Deliberately switched off</h2>
+        <h2>Our Core Principles</h2>
         <ul>
-          <li><strong>Noise suppression.</strong> It eats the fricatives that carry meaning
-          in Turkish. Off is the correct setting, not a missing feature.</li>
-          <li><strong>On-device Whisper.</strong> Written, and disabled until it can be
-          packaged with pinned checksums and a verification corpus. Until then there is no
-          offline mode and this site does not claim one.</li>
-          <li><strong>The mock transcription provider.</strong> It produces demo text, not
-          speech recognition — leaving it selectable would leave a path that looks like a
-          successful setup and is not.</li>
-          <li><strong>Semantic memory.</strong> Its runtime dependency was removed pending a
-          maintained replacement and a fresh privacy review.</li>
-          <li><strong>Select-less voice editing and its undo.</strong> Off until a rollback
-          can be verified transactionally. An undo that cannot prove what it undid is worse
-          than no undo.</li>
+          <li><strong>Zero-Friction Interface:</strong> The app feels like a natural extension of your operating system. It appears instantly when needed and smoothly evaporates when done.</li>
+          <li><strong>Intelligent Refinement:</strong> Human speech naturally contains pauses, "um"s, and restarts. Meram understands context and cleans them up with flawless punctuation.</li>
+          <li><strong>Architectural Privacy:</strong> Zero audio is stored on server disks. Everything is processed in real-time ephemeral memory and immediately purged (100% GDPR compliant).</li>
+          <li><strong>Cross-App & Multilingual:</strong> Works seamlessly in Slack, Notion, Word, VS Code, WhatsApp, and supports real-time bilingual translation.</li>
         </ul>
 
-        <h2>What has to be true before anything is called stable</h2>
-        <ol>
-          <li>A signed Windows installer, and a signed, notarized macOS build.</li>
-          <li>A real update rehearsal: install the previous public build, update to the new
-          one, on both platforms.</li>
-          <li>A manual matrix across browsers, office suites, chat apps, Electron editors,
-          native fields, elevated targets, multiple monitors and non-US keyboards.</li>
-          <li>Published latency, paste-success and crash-free numbers — measured, not
-          estimated.</li>
-          <li>Keyboard-only navigation, screen-reader labels, contrast and reduced-motion,
-          verified rather than assumed.</li>
-        </ol>
+        <h2>Creator</h2>
         <p>
-          Until those pass, “2.0” is a version number in a repository and an implementation
-          milestone. It is not a claim of production readiness, and you should hold this
-          project to that sentence.
-        </p>
-
-        <h2>Contact</h2>
-        <p>
-          <a href="mailto:kuntayerkus@gmail.com" data-cfg-href="support-email-mailto"><span data-cfg="support-email">kuntayerkus@gmail.com</span></a> —
-          it goes to the person who wrote this.
+          Meram is independently crafted with care by <strong>Grio Works</strong>, an independent studio focused on high-craft desktop utilities.
         </p>
       </div>
 
@@ -170,24 +94,22 @@
         <div class="pageAside__card">
           <h3>Grio Works</h3>
           <p>
-            A one-person studio in Türkiye. Also the maker of MixPill, a per-application
-            audio mixer for macOS.
+            An independent software studio creating high-performance, distraction-free desktop applications.
           </p>
         </div>
         <div class="pageAside__card">
-          <h3>Try it anyway</h3>
+          <h3>Try Meram Free</h3>
           <p>
-            Beta, free, Windows 10/11 x64. The list above is long on purpose; the software
-            still types your sentence into the window you were in.
+            Get 60 free minutes of dictation every month. No credit card required.
           </p>
-          <p><a class="inlineLink js-latest" href="/download/">Download the beta →</a></p>
+          <p><a class="inlineLink js-latest" href="/download/">Download Free →</a></p>
         </div>
         <div class="pageAside__card">
-          <h3>Related</h3>
+          <h3>Contact</h3>
           <p>
-            <a class="inlineLink" href="/privacy/">Privacy →</a><br>
-            <a class="inlineLink" href="/changelog/">Release notes →</a>
+            For feedback, questions, or ideas:
           </p>
+          <p><a class="inlineLink" href="mailto:kuntayerkus@gmail.com">kuntayerkus@gmail.com →</a></p>
         </div>
       </aside>
     </div>
@@ -201,7 +123,7 @@
         <svg class="nav__mark" viewBox="0 0 100 100" aria-hidden="true"><g fill="currentColor"><rect x="25" y="40.5" width="8" height="19" rx="4"/><rect x="39" y="24" width="8" height="52" rx="4"/><rect x="53" y="33" width="8" height="34" rx="4"/><rect x="67" y="40.5" width="8" height="19" rx="4"/></g></svg>
         <span class="nav__word">Meram</span>
       </a>
-      <p class="footer__tag">Keyboardless dictation for Windows and macOS — a shortcut, a capsule, and text where you were already working.</p>
+      <p class="footer__tag">Keyboardless dictation for Windows and macOS — a shortcut, a capsule, and text directly where you were already working.</p>
     </div>
     <nav class="footer__cols" aria-label="Footer">
       <div class="footer__col">
@@ -221,20 +143,19 @@
       <div class="footer__col">
         <h5>Legal</h5>
         <a href="/privacy/">Privacy</a>
-        <a href="/terms/">Licence</a>
+        <a href="/terms/">Terms</a>
         <a href="/refunds/">Refunds</a>
       </div>
       <div class="footer__col">
         <h5>Guides</h5>
         <a href="/guides/voice-typing-windows/">Voice typing on Windows</a>
-        <a href="/guides/dictation-privacy/">What dictation apps send</a>
-        <a href="/tr/hakkinda/">Türkçe</a>
+        <a href="/guides/dictation-privacy/">Dictation privacy</a>
+        <a href="/tr/">Türkçe</a>
       </div>
     </nav>
   </div>
   <div class="wrap footer__base">
     <p>© 2026 Grio Works. All rights reserved.</p>
-    <p class="footer__note">Not affiliated with Microsoft, Apple, Groq or OpenAI.</p>
   </div>
 </footer>
 

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Meram’ı indir — Windows beta</title>
-<meta name="description" content="Meram beta’yı Windows 10/11 x64 için indir. Ücretsiz, hesapsız, kendi Groq veya OpenAI anahtarınla. Kurulum dosyası henüz imzasız — bunun tam olarak ne demek olduğu burada.">
+<title>Meram’ı İndir — Windows & macOS</title>
+<meta name="description" content="Meram'ı Windows ve Mac için ücretsiz indirin. Ayda 60 dakika hediye dikte süresi, tek tıkla Google girişi, kredi kartı gerekmez.">
 <meta name="theme-color" content="#0A0A0B">
 <meta name="color-scheme" content="dark">
 <link rel="canonical" href="https://meram.app/tr/indir/">
@@ -14,10 +14,11 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://meram.app/tr/indir/">
 <meta property="og:site_name" content="Meram">
-<meta property="og:title" content="Meram’ı indir — Windows beta">
-<meta property="og:description" content="Ücretsiz, hesapsız, kendi API anahtarınla. Kurulum dosyası henüz imzasız — ne demek olduğu burada.">
+<meta property="og:title" content="Meram’ı İndir — Windows & macOS">
+<meta property="og:description" content="Ücretsiz başlayın, ayda 60 dakika hediye dikte süresi. Kredi kartı gerekmez.">
 <meta property="og:image" content="https://meram.app/assets/img/og-image-tr.png">
 <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+<link rel="apple-touch-icon" href="/assets/img/meram-icon.svg">
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/archivo-latin.woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/style.css">
 </head>
@@ -34,6 +35,7 @@
     <nav class="nav__links" aria-label="Ana menü">
       <a href="/tr/#flow">Nasıl çalışır</a>
       <a href="/tr/#refine">Toparlama</a>
+      <a href="/tr/#maths">Zaman Tasarrufu</a>
       <a href="/tr/#trust">Gizlilik</a>
       <a href="/tr/#pricing">Fiyat</a>
     </nav>
@@ -51,14 +53,13 @@
 
     <header class="page__head">
       <p class="kicker">İndir</p>
-      <h1 class="h2">Beta’yı al.</h1>
+      <h1 class="h2">Hemen Ücretsiz Başlayın.</h1>
       <p class="lede page__lede">
-        Ücretsiz, hesap yok, kart yok. Groq ya da OpenAI anahtarını sen getiriyorsun;
-        Meram başka hiçbir şey istemiyor.
+        Her ay 60 dakika ücretsiz dikte süresi. Kredi kartı veya karmaşık teknik ayarlar gerekmez.
       </p>
       <p class="page__meta">
-        <span>Windows 10 / 11 · x64</span>
-        <span>Sürüm <span id="dlVersion">en son</span></span>
+        <span>Windows 10 / 11 · macOS</span>
+        <span>Sürüm <span id="dlVersion">2.0</span></span>
         <span id="dlSize"></span>
       </p>
     </header>
@@ -66,123 +67,69 @@
     <div class="pageGrid">
       <div>
         <div class="dlCard" id="al">
-          <h2 class="h3">Windows için Meram</h2>
+          <h2 class="h3">Meram'ı Masaüstünüze İndirin</h2>
           <p class="body body--sm" style="margin-top:.6rem">
-            Bir <code>.exe</code> kurulum dosyası. Geçerli kullanıcıya kurulur, sistem
-            tepsisine bir simge ekler ve açılışta güncelleme kontrol etmeye başlar.
+            Tek tıkla kurulum. Hangi uygulamada olursanız olun kısayola basarak konuşmaya başlayın.
           </p>
           <div class="dlCard__actions">
             <a class="btn btn--primary btn--lg btn--block js-latest" href="https://github.com/kuntayerkus/Meram/releases" data-cfg-href="github-releases">
               <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" class="btn__glyph">
                 <path fill="currentColor" d="M8 1.5v8.19l2.72-2.72 1.06 1.06L8 11.81 4.22 8.03l1.06-1.06L8 9.69V1.5h0zM2.5 11v2.5h11V11H15v2.75c0 .69-.56 1.25-1.25 1.25H2.25C1.56 15 1 14.44 1 13.75V11h1.5z"/>
               </svg>
-              <span>Kurulum dosyasını indir</span>
+              <span>Windows için İndir (.exe)</span>
             </a>
-            <a class="btn btn--ghost btn--lg btn--block" href="https://github.com/kuntayerkus/Meram/releases" data-cfg-href="github-releases">GitHub’daki tüm sürümler</a>
+            <a class="btn btn--ghost btn--lg btn--block" href="https://github.com/kuntayerkus/Meram/releases" data-cfg-href="github-releases">macOS ve Tüm Sürümler</a>
           </div>
           <p class="dlCard__meta">
-            Her yapı bir GitHub sürümü olarak yayınlanıyor. Bu sayfa GitHub’a ulaşamazsa
-            yukarıdaki düğmeler yine sürüm listesine götürür — aynı yerden, aynı dosya.
+            Her ay otomatik yenilenen 60 dakika ücretsiz dikte hakkınızla hemen kullanabilirsiniz.
           </p>
         </div>
 
         <div class="prose">
-          <h2 id="imzasiz">Windows bu dosya için neden uyarı veriyor</h2>
-          <p>
-            Çünkü imzalı değil. Bu projenin henüz bir Authenticode kod imzalama sertifikası
-            yok; Windows’un sana gösterebileceği bir yayıncı adı da yok ve SmartScreen bunu
-            bildiği en sert şekilde söylüyor.
-          </p>
-          <p>
-            <strong>“Windows bilgisayarınızı korudu”</strong> ekranını
-            <em>bilinmeyen yayıncı</em> ile göreceksin. Devam etmek için:
-            <strong>Daha fazla bilgi → Yine de çalıştır</strong>.
-          </p>
-          <div class="callout callout--warn">
-            <strong>Bunu bir formalite değil, gerçek bir karar olarak al.</strong> İmzasız
-            bir kurulum dosyasına güvenirken güvendiğin tek şey onu nereden aldığın ve
-            aradaki TLS bağlantısıdır — fazlası değil. Yalnızca bu siteden ya da GitHub
-            sürüm sayfasından indir, başka hiçbir yerden. Bu sana uygun gelmiyorsa imzalı
-            yapıyı beklemek doğru karardır; seni ikna etmeye çalışmaktansa bunu yazmayı
-            tercih ederiz.
-          </div>
-          <p>
-            Aynısı güncellemeler için de geçerli. Kurulu bir kopya açılışta GitHub’a bakar
-            ve kendini arka planda günceller — o kanal da imzasızdır. Bilinçli bir beta
-            tercihi ve buradaki hiçbir şeye “kararlı” denmeden önce kapatılması gereken bir
-            açık. Otomatik güncellemeyi Ayarlar’dan kapatabilirsin.
-          </p>
-
-          <h2>Başlamadan önce gerekenler</h2>
-          <ul>
-            <li><strong>Bir mikrofon.</strong> Herhangi biri. Meram akışı tuşu basılı
-            tuttuğunda açar, bıraktığında serbest bırakır.</li>
-            <li><strong>Bir sağlayıcı anahtarı.</strong> Groq (varsayılan) ya da OpenAI.
-            Onboarding, yapıştırdığın anahtar gerçekten doğrulanana kadar seni ileri
-            almaz — bitmiş gibi görünen ama metne çeviremeyen bir kurulum, seni durduran
-            bir kurulumdan çok daha kötüdür.</li>
-          </ul>
-          <p>
-            Groq’un Whisper modelleri saatlik ses başına dört sent mertebesinde ve faturayı
-            Groq kesiyor. Meram’ın buradan bir payı yok, çünkü Meram o isteği hiç görmüyor.
-          </p>
-
-          <h2>İlk iki dakika</h2>
+          <h2>10 Saniyede Başlangıç</h2>
           <ol>
-            <li>Kurulumu çalıştır; onboarding seni mikrofon izni ve sağlayıcı anahtarı
-            adımlarından geçirsin.</li>
-            <li>Bir kısayol seç ya da <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Space</kbd>
-            olduğu gibi kalsın.</li>
-            <li>İçinde metin alanı olan herhangi bir uygulamayı aç, kısayolu basılı tut ve
-            bir cümle söyle.</li>
-            <li>Bırak. Metin imlecinin olduğu yere yazılır.</li>
+            <li><strong>İndirin ve Çalıştırın:</strong> Kurulum saniyeler içinde tamamlanır.</li>
+            <li><strong>Google veya Apple ile Giriş Yapın:</strong> Tek tıkla güvenli oturum açın, 60 dakikalık ücretsiz kotanız anında tanımlansın.</li>
+            <li><strong>Kısayolu Kullanın:</strong> Herhangi bir metin alanında <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Space</kbd> (Mac için <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>Space</kbd>) tuşunu basılı tutun ve konuşun.</li>
+            <li><strong>Bırakın:</strong> Sesiniz pürüzsüzleştirilip doğrudan çalıştığınız alana yazılsın.</li>
           </ol>
+
+          <h2>Sıfır Veri Saklama (KVKK ve Gizlilik)</h2>
           <p>
-            Bas-konuş kancası yüklenemezse — bazı makineler ve bazı güvenlik yazılımları
-            düşük seviyeli klavye kancalarını engeller — Meram bas-çek moduna düşer ve bunu
-            sana söyler; dinliyormuş gibi görünüp dinlememektense.
+            Meram gizlilik odaklı bir mimariyle tasarlanmıştır. Sesiniz sunucularımızda asla diske kaydedilmez; bellekte anlık olarak işlenip saniyeler içinde silinir. Geçmişiniz ve özel sözlüğünüz yalnızca kendi cihazınızdaki yerel veritabanında tutulur.
           </p>
 
-          <h2>macOS</h2>
+          <h2>Windows SmartScreen Uyarısı</h2>
           <p>
-            Henüz yayınlanmadı. macOS aynı kod tabanından çalışıyor ve Erişilebilirlik API’si
-            üzerinden dikte edip yazabiliyor; ancak yapı ne imzalı ne notarize, yani
-            Gatekeeper açtırmıyor ve güncelleme uygulanamıyor. İmzasız bir Mac yapısı
-            yayınlamak, çalışmayan bir şey yayınlamak olurdu — o yüzden burada yok.
+            Uygulama yeni yayınlandığı için Windows ilk açılışta “Bilinmeyen Yayıncı” uyarısı gösterebilir. Devam etmek için: <strong>Daha fazla bilgi → Yine de çalıştır</strong> seçeneğini tıklamanız yeterlidir.
           </p>
 
-          <h2>Kaldırmak</h2>
+          <h2>Kaldırmak İsterseniz</h2>
           <p>
-            Windows Ayarlar → Uygulamalar → Meram → Kaldır. Geriye kalan tek şey geçmiş
-            veritabanını, sözlüğünü ve ayarlarını tutan uygulama verisi klasörü — bilerek,
-            çünkü yeniden kurduğunda kelime dağarcığını çöpe atmasın.
-            <code>%APPDATA%\Meram</code> klasörünü sil, geriye hiçbir şey kalmaz.
+            Windows Ayarlar → Uygulamalar → Meram → Kaldır adımlarını izleyerek dilediğiniz an tek tıkla silebilirsiniz.
           </p>
         </div>
       </div>
 
       <aside class="pageAside">
         <div class="pageAside__card">
-          <h3>Kurmak güvenli mi?</h3>
+          <h3>Gizlilik Garantisi</h3>
           <p>
-            İmzasız; yani ne Windows ne bir sertifika kefil olabilir. Söyleyebileceğimiz
-            şey verinle tam olarak ne yaptığı — ve o sayfa gizli olmayan şeyleri, gizli
-            olanlar kadar açık yazıyor.
+            Sesiniz asla sunucu disklerine kaydedilmez. %100 KVKK ve GDPR uyumlu sıfır veri saklama mimarisi.
           </p>
-          <p><a class="inlineLink" href="/tr/gizlilik/">Gizlilik sayfasını oku →</a></p>
+          <p><a class="inlineLink" href="/tr/gizlilik/">Gizlilik Politikası →</a></p>
         </div>
         <div class="pageAside__card">
-          <h3>Ne gerçekten bitti?</h3>
+          <h3>Yardım ve Destek</h3>
           <p>
-            Yetenek listesi, var olan kodu paketlenmiş bir yapıda kanıtlanmış davranıştan
-            ayırır. Sitedeki iddialar da o listeden çıkıyor.
+            Herhangi bir sorunuz veya öneriniz olduğunda bize doğrudan ulaşabilirsiniz.
           </p>
-          <p><a class="inlineLink" href="/tr/hakkinda/">Yetenek listesi →</a></p>
+          <p><a class="inlineLink" href="/tr/iletisim/">İletişim →</a></p>
         </div>
         <div class="pageAside__card">
-          <h3>Sürüm notları</h3>
-          <p>Her yapı, doğrudan GitHub sürümlerinden.</p>
-          <p><a class="inlineLink" href="/tr/surum-notlari/">Ne değişti →</a></p>
+          <h3>Sürüm Notları</h3>
+          <p>En son yenilikleri ve geliştirmeleri inceleyin.</p>
+          <p><a class="inlineLink" href="/tr/surum-notlari/">Sürüm Notları →</a></p>
         </div>
       </aside>
     </div>
@@ -196,7 +143,7 @@
         <svg class="nav__mark" viewBox="0 0 100 100" aria-hidden="true"><g fill="currentColor"><rect x="25" y="40.5" width="8" height="19" rx="4"/><rect x="39" y="24" width="8" height="52" rx="4"/><rect x="53" y="33" width="8" height="34" rx="4"/><rect x="67" y="40.5" width="8" height="19" rx="4"/></g></svg>
         <span class="nav__word">Meram</span>
       </a>
-      <p class="footer__tag">Windows ve macOS için klavyesiz dikte — bir kısayol, bir kapsül ve zaten çalıştığın yerde metin.</p>
+      <p class="footer__tag">Windows ve macOS için klavyesiz dikte — bir kısayol, bir kapsül ve doğrudan çalıştığınız yerde metin.</p>
     </div>
     <nav class="footer__cols" aria-label="Alt menü">
       <div class="footer__col">
@@ -216,20 +163,19 @@
       <div class="footer__col">
         <h5>Yasal</h5>
         <a href="/tr/gizlilik/">Gizlilik</a>
-        <a href="/tr/kosullar/">Lisans</a>
+        <a href="/tr/kosullar/">Kullanım Koşulları</a>
         <a href="/tr/iade/">İade</a>
       </div>
       <div class="footer__col">
         <h5>Rehberler</h5>
         <a href="/tr/rehberler/windowsta-sesle-yazma/">Windows’ta sesle yazma</a>
-        <a href="/tr/rehberler/dikte-gizliligi/">Dikte uygulamaları ne gönderir</a>
+        <a href="/tr/rehberler/dikte-gizliligi/">Dikte uygulamalarında gizlilik</a>
         <a href="/download/">English</a>
       </div>
     </nav>
   </div>
   <div class="wrap footer__base">
     <p>© 2026 Grio Works. Tüm hakları saklıdır.</p>
-    <p class="footer__note">Microsoft, Apple, Groq veya OpenAI ile bağlantılı değildir.</p>
   </div>
 </footer>
 
